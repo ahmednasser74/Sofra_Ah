@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/restaurant_more_fragment_fragment_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_60dp"
+        android:gravity="center"
+        android:text="More Setting"
+        android:textColor="@color/blue"
+        android:textSize="30sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_fragment_offers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_gift" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Offers"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_fragment_contact_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_mail_none" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="ContactUs"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_fragment_about_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_lamp" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="About App"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_fragment_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_star" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Rating and Comments"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_fragment_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_lock" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Change Password"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/restaurant_more_fragment_sign_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_log_out" />
+
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Sign Out"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

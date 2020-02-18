@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_restaurant_menu_swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/item_restaurant_menu_img_edit"
+            android:layout_width="@dimen/dim_30dp"
+            android:layout_height="@dimen/dim_30dp"
+            android:layout_marginStart="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:background="@drawable/ic_green_edit" />
+
+        <ImageView
+            android:id="@+id/item_restaurant_menu_img_delete"
+            android:layout_width="@dimen/dim_30dp"
+            android:layout_height="@dimen/dim_30dp"
+            android:layout_marginStart="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:background="@drawable/ic_pink_basket" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_100dp">
+
+        <androidx.cardview.widget.CardView
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dim_4dp"
+            android:layout_marginBottom="@dimen/dim_4dp"
+            app:cardCornerRadius="@dimen/dim_20dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    style="@style/EditText"
+                    android:layout_width="@dimen/dim_80dp"
+                    android:layout_height="@dimen/dim_60dp"
+                    android:layout_centerVertical="true"
+                    app:cardCornerRadius="@dimen/dim_16dp"
+                    app:cardElevation="0dp">
+
+                    <ImageView
+                        android:id="@+id/item_restaurant_menu_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/logo" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim_16dp"
+                    android:layout_toEndOf="@id/cardView"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item_restaurant_menu_tv_meal_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="meal name"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/item_restaurant_menu_tv_meal_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="meal details"
+                        android:textColor="#807F7F"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dim_16dp"
+                    android:layout_marginEnd="@dimen/dim_16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Price"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/item_restaurant_menu_tv_meal_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="price"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

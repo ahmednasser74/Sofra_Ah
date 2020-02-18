@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/user_cycle_activity_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/gray">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingTop="@dimen/dim_8dp"
+            android:paddingEnd="@dimen/dim_16dp">
+
+            <ImageView
+                android:id="@+id/user_cycle_activity_img_shopping_cart"
+                android:layout_width="@dimen/dim_30dp"
+                android:layout_height="@dimen/dim_30dp"
+                android:src="@drawable/ic_pink_shopping_cart_none" />
+
+            <ImageView
+                android:id="@+id/user_cycle_activity_img_notification"
+                android:layout_width="@dimen/dim_30dp"
+                android:layout_height="@dimen/dim_30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_pink_notification_none_black_24dp" />
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/user_cycle_activity_layout_no_connection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/activity_user_bottom_nav_bar"
+        android:layout_below="@id/user_cycle_activity_app_bar"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/gif" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:text="No Internet Connection"
+            android:textColor="@color/pink"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/user_cycle_activity_btn_rety"
+            android:layout_width="@dimen/dim_200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dim_16dp"
+            android:background="@drawable/shadow_white_shape"
+            android:text="Rety"
+            android:textAllCaps="false"
+            android:textColor="@color/pink"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/user_cycle_activity_fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/activity_user_bottom_nav_bar"
+        android:layout_below="@id/user_cycle_activity_app_bar" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/activity_user_bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient_navigation_shape"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        app:menu="@menu/navigation_menu"
+        app:tabIndicatorColor="@android:color/darker_gray"
+        app:tabMode="fixed" />
+</RelativeLayout>

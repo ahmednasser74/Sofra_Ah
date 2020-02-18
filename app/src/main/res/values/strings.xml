@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sofra</string>
+    <string name="make_order">make order</string>
+    <string name="sale_food">sale food</string>
+    <string name="user_about_app">this page only to show what is this app </string>
+    <string name="restaurant_commission">Please transfer 10% of total profit in maximum time one month</string>
+
+</resources>

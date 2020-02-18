@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/user_restaurant_list_fragment_lin_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dim_8dp"
+        android:layout_marginTop="@dimen/dim_8dp"
+        android:layout_marginEnd="@dimen/dim_8dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/shadow_white_shape"
+            android:paddingTop="@dimen/dim_4dp"
+            android:paddingEnd="@dimen/dim_16dp">
+
+            <!--            <ImageView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_alignParentEnd="true"-->
+            <!--                android:background="@drawable/ic_pink_search_black_24dp" />-->
+
+            <EditText
+                android:id="@+id/user_restaurant_list_fragment_et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/user_restaurant_list_fragment_img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_pink_search_black_24dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dim_8dp"
+            android:layout_weight="1"
+            android:background="@drawable/shadow_white_shape"
+            android:paddingStart="@dimen/dim_16dp"
+            android:paddingTop="@dimen/dim_4dp"
+            android:paddingEnd="@dimen/dim_16dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ic_pink_spinner_downward" />
+
+            <Spinner
+                android:id="@+id/user_restaurant_list_fragment_sp_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:paddingEnd="@dimen/dim_16dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/user_restaurant_list_fragment_no_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:text="no restaurant in this area"
+        android:textColor="@color/pink"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/user_restaurant_list_fragment_swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/user_restaurant_list_fragment_rv_restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/user_restaurant_list_fragment_pagination_progress"
+                    android:scrollbarSize="5dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbarThumbVertical="@drawable/pink_shape"
+                    android:scrollbars="vertical" />
+
+                <ProgressBar
+                    android:id="@+id/user_restaurant_list_fragment_pb_loading"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dim_10dp" />
+
+                <ProgressBar
+                    android:id="@+id/user_restaurant_list_fragment_pagination_progress"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="@dimen/dim_24dp">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="choose rating"
+                android:textColor="@color/blue"
+                android:textSize="30sp" />
+
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/smile_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:showLine="false" />
+
+            <EditText
+                android:id="@+id/et_review_description"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@drawable/gray_shape"
+                android:gravity="start"
+                android:hint="write your review"
+                android:padding="16dp" />
+
+            <Button
+                android:id="@+id/dialog_btn_add_review"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/gradient_btn_shape"
+                android:text="add review"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

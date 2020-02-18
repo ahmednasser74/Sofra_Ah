@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_60dp"
+        android:gravity="center"
+        android:text="Contact Us"
+        android:textColor="@color/blue"
+        android:textSize="30sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_16dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/user_contact_us_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="Name"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/user_contact_us_et_mail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="E-mail"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/user_contact_us_et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/user_contact_us_et_message"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:gravity="start"
+                android:hint="What is your Message ?"
+                android:padding="@dimen/dim_16dp" />
+
+            <RadioGroup
+                android:id="@+id/user_contact_us_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/user_contact_us_rb_complaint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:button="@drawable/shape_check_box"
+                    android:text="Complaint"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/user_contact_us_rb_suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:button="@drawable/shape_check_box"
+                    android:text="Suggestion"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/user_contact_us_rb_enquiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/shape_check_box"
+                    android:text="Enquiry"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/user_contact_us_btn_send"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dim_16dp"
+                android:background="@drawable/gradient_btn_shape"
+                android:gravity="center"
+                android:text="send"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

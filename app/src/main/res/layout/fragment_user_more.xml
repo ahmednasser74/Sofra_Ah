@@ -1,0 +1,182 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GridLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_60dp"
+        android:fontFamily="@font/yehia_font"
+        android:gravity="center"
+        android:text="More Setting"
+        android:textColor="@color/blue"
+        android:textSize="30sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="5dp"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbarThumbVertical="@drawable/pink_shape"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/user_more_fragment_offers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_gift" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Offers"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/user_more_fragment_contact_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_mail_none" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="ContactUs"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/user_more_fragment_about_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_lamp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="About App"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/user_more_fragment_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_lock" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Change Password"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/dim_16dp"
+                android:layout_marginEnd="@dimen/dim_16dp"
+                android:background="@drawable/shadow_gray_shape" />
+
+            <LinearLayout
+                android:id="@+id/user_more_fragment_sign_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:layout_marginTop="@dimen/dim_4dp"
+                    android:background="@drawable/ic_blue_log_out" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:paddingStart="@dimen/dim_16dp"
+                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="Sign Out"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

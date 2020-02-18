@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="50dp"
+        android:height="50dp"
+        android:drawable="@drawable/shadow_white_circle" />
+    <item
+        android:id="@+id/done_with_cyrcle"
+        android:drawable="@drawable/ic_blue_close"
+        android:gravity="center" />
+
+</layer-list>

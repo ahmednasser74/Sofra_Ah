@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dim_16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/restaurant_add_item_fragment_tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Add image item"
+                android:textColor="@color/blue"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dim_16dp"
+                app:cardCornerRadius="@dimen/dim_20dp"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/restaurant_add_item_fragment_img_add_photo"
+                    android:layout_width="@dimen/dim_100dp"
+                    android:layout_height="@dimen/dim_100dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_add_image_icon" />
+            </androidx.cardview.widget.CardView>
+
+
+            <EditText
+                android:id="@+id/restaurant_add_item_fragment_et_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="Item Name"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/restaurant_add_item_fragment_et_item_description"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:gravity="start"
+                android:hint="Item Description"
+                android:padding="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/restaurant_add_item_fragment_et_item_price"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="Item Price"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <EditText
+                android:id="@+id/restaurant_add_item_fragment_et_item_offer_price"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_marginTop="@dimen/dim_16dp"
+                android:background="@drawable/shadow_white_shape"
+                android:hint="Offer Price"
+                android:paddingStart="@dimen/dim_16dp"
+                android:paddingEnd="@dimen/dim_16dp" />
+
+            <Button
+                android:id="@+id/restaurant_add_item_fragment_btn_add_item"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dim_16dp"
+                android:background="@drawable/gradient_btn_shape"
+                android:gravity="center"
+                android:text="Add Item"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

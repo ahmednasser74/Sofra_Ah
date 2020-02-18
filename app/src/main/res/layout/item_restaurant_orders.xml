@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="@dimen/dim_16dp"
+        android:background="@drawable/shadow_gray_shape">
+
+        <LinearLayout
+            android:id="@+id/lin_client_img"
+            android:layout_width="@dimen/dim_100dp"
+            android:layout_height="@dimen/dim_90dp"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/item_restaurant_orders_img_client"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_blue_person" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginEnd="@dimen/dim_16dp"
+            android:layout_toEndOf="@id/lin_client_img"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lin_restaurant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:text="Restaurant Name"
+                android:textColor="@color/blue"
+                android:textSize="16sp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Client : "
+                    android:textColor="@color/blue" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_orders_tv_restaurant_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pink" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order No. : "
+                    android:textColor="@color/pink" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_orders_tv_order_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pink" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Amount : "
+                    android:textColor="@color/pink" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_orders_tv_total_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pink" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address : "
+                    android:textColor="@color/pink" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_orders_tv_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/pink" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dim_16dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/item_restaurant_orders_btn_cancel_order"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/blue_shape"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="8dp"
+                    android:paddingBottom="@dimen/dim_4dp"
+                    android:src="@drawable/ic_white_close" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item_restaurant_orders_btn_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/green_shape"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/item_restaurant_orders_img_confirm"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="@dimen/dim_4dp"
+                    android:src="@drawable/ic_white_like" />
+
+                <TextView
+                    android:id="@+id/item_restaurant_orders_tv_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confirm"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/item_restaurant_orders_btn_call"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/pink_shape"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="@dimen/dim_4dp"
+                    android:src="@drawable/ic_white_phone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Call"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

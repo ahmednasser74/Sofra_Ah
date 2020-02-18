@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/restaurant_menu_item_fragment_tv_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:text="No Menu Item Yet"
+        android:textColor="@color/pink"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/restaurant_menu_item_fragment_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_50dp"
+        android:fontFamily="@font/yehia_font"
+        android:gravity="center"
+        android:text="Chicken Fries"
+        android:textColor="@color/pink"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restaurant_menu_item_fragment_rv_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/restaurant_menu_item_fragment_tv_title" />
+
+    <ProgressBar
+        android:id="@+id/restaurant_menu_item_fragment_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/restaurant_menu_item_fragment_btn_float"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dim_16dp"
+        android:src="@drawable/ic_pink_plus"
+        app:backgroundTint="@color/white" />
+</RelativeLayout>

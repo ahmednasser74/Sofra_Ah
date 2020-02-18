@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dim_8dp"
+        android:layout_marginTop="@dimen/dim_8dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/dim_100dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            app:cardCornerRadius="@dimen/dim_24dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/item_shopping_cart_img_restaurant_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/logo" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/item_shopping_cart_tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_toEndOf="@id/cardView"
+            android:text="Item Name"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_shopping_cart_tv_item_name"
+            android:layout_toEndOf="@id/cardView"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Quantity"
+                android:textColor="@color/blue"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/item_shopping_cart_img_plus"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:layout_marginEnd="@dimen/dim_8dp"
+                android:background="@drawable/shadow_white_circle"
+                android:padding="@dimen/dim_4dp"
+                android:src="@drawable/ic_blue_plus" />
+
+            <RelativeLayout
+                android:layout_width="@dimen/dim_50dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shadow_white_shape">
+
+                <TextView
+                    android:id="@+id/item_shopping_cart_tv_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="1"
+                    android:textColor="@color/blue"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/item_shopping_cart_img_minus"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:layout_marginEnd="@dimen/dim_8dp"
+                android:background="@drawable/shadow_white_circle"
+                android:padding="@dimen/dim_4dp"
+                android:src="@drawable/ic_minus" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/item_shopping_cart_img_delete"
+            style="@style/EditText"
+            android:layout_width="@dimen/dim_30dp"
+            android:layout_height="@dimen/dim_30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/pink_circle"
+            android:padding="8dp"
+            android:src="@drawable/ic_white_close" />
+
+    </RelativeLayout>
+</RelativeLayout>

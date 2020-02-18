@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dim_2dp">2dp</dimen>
+    <dimen name="dim_4dp">4dp</dimen>
+    <dimen name="dim_6dp">6dp</dimen>
+    <dimen name="dim_8dp">8dp</dimen>
+    <dimen name="dim_10dp">10dp</dimen>
+
+    <dimen name="dim_12dp">12dp</dimen>
+    <dimen name="dim_16dp">16dp</dimen>
+    <dimen name="dim_20dp">20dp</dimen>
+    <dimen name="dim_24dp">24dp</dimen>
+    <dimen name="dim_30dp">32dp</dimen>
+    <dimen name="dim_40dp">40dp</dimen>
+    <dimen name="dim_48dp">48dp</dimen>
+    <dimen name="dim_50dp">50dp</dimen>
+    <dimen name="dim_60dp">60dp</dimen>
+    <dimen name="dim_80dp">80dp</dimen>
+    <dimen name="dim_100dp">100dp</dimen>
+
+    <dimen name="dim_logo">200dp</dimen>
+    <dimen name="dim_150dp">150dp</dimen>
+    <dimen name="dim_120dp">120dp</dimen>
+    <dimen name="dim_200dp">200dp</dimen>
+    <dimen name="dim_130dp">130dp</dimen>
+    <dimen name="dim_90dp">90dp</dimen>
+
+    <!--switch style -->
+    <dimen name="switch_padding">2dp</dimen>
+    <dimen name="switch_radius">24dp</dimen>
+    <dimen name="switch_size">16dp</dimen>
+
+
+</resources>
