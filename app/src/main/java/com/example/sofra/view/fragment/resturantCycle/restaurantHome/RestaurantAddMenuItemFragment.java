@@ -16,8 +16,10 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreference;
+import com.example.sofra.data.model.contactUs.ContactUsData;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
+import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -61,9 +63,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
     private String path;
     public FoodItemData foodItemData;
+    RestaurantMenuFragment restaurantMenuFragment;
 
     RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
     MultipartBody.Part photo;
+    public CategoryData categoryData;
 
     public RestaurantAddMenuItemFragment() {
     }
@@ -81,7 +85,6 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         getClient();
         View view = inflater.inflate(R.layout.fragment_restaurant_add_item, container, false);
         ButterKnife.bind(this, view);
-
         return view;
     }
 
@@ -94,7 +97,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_DATA_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
-        categoryId = convertToRequestBody(foodItemData.getCategoryId());
+        categoryId = convertToRequestBody(categoryData.getId().toString());
 
         addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
     }

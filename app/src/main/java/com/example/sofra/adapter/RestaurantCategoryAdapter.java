@@ -103,7 +103,7 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
                 alert.setButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        getClient().getRestaurantDeleteCategory(LoadData(activity,RESTAURANT_DATA_TOKEN),
+                        getClient().getRestaurantDeleteCategory(LoadData(activity, RESTAURANT_DATA_TOKEN),
                                 listRestaurantCategoryData.get(position).getId()).enqueue(new Callback<RestaurantDeleteCategory>() {
                             @Override
                             public void onResponse(Call<RestaurantDeleteCategory> call, Response<RestaurantDeleteCategory> response) {

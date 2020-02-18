@@ -14,6 +14,7 @@ import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
+import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
 import com.example.sofra.data.model.restaurantMenuItem.RestaurantMenuItem;
 import com.example.sofra.helper.HelperMethod;
@@ -39,11 +40,13 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
     private List<FoodItemData> foodItemDataList = new ArrayList<>();
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
     private FoodItemData foodItemData;
+    private CategoryData categoryData;
 
-    public RestaurantMenuItemAdapter(BaseActivity activity, List<FoodItemData> foodItemDataList) {
+    public RestaurantMenuItemAdapter(BaseActivity activity, List<FoodItemData> foodItemDataList, CategoryData categoryData) {
         this.activity = activity;
         this.foodItemDataList = foodItemDataList;
         viewBinderHelper.setOpenOnlyOne(true);
+        this.categoryData = this.categoryData;
     }
 
     @Override
@@ -75,13 +78,14 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
         holder.itemRestaurantMenuImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
+                restaurantAddMenuItemFragment.foodItemData= foodItemDataList.get(position);
+                restaurantAddMenuItemFragment.setMenuItemData();
+                restaurantAddMenuItemFragment.categoryData = categoryData;
 
                 HelperMethod.replace(new RestaurantAddMenuItemFragment(), activity.getSupportFragmentManager(),
                         R.id.restaurant_cycle_fl_fragment_container, null, null);
 
-                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
-                restaurantAddMenuItemFragment.foodItemData= foodItemDataList.get(position);
-                restaurantAddMenuItemFragment.setMenuItemData();
 
             }
         });

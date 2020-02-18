@@ -106,7 +106,7 @@ public class RestaurantMenuFragment extends BaseFragment {
         restaurantMenuItemFragmentRvItems.addOnScrollListener(onEndLess);
 
         if (foodItemDataList.size() == 0) {
-            restaurantMenuItemAdapter = new RestaurantMenuItemAdapter((BaseActivity) getActivity(), foodItemDataList);
+            restaurantMenuItemAdapter = new RestaurantMenuItemAdapter((BaseActivity) getActivity(), foodItemDataList, categoryData);
             restaurantMenuItemFragmentRvItems.setAdapter(restaurantMenuItemAdapter);
             getRestaurantMenu(1);
         } else {
@@ -169,7 +169,9 @@ public class RestaurantMenuFragment extends BaseFragment {
     @OnClick(R.id.restaurant_menu_item_fragment_btn_float)
     public void onViewClicked() {
 
-        HelperMethod.replace(new RestaurantAddMenuItemFragment(), getActivity().getSupportFragmentManager(),
+        RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
+        restaurantAddMenuItemFragment.categoryData = categoryData;
+        HelperMethod.replace(restaurantAddMenuItemFragment, getActivity().getSupportFragmentManager(),
                 R.id.restaurant_cycle_fl_fragment_container, null, null);
 
     }
