@@ -36,14 +36,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
 import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
 
 public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCategoryAdapter.ViewHolder> {
 
 
     private BaseActivity activity;
-    private List<CategoryData> listRestaurantCategoryData = new ArrayList<>();
+    public List<CategoryData> listRestaurantCategoryData = new ArrayList<>();
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
+    public int position;
 
     public RestaurantCategoryAdapter(BaseActivity activity, List<CategoryData> listRestaurantCategoryData) {
         this.activity = activity;
@@ -91,6 +94,7 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
         holder.itemRestaurantCategoryImgRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 final AlertDialog alert;
                 AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
                 alert = dialog2.create();
@@ -99,7 +103,7 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
                 alert.setButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        getClient().getRestaurantDeleteCategory("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx",
+                        getClient().getRestaurantDeleteCategory(LoadData(activity,RESTAURANT_DATA_TOKEN),
                                 listRestaurantCategoryData.get(position).getId()).enqueue(new Callback<RestaurantDeleteCategory>() {
                             @Override
                             public void onResponse(Call<RestaurantDeleteCategory> call, Response<RestaurantDeleteCategory> response) {
@@ -134,11 +138,13 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
         holder.itemRestaurantCategoryImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DialogAddCategory dialogAddCategory = new DialogAddCategory(activity, activity, true);
                 dialogAddCategory.categoryData = listRestaurantCategoryData.get(position);
                 dialogAddCategory.setCategoryData();
-//                RestaurantCategoryAdapter restaurantCategoryAdapter = new RestaurantCategoryAdapter(activity, listRestaurantCategoryData);
-//                restaurantCategoryAdapter.notifyDataSetChanged();
+                dialogAddCategory.position = position;
+                dialogAddCategory.restaurantCategoryAdapter = RestaurantCategoryAdapter.this;
+
             }
         });
 

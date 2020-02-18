@@ -29,19 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.api.Keys.RESTAURANT_ACTIVATED;
-import static com.example.sofra.data.api.Keys.RESTAURANT_API_TOKEN;
-import static com.example.sofra.data.api.Keys.RESTAURANT_AVAILABILITY;
-import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_COST;
-import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_TIME;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MAIL;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MINIMUM_CHARGER;
-import static com.example.sofra.data.api.Keys.RESTAURANT_PHONE;
-import static com.example.sofra.data.api.Keys.RESTAURANT_PHOTO;
-import static com.example.sofra.data.api.Keys.RESTAURANT_REGION;
-import static com.example.sofra.data.api.Keys.RESTAURANT_USER_NAME;
-import static com.example.sofra.data.api.Keys.RESTAURANT_WHATS_APP;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
 
 
 public class RestaurantLoginFragment extends BaseFragment {
@@ -103,19 +92,9 @@ public class RestaurantLoginFragment extends BaseFragment {
                 HelperMethod.dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_DATA, response.body().getData().getApiToken());
+                        SharedPreference.SaveData(getActivity(), RESTAURANT_DATA_TOKEN, response.body().getData().getApiToken());
+                        SharedPreference.SaveData(getActivity(), RESTAURANT_DATA, response.body().getData());
 
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_USER_NAME, response.body().getData().getUser().getName());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_ACTIVATED, response.body().getData().getUser().getActivated());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_DELIVERY_COST, response.body().getData().getUser().getDeliveryCost());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_DELIVERY_TIME, response.body().getData().getUser().getDeliveryTime());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_MINIMUM_CHARGER, response.body().getData().getUser().getMinimumCharger());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_PHOTO, response.body().getData().getUser().getPhoto());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_WHATS_APP, response.body().getData().getUser().getWhatsapp());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_REGION, response.body().getData().getUser().getRegion());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_AVAILABILITY, response.body().getData().getUser().getAvailability());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_MAIL, response.body().getData().getUser().getEmail());
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_PHONE, response.body().getData().getUser().getPhone());
 
                         HelperMethod.replace(new RestaurantCategoryFragment(), getActivity().getSupportFragmentManager(),
                                 R.id.restaurant_cycle_fl_fragment_container, null, null);

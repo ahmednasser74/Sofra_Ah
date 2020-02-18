@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.sofra.R;
+import com.example.sofra.adapter.RestaurantCategoryAdapter;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantAddNewCategory.RestaurantAddNewCategory;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantUpdateCategory.RestaurantUpdateCategory;
@@ -36,10 +39,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
-import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
@@ -54,6 +57,8 @@ public class DialogAddCategory extends Dialog {
     @BindView(R.id.item_restaurant_add_category_dialog_tv_title)
     TextView itemRestaurantAddCategoryDialogTvTitle;
 
+    public int position;
+    public RestaurantCategoryAdapter restaurantCategoryAdapter;
     private Activity activity;
     private Context context;
     private boolean Cancelable;
@@ -126,56 +131,68 @@ public class DialogAddCategory extends Dialog {
 
         categoryName = convertToRequestBody(itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString());
         categoryPhoto = convertFileToMultipart(path, "photo");
-        String apiToken = loadRestaurantData(activity).getApiToken();
+        String apiToken = SharedPreference.LoadData(activity, RESTAURANT_DATA_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         categoryId = convertToRequestBody(categoryData.getId().toString());
-
 
         getClient().getRestaurantUpdateCategory(categoryName, categoryPhoto, apitoken, categoryId).enqueue(new Callback<RestaurantUpdateCategory>() {
             @Override
             public void onResponse(Call<RestaurantUpdateCategory> call, Response<RestaurantUpdateCategory> response) {
-                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                try {
+                    if (response.body().getStatus() == 1) {
+
+                        restaurantCategoryAdapter.listRestaurantCategoryData.remove(restaurantCategoryAdapter.position);
+                        restaurantCategoryAdapter.listRestaurantCategoryData.add(restaurantCategoryAdapter.position,response.body().getData());
+                        restaurantCategoryAdapter.notifyDataSetChanged();
+                        dismiss();
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (Exception e) {
+
+                }
             }
 
             @Override
             public void onFailure(Call<RestaurantUpdateCategory> call, Throwable t) {
-
+                Log.d(TAG, "onFailure: ");
             }
         });
     }
 
-//    public static void dismissDialog() {
-//        try {
-//            checkDialog.dismiss();
-//
-//        } catch (Exception e) {
-//
-//        }
-//    }
-
     private void newCategory() {
-        categoryName = convertToRequestBody(itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString());
-        categoryPhoto = convertFileToMultipart(String.valueOf(itemRestaurantAddCategoryDialogImgAddPhoto), "photo");
 
-        if (categoryName == null) {
+        categoryName = convertToRequestBody(itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString());
+        categoryPhoto = convertFileToMultipart((path), "photo");
+
+        if (itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString().equals("")) {
             Toast.makeText(activity, "Please Enter Category Name", Toast.LENGTH_SHORT).show();
-        } else if (categoryPhoto == null) {
+            return;
+        } else if (path == null) {
             Toast.makeText(activity, "Please Enter Category Photo", Toast.LENGTH_SHORT).show();
-        } else {
-            DialogAddCategory dialogAddCategory = new DialogAddCategory(activity);
-            dialogAddCategory.dismiss();
+            return;
         }
+
         init(categoryName, categoryPhoto);
+
     }
 
     private void init(RequestBody categoryName, MultipartBody.Part categoryPhoto) {
-        String apiToken = LoadData(activity, RESTAURANT_DATA);
+        String apiToken = LoadData(activity, RESTAURANT_DATA_TOKEN);
 
         getClient().getRestaurantAddNewCategory(categoryName, categoryPhoto,
                 convertToRequestBody(apiToken)).enqueue(new Callback<RestaurantAddNewCategory>() {
             @Override
             public void onResponse(Call<RestaurantAddNewCategory> call, Response<RestaurantAddNewCategory> response) {
-                Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                try {
+                    if (response.body().getStatus() == 1) {
+                        restaurantCategoryAdapter.listRestaurantCategoryData.add(response.body().getData());
+                        restaurantCategoryAdapter.notifyDataSetChanged();
+                        dismiss();
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                }
             }
 
             @Override
@@ -207,4 +224,13 @@ public class DialogAddCategory extends Dialog {
                 })
                 .start();
     }
+
+//    public static void dismissDialog() {
+//        try {
+//            checkDialog.dismiss();
+//
+//        } catch (Exception e) {
+//
+//        }
+//    }
 }

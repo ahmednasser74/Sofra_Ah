@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
 import com.example.sofra.helper.HelperMethod;
@@ -37,6 +38,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
@@ -60,7 +62,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     private String path;
     public FoodItemData foodItemData;
 
-    RequestBody description, price, preparingTime, name, apiToken, offerPrice, categoryId;
+    RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
     MultipartBody.Part photo;
 
     public RestaurantAddMenuItemFragment() {
@@ -87,13 +89,14 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
         description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
-        photo = convertFileToMultipart(String.valueOf(restaurantAddItemFragmentImgAddPhoto), "photo");
+        photo = convertFileToMultipart((path), "photo");
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getText().toString());
-        apiToken = convertToRequestBody("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx");
+        String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_DATA_TOKEN);
+        apitoken = convertToRequestBody(apiToken);
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
         categoryId = convertToRequestBody(foodItemData.getCategoryId());
 
-        addNewMenuItem(description, price, preparingTime, photo, name, apiToken, offerPrice, categoryId);
+        addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
     }
 
     private void addNewMenuItem(RequestBody description, RequestBody price, RequestBody preparingTime,

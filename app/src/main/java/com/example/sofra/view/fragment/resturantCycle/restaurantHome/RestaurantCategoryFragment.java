@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantCategoryAdapter;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantCategory.CategoriesPaginated;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.dialogs.DialogAddCategory;
@@ -33,6 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
 
 
 public class RestaurantCategoryFragment extends BaseFragment {
@@ -110,7 +112,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
 
     private void getRestaurantCategory(int page) {
 
-        getClient().getRestaurantCategory("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx", page).enqueue(new Callback<CategoriesPaginated>() {
+        getClient().getRestaurantCategory(SharedPreference.LoadData(getActivity(), RESTAURANT_DATA_TOKEN), page).enqueue(new Callback<CategoriesPaginated>() {
             @Override
             public void onResponse(Call<CategoriesPaginated> call, Response<CategoriesPaginated> response) {
                 try {
@@ -135,6 +137,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
     @OnClick(R.id.restaurant_list_fragment_btn_float)
     public void onViewClicked() {
         DialogAddCategory dialogAddCategory= new DialogAddCategory(getActivity(), getActivity(), true);
+        dialogAddCategory.restaurantCategoryAdapter = restaurantCategoryAdapter;
         dialogAddCategory.show();
     }
 
