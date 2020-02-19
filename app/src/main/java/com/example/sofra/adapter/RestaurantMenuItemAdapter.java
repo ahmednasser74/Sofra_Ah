@@ -1,10 +1,13 @@
 package com.example.sofra.adapter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +18,7 @@ import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
+import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
@@ -83,9 +87,8 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
                 restaurantAddMenuItemFragment.setMenuItemData();
                 restaurantAddMenuItemFragment.categoryData = categoryData;
 
-                HelperMethod.replace(new RestaurantAddMenuItemFragment(), activity.getSupportFragmentManager(),
+                HelperMethod.replace(restaurantAddMenuItemFragment, activity.getSupportFragmentManager(),
                         R.id.restaurant_cycle_fl_fragment_container, null, null);
-
 
             }
         });
@@ -94,24 +97,41 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
             @Override
             public void onClick(View view) {
 
-                getClient().getRestaurantDeleteMenuItem(LoadData(activity, RESTAURANT_API_TOKEN),
-                        foodItemDataList.get(position).getId()).enqueue(new Callback<RestaurantDeleteMenuItem>() {
-                    @Override
-                    public void onResponse(Call<RestaurantDeleteMenuItem> call, Response<RestaurantDeleteMenuItem> response) {
-                        try {
-                            if (response.body().getStatus() == 1) {
-                                foodItemDataList.remove(position);
-                                notifyItemRemoved(position);
+                final AlertDialog alert;
+                AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
+                alert = dialog2.create();
+                alert.setTitle("Delete ?");
+                alert.setMessage("Are you sure you want to delete this Category?");
+                alert.setButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        getClient().getRestaurantDeleteMenuItem(LoadData(activity, RESTAURANT_API_TOKEN),
+                                foodItemDataList.get(position).getId()).enqueue(new Callback<RestaurantDeleteMenuItem>() {
+                            @Override
+                            public void onResponse(Call<RestaurantDeleteMenuItem> call, Response<RestaurantDeleteMenuItem> response) {
+                                try {
+                                    if (response.body().getStatus() == 1) {
+                                        foodItemDataList.remove(position);
+                                        notifyItemRemoved(position);
+                                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (Exception e) {
+                                }
                             }
 
-                        } catch (Exception e) {
-                        }
-                    }
+                            @Override
+                            public void onFailure(Call<RestaurantDeleteMenuItem> call, Throwable t) {
+                            }
+                        });
 
-                    @Override
-                    public void onFailure(Call<RestaurantDeleteMenuItem> call, Throwable t) {
                     }
                 });
+                alert.setButton2("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
             }
         });
     }

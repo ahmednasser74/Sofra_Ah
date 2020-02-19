@@ -108,7 +108,7 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
                                     if (response.body().getStatus() == 1) {
                                         listRestaurantCategoryData.remove(position);
                                         notifyItemRemoved(position);
-                                        Toast.makeText(activity, "Category Deleted", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
                                     }
 
                                 } catch (Exception e) {
