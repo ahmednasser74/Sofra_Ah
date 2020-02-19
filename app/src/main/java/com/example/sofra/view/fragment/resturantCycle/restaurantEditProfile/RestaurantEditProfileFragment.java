@@ -39,6 +39,7 @@ import static com.example.sofra.data.api.Keys.RESTAURANT_MINIMUM_CHARGER;
 import static com.example.sofra.data.api.Keys.RESTAURANT_PHONE;
 import static com.example.sofra.data.api.Keys.RESTAURANT_USER_NAME;
 import static com.example.sofra.data.api.Keys.RESTAURANT_WHATS_APP;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -111,7 +112,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     }
 
     private void setData() {
-        restaurantEditProfileFragmentEtName.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_USER_NAME));
+        restaurantEditProfileFragmentEtName.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DATA));
         restaurantEditProfileFragmentEtMail.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MAIL));
         restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
         restaurantEditProfileFragmentEtPhone.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_PHONE));
