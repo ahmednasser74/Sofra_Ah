@@ -6,6 +6,7 @@ import com.example.sofra.data.model.listOfTown.GeneralResponse;
 import com.example.sofra.data.model.listRestaurantItem.FoodItems;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
 import com.example.sofra.data.model.restaurantAddNewCategory.RestaurantAddNewCategory;
+import com.example.sofra.data.model.restaurantAddOffer.RestaurantAddOffer;
 import com.example.sofra.data.model.restaurantCategory.CategoriesNotPaginated;
 import com.example.sofra.data.model.restaurantCategory.CategoriesPaginated;
 import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
@@ -13,6 +14,7 @@ import com.example.sofra.data.model.restaurantCommission.RestaurantCommission;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
 import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
+import com.example.sofra.data.model.restaurantEditOffer.RestaurantEditOffer;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
 import com.example.sofra.data.model.restaurantList.RestaurantList;
 import com.example.sofra.data.model.restaurantListWithFilter.RestaurantListWithFilter;
@@ -190,5 +192,32 @@ public interface ApiService {
     @FormUrlEncoded
     Call<RestaurantDeleteMenuItem> getRestaurantDeleteMenuItem(@Field("api_token") String apiToken,
                                                                @Field("item_id") int itemId);
+
+    @POST("restaurant/new-offer")
+    @Multipart
+    Call<RestaurantAddOffer> getRestaurantAddOffer(@Part("description") RequestBody description,
+                                                   @Part("price") RequestBody price,
+                                                   @Part("starting_at") RequestBody startingAt,
+                                                   @Part("name") RequestBody name,
+                                                   @Part MultipartBody.Part photo,
+                                                   @Part("ending_at") RequestBody endingAt,
+                                                   @Part("api_token") RequestBody apiToken,
+                                                   @Part("offer_price") RequestBody offerPrice);
+
+    @POST("restaurant/update-offer")
+    @Multipart
+    Call<RestaurantEditOffer> getRestaurantEditOffer(@Part("description") RequestBody description,
+                                                     @Part("price") RequestBody price,
+                                                     @Part("starting_at") RequestBody startingAt,
+                                                     @Part("name") RequestBody name,
+                                                     @Part MultipartBody.Part photo,
+                                                     @Part("ending_at") RequestBody endingAt,
+                                                     @Part("offer_id") RequestBody offerId,
+                                                     @Part("api_token") RequestBody apiToken);
+
+    @POST("restaurant/delete-offer")
+    @FormUrlEncoded
+    Call<RestaurantDeleteOffer> getRestaurantDeleteOffer(@Field("offer_id") int offerId,
+                                                         @Field("api_token") String apiToken);
 
 }
