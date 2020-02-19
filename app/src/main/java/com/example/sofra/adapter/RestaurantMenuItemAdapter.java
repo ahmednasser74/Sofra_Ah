@@ -45,8 +45,8 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
     public RestaurantMenuItemAdapter(BaseActivity activity, List<FoodItemData> foodItemDataList, CategoryData categoryData) {
         this.activity = activity;
         this.foodItemDataList = foodItemDataList;
+        this.categoryData = categoryData;
         viewBinderHelper.setOpenOnlyOne(true);
-        this.categoryData = this.categoryData;
     }
 
     @Override

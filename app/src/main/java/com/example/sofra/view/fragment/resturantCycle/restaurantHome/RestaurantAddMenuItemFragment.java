@@ -138,7 +138,8 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     public void setMenuItemData() {
-
+        restaurantAddItemFragmentTvTitle.setText("Edit Menu Item");
+        restaurantAddItemFragmentBtnAddItem.setText("Edit");
         Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
         restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
         restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
