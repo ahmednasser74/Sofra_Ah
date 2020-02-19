@@ -34,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 
 public class RestaurantCategoryFragment extends BaseFragment {
@@ -112,7 +112,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
 
     private void getRestaurantCategory(int page) {
 
-        getClient().getRestaurantCategory(SharedPreference.LoadData(getActivity(), RESTAURANT_DATA_TOKEN), page).enqueue(new Callback<CategoriesPaginated>() {
+        getClient().getRestaurantCategory(SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN), page).enqueue(new Callback<CategoriesPaginated>() {
             @Override
             public void onResponse(Call<CategoriesPaginated> call, Response<CategoriesPaginated> response) {
                 try {

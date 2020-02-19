@@ -34,6 +34,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
 import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
 
 
@@ -118,7 +121,7 @@ public class RestaurantMenuFragment extends BaseFragment {
     private void getRestaurantMenu(int page) {
 //        String apiToken = loadRestaurantData(getActivity()).getApiToken();
 
-        getClient().getRestaurantMenu("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx",
+        getClient().getRestaurantMenu(LoadData(getActivity(),RESTAURANT_API_TOKEN),
                 categoryData.getId(), page).enqueue(new Callback<FoodItems>() {
             @Override
             public void onResponse(Call<FoodItems> call, Response<FoodItems> response) {

@@ -33,6 +33,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 
 public class RestaurantOffersFragment extends BaseFragment {
@@ -104,7 +106,7 @@ public class RestaurantOffersFragment extends BaseFragment {
     }
 
     private void getRestaurantOrders(int page) {
-        getClient().getRestaurantOffer("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx", page).enqueue(new Callback<RestaurantOffer>() {
+        getClient().getRestaurantOffer(LoadData(getActivity(),RESTAURANT_API_TOKEN), page).enqueue(new Callback<RestaurantOffer>() {
             @Override
             public void onResponse(Call<RestaurantOffer> call, Response<RestaurantOffer> response) {
                 try {

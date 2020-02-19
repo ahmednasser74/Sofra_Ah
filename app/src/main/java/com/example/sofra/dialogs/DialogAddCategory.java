@@ -42,7 +42,7 @@ import retrofit2.Response;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
@@ -131,7 +131,7 @@ public class DialogAddCategory extends Dialog {
 
         categoryName = convertToRequestBody(itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString());
         categoryPhoto = convertFileToMultipart(path, "photo");
-        String apiToken = SharedPreference.LoadData(activity, RESTAURANT_DATA_TOKEN);
+        String apiToken = SharedPreference.LoadData(activity, RESTAURANT_API_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
@@ -178,7 +178,7 @@ public class DialogAddCategory extends Dialog {
     }
 
     private void init(RequestBody categoryName, MultipartBody.Part categoryPhoto) {
-        String apiToken = LoadData(activity, RESTAURANT_DATA_TOKEN);
+        String apiToken = LoadData(activity, RESTAURANT_API_TOKEN);
 
         getClient().getRestaurantAddNewCategory(categoryName, categoryPhoto,
                 convertToRequestBody(apiToken)).enqueue(new Callback<RestaurantAddNewCategory>() {

@@ -21,6 +21,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
 
 
@@ -59,9 +61,8 @@ public class RestaurantCommissionFragment extends BaseFragment {
     }
 
     private void init() {
-        String apiToken = loadRestaurantData(getActivity()).getApiToken();
 
-        getClient().getRestaurantCommission(apiToken).enqueue(new Callback<RestaurantCommission>() {
+        getClient().getRestaurantCommission(LoadData(getActivity(),RESTAURANT_API_TOKEN)).enqueue(new Callback<RestaurantCommission>() {
             @Override
             public void onResponse(Call<RestaurantCommission> call, Response<RestaurantCommission> response) {
                 try {

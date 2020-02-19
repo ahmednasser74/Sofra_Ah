@@ -16,7 +16,6 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreference;
-import com.example.sofra.data.model.contactUs.ContactUsData;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
@@ -40,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
@@ -94,7 +93,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
         photo = convertFileToMultipart((path), "photo");
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getText().toString());
-        String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_DATA_TOKEN);
+        String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());

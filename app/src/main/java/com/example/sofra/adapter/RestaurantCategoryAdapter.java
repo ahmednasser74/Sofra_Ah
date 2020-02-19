@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ShareActionProvider;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
-import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.dialogs.DialogAddCategory;
@@ -37,8 +35,7 @@ import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
-import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCategoryAdapter.ViewHolder> {
 
@@ -103,7 +100,7 @@ public class RestaurantCategoryAdapter extends RecyclerView.Adapter<RestaurantCa
                 alert.setButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
-                        getClient().getRestaurantDeleteCategory(LoadData(activity, RESTAURANT_DATA_TOKEN),
+                        getClient().getRestaurantDeleteCategory(LoadData(activity, RESTAURANT_API_TOKEN),
                                 listRestaurantCategoryData.get(position).getId()).enqueue(new Callback<RestaurantDeleteCategory>() {
                             @Override
                             public void onResponse(Call<RestaurantDeleteCategory> call, Response<RestaurantDeleteCategory> response) {

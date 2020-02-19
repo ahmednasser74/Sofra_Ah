@@ -9,13 +9,11 @@ import com.google.gson.Gson;
 public class SharedPreference {
 
     private static SharedPreferences sharedPreferences = null;
-    public static String RESTAURANT_DATA_TOKEN = "RESTAURANT_DATA_TOKEN";
+    public static String RESTAURANT_API_TOKEN = "RESTAURANT_API_TOKEN";
     public static String RESTAURANT_DATA = "RESTAURANT_DATA";
     public static String API_TOKEN = "api_token";
-    public static String USER_PASSWORD = "USER_PASSWORD";
-    public static String REMEMBER = "REMEMBER";
-    public static String USER = "USER";
-    public static String RESTAURANT = "RESTAURANT";
+    public static String USER_API_TOKEN = "USER_API_TOKEN";
+    public static String USER_DATA = "USER_DATA";
 
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
@@ -80,7 +78,7 @@ public class SharedPreference {
         AuthRestaurantData authRestaurantData = null;
 
         Gson gson = new Gson();
-        authRestaurantData = gson.fromJson(LoadData(activity, RESTAURANT_DATA_TOKEN), AuthRestaurantData.class);
+        authRestaurantData = gson.fromJson(LoadData(activity, RESTAURANT_API_TOKEN), AuthRestaurantData.class);
 
         return authRestaurantData;
     }

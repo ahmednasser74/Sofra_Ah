@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
-import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 
 public class RestaurantLoginFragment extends BaseFragment {
@@ -92,7 +92,7 @@ public class RestaurantLoginFragment extends BaseFragment {
                 HelperMethod.dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
-                        SharedPreference.SaveData(getActivity(), RESTAURANT_DATA_TOKEN, response.body().getData().getApiToken());
+                        SharedPreference.SaveData(getActivity(), RESTAURANT_API_TOKEN, response.body().getData().getApiToken());
                         SharedPreference.SaveData(getActivity(), RESTAURANT_DATA, response.body().getData());
 
 

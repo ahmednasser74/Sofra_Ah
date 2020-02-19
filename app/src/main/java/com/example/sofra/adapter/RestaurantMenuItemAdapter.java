@@ -16,7 +16,6 @@ import com.example.sofra.R;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
-import com.example.sofra.data.model.restaurantMenuItem.RestaurantMenuItem;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
@@ -31,7 +30,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMenuItemAdapter.ViewHolder> {
 
@@ -79,7 +79,7 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
             @Override
             public void onClick(View view) {
                 RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
-                restaurantAddMenuItemFragment.foodItemData= foodItemDataList.get(position);
+                restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
                 restaurantAddMenuItemFragment.setMenuItemData();
                 restaurantAddMenuItemFragment.categoryData = categoryData;
 
@@ -93,8 +93,8 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
         holder.itemRestaurantMenuImgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String apiToken = loadRestaurantData(activity).getApiToken();
-                getClient().getRestaurantDeleteMenuItem("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx",
+
+                getClient().getRestaurantDeleteMenuItem(LoadData(activity, RESTAURANT_API_TOKEN),
                         foodItemDataList.get(position).getId()).enqueue(new Callback<RestaurantDeleteMenuItem>() {
                     @Override
                     public void onResponse(Call<RestaurantDeleteMenuItem> call, Response<RestaurantDeleteMenuItem> response) {
@@ -104,8 +104,10 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
                                 notifyItemRemoved(position);
                             }
 
-                        } catch (Exception e) { }
+                        } catch (Exception e) {
+                        }
                     }
+
                     @Override
                     public void onFailure(Call<RestaurantDeleteMenuItem> call, Throwable t) {
                     }

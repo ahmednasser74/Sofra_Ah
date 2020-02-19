@@ -12,6 +12,7 @@ import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
 import com.example.sofra.data.model.restaurantCommission.RestaurantCommission;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
+import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
 import com.example.sofra.data.model.restaurantList.RestaurantList;
 import com.example.sofra.data.model.restaurantListWithFilter.RestaurantListWithFilter;
@@ -48,7 +49,8 @@ public interface ApiService {
     Call<CategoriesNotPaginated> getUserCategory(@Query("restaurant_id") int restaurantId);
 
     @GET("restaurant/my-categories")
-    Call<CategoriesPaginated> getRestaurantCategory(@Query("api_token") String apiToken, @Query("page") int page);
+    Call<CategoriesPaginated> getRestaurantCategory(@Query("api_token") String apiToken,
+                                                    @Query("page") int page);
 
     @GET("client/my-orders")
     Call<UserOrders> getUserOrders(@Query("api_token") String apiToken,
@@ -165,6 +167,7 @@ public interface ApiService {
     @FormUrlEncoded
     Call<RestaurantDeleteCategory> getRestaurantDeleteCategory(@Field("api_token") String apiToken,
                                                                @Field("category_id") int categoryId);
+
     @POST("restaurant/new-item")
     @Multipart
     Call<RestaurantAddMenuItem> getRestaurantAddMenuItem(@Part("description") RequestBody description,
@@ -175,8 +178,17 @@ public interface ApiService {
                                                          @Part("api_token") RequestBody apiToken,
                                                          @Part("offer_price") RequestBody offerPrice,
                                                          @Part("category_id") RequestBody category_id);
+
+    @POST("restaurant/update-category")
+    @Multipart
+    Call<RestaurantEditMenuItem> getRestaurantEditMenuItem(@Part("name") RequestBody name,
+                                                           @Part MultipartBody.Part photo,
+                                                           @Part("api_token") RequestBody apiToken,
+                                                           @Part("category_id") RequestBody category_id);
+
     @POST("restaurant/delete-item")
     @FormUrlEncoded
     Call<RestaurantDeleteMenuItem> getRestaurantDeleteMenuItem(@Field("api_token") String apiToken,
                                                                @Field("item_id") int itemId);
+
 }
