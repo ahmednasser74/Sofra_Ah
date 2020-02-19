@@ -13,6 +13,7 @@ import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
 import com.example.sofra.data.model.restaurantCommission.RestaurantCommission;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
+import com.example.sofra.data.model.restaurantDeleteOffer.RestaurantDeleteOffer;
 import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
 import com.example.sofra.data.model.restaurantEditOffer.RestaurantEditOffer;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;

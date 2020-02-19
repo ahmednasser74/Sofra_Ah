@@ -1,6 +1,7 @@
 
 package com.example.sofra.data.model.restaurantAddOffer;
 
+import com.example.sofra.data.model.restaurantOffer.OfferData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -14,7 +15,7 @@ public class RestaurantAddOffer {
     private String msg;
     @SerializedName("data")
     @Expose
-    private Data data;
+    private OfferData data;
 
     public Integer getStatus() {
         return status;
@@ -32,11 +33,11 @@ public class RestaurantAddOffer {
         this.msg = msg;
     }
 
-    public Data getData() {
+    public OfferData getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(OfferData data) {
         this.data = data;
     }
 
