@@ -99,6 +99,16 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
+        if (restaurantAddItemFragmentEtItemName.equals("")) {
+            restaurantAddItemFragmentEtItemName.setError("please enter name");
+        } else if (restaurantAddItemFragmentEtItemDescription.equals("")) {
+            restaurantAddItemFragmentEtItemDescription.setError("please enter description");
+        } else if (restaurantAddItemFragmentEtItemPrice.equals("")) {
+            restaurantAddItemFragmentEtItemPrice.setError("please enter price");
+        } else if (restaurantAddItemFragmentImgAddPhoto == null) {
+            Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
+        }
+
         addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
     }
 
