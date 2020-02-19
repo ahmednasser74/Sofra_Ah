@@ -1,11 +1,11 @@
 
-package com.example.sofra.data.model.paymenMethod;
+package com.example.sofra.data.model.paymentMethod;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PaymenMethod {
+public class PaymentMethod {
 
     @SerializedName("status")
     @Expose
@@ -15,7 +15,7 @@ public class PaymenMethod {
     private String msg;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<PaymentMethodData> data = null;
 
     public Integer getStatus() {
         return status;
@@ -33,11 +33,11 @@ public class PaymenMethod {
         this.msg = msg;
     }
 
-    public List<Datum> getData() {
+    public List<PaymentMethodData> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<PaymentMethodData> data) {
         this.data = data;
     }
 

@@ -1,10 +1,10 @@
 
-package com.example.sofra.data.model.paymenMethod;
+package com.example.sofra.data.model.paymentMethod;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+public class PaymentMethodData {
 
     @SerializedName("id")
     @Expose

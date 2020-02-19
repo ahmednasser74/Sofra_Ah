@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,6 +69,8 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     TextInputLayout restaurantEditProfileFragmentEtDeliveryCost;
     @BindView(R.id.restaurant_edit_profile_fragment_switch)
     Switch restaurantEditProfileFragmentSwitch;
+    @BindView(R.id.restaurant_edit_profile_fragment_tv_state)
+    TextView restaurantEditProfileFragmentTvState;
 
     private String path;
     private SpinnersAdapter cityAdapter, townAdapter;
@@ -120,6 +123,11 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
         restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
         restaurantEditProfileFragmentSwitch.setChecked(true);
+        if (restaurantEditProfileFragmentSwitch.isChecked()) {
+            restaurantEditProfileFragmentTvState.setText("Opened");
+        } else {
+            restaurantEditProfileFragmentTvState.setText("Closed");
+        }
 //        restaurantEditProfileFragmentAddPhoto.setImageResource(Integer.parseInt(SharedPreference.LoadData(getActivity(), RESTAURANT_PHOTO)));
 //        restaurantEditProfileFragmentSpCity.setSelection(SharedPreference.LoadData(getActivity(), RESTAURANT_REGION));
     }
