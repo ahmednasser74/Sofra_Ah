@@ -39,6 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
@@ -62,8 +63,6 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
     private String path;
     public FoodItemData foodItemData;
-    RestaurantMenuFragment restaurantMenuFragment;
-
     RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
     MultipartBody.Part photo;
     public CategoryData categoryData;
@@ -88,13 +87,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     private void convertAddNewMenuItem() {
-
         description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
         photo = convertFileToMultipart((path), "photo");
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getText().toString());
-        String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN);
-        apitoken = convertToRequestBody(apiToken);
+        apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 

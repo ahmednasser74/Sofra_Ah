@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import com.example.sofra.R;
 import com.example.sofra.adapter.SpinnersAdapter;
 import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.GeneralRequestSpinner;
+import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
+import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -31,17 +34,28 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_COST;
-import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_TIME;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MAIL;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MINIMUM_CHARGER;
-import static com.example.sofra.data.api.Keys.RESTAURANT_PHONE;
-import static com.example.sofra.data.api.Keys.RESTAURANT_WHATS_APP;
+import static com.example.sofra.data.local.SharedPreference.LoadBoolean;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_ACTIVATED;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
 import static com.example.sofra.data.local.SharedPreference.LoadRestaurantData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DELIVERY_COST;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DELIVERY_TIME;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_MAIL;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_MINIMUM_CHARGER;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_PHONE;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_PHOTO;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_REGION;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_USER_NAME;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_WHATS_APP;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -75,6 +89,8 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
     private String path;
     private SpinnersAdapter cityAdapter, townAdapter;
+    private RequestBody email, name, phone, regionId, deliveryCost, minimumCharger, availability, apiToken, deliveryTime;
+    private MultipartBody.Part photo;
 
     public RestaurantEditProfileFragment() {
     }
@@ -111,28 +127,93 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                     }
                 });
 
+        String token = LoadData(getActivity(), RESTAURANT_API_TOKEN);
+        String state = LoadData(getActivity(),RESTAURANT_ACTIVATED);
+
+        getClient().getRestaurantChangeState(state, token).enqueue(new Callback<RestaurantChangeState>() {
+            @Override
+            public void onResponse(Call<RestaurantChangeState> call, Response<RestaurantChangeState> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        restaurantEditProfileFragmentSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    restaurantEditProfileFragmentTvState.setText("Opened");
+                                } else {
+                                    restaurantEditProfileFragmentTvState.setText("Closed");
+                                }
+                            }
+
+                        });
+
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantChangeState> call, Throwable t) {
+
+            }
+        });
+
         setData();
         return view;
     }
 
     private void setData() {
-        restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_DATA));
+        restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_USER_NAME));
         restaurantEditProfileFragmentEtMail.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MAIL));
         restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
         restaurantEditProfileFragmentEtPhone.getEditText().setText(LoadData(getActivity(), RESTAURANT_PHONE));
         restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(LoadData(getActivity(), RESTAURANT_WHATS_APP));
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
         restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
-        restaurantEditProfileFragmentSwitch.setChecked(true);
-        if (restaurantEditProfileFragmentSwitch.isChecked()) {
-            restaurantEditProfileFragmentTvState.setText("Opened");
-        }else {
-            restaurantEditProfileFragmentTvState.setText("Closed");
+        restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
+        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_REGION)));
 
-        }
+        restaurantEditProfileFragmentSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    restaurantEditProfileFragmentTvState.setText("Opened");
+                } else {
+                    restaurantEditProfileFragmentTvState.setText("Closed");
+                }
+            }
 
-//        restaurantEditProfileFragmentAddPhoto.setImageResource(Integer.parseInt(SharedPreference.LoadData(getActivity(), RESTAURANT_PHOTO)));
-//        restaurantEditProfileFragmentSpCity.setSelection(SharedPreference.LoadData(getActivity(), RESTAURANT_REGION));
+        });
+//        restaurantEditProfileFragmentAddPhoto.setImageResource(Integer.parseInt(LoadData(getActivity(), RESTAURANT_PHOTO)));
+
+//        init();
+
+    }
+
+    private void init(RequestBody email, RequestBody name, RequestBody phone, RequestBody regionId
+            , RequestBody deliveryCost, RequestBody minimumCharger, RequestBody availability,
+                      MultipartBody.Part photo, RequestBody apiToken, RequestBody deliveryTime) {
+        apiToken = HelperMethod.convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
+
+        getClient().getRestauranEditProfile(email, name, phone, regionId, deliveryCost, minimumCharger,
+                availability, photo, apiToken, deliveryTime).enqueue(new Callback<RestaurantEditProfile>() {
+            @Override
+            public void onResponse(Call<RestaurantEditProfile> call, Response<RestaurantEditProfile> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantEditProfile> call, Throwable t) {
+
+            }
+        });
     }
 
 
