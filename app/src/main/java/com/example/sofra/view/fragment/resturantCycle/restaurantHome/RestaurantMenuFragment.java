@@ -29,6 +29,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +59,6 @@ public class RestaurantMenuFragment extends BaseFragment {
     private RestaurantMenuItemAdapter restaurantMenuItemAdapter;
     private OnEndLess onEndLess;
     private int maxPage = 0;
-//    String apiToken = LoadRestaurantData(getActivity()).getApiToken();
 
     public RestaurantMenuFragment() {
     }

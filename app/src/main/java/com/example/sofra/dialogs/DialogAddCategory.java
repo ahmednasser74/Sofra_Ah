@@ -131,7 +131,7 @@ public class DialogAddCategory extends Dialog {
 
         categoryName = convertToRequestBody(itemRestaurantAddCategoryDialogEtCategoryName.getEditText().getText().toString());
         categoryPhoto = convertFileToMultipart(path, "photo");
-        String apiToken = SharedPreference.LoadData(activity, RESTAURANT_API_TOKEN);
+        String apiToken = LoadData(activity, RESTAURANT_API_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         categoryId = convertToRequestBody(categoryData.getId().toString());
 

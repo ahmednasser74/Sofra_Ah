@@ -20,6 +20,7 @@ import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
+import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
@@ -29,6 +30,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,6 +39,7 @@ import retrofit2.Response;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
 public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMenuItemAdapter.ViewHolder> {
 
@@ -45,6 +49,8 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
     private FoodItemData foodItemData;
     private CategoryData categoryData;
+    private RequestBody apitoken, menuItemName, categoryId;
+    private MultipartBody.Part categoryPhoto;
 
     public RestaurantMenuItemAdapter(BaseActivity activity, List<FoodItemData> foodItemDataList, CategoryData categoryData) {
         this.activity = activity;
@@ -82,6 +88,20 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
         holder.itemRestaurantMenuImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                menuItemName = convertToRequestBody(holder.itemRestaurantMenuTvMealName.getText().toString());
+                apitoken = convertToRequestBody(LoadData(activity,RESTAURANT_API_TOKEN));
+                categoryId = convertToRequestBody(categoryData.getId().toString());
+                getClient().getRestaurantEditMenuItem(menuItemName,,apitoken,categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
+                    @Override
+                    public void onResponse(Call<RestaurantEditMenuItem> call, Response<RestaurantEditMenuItem> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<RestaurantEditMenuItem> call, Throwable t) {
+
+                    }
+                });
                 RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
                 restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
                 restaurantAddMenuItemFragment.setMenuItemData();

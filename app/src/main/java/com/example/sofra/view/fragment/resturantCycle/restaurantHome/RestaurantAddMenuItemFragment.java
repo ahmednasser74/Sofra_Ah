@@ -43,6 +43,8 @@ import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 public class RestaurantAddMenuItemFragment extends BaseFragment {
 
@@ -118,7 +120,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             public void onResponse(Call<RestaurantAddMenuItem> call, Response<RestaurantAddMenuItem> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-
+                        dismissProgressDialog();
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -180,7 +182,12 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                 initImage();
                 break;
             case R.id.restaurant_add_item_fragment_btn_add_item:
-                convertAddNewMenuItem();
+                if (foodItemData != (null)) {
+
+                }else {
+                    showProgressDialog(getActivity(), "Please Wait...");
+                    convertAddNewMenuItem();
+                }
                 break;
         }
     }
