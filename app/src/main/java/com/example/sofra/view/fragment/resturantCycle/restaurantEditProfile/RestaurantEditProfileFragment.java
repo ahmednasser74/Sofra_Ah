@@ -15,11 +15,9 @@ import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.SpinnersAdapter;
-import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.GeneralRequestSpinner;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
-import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yanzhenjie.album.Album;
@@ -36,14 +34,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_COST;
 import static com.example.sofra.data.api.Keys.RESTAURANT_DELIVERY_TIME;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MAIL;
-import static com.example.sofra.data.api.Keys.RESTAURANT_MINIMUM_CHARGER;
 import static com.example.sofra.data.api.Keys.RESTAURANT_PHONE;
-import static com.example.sofra.data.api.Keys.RESTAURANT_USER_NAME;
 import static com.example.sofra.data.api.Keys.RESTAURANT_WHATS_APP;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
-import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
+import static com.example.sofra.data.local.SharedPreference.LoadRestaurantData;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -119,8 +114,8 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
     private void setData() {
         restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_DATA));
-        restaurantEditProfileFragmentEtMail.getEditText().setText(loadRestaurantData(getActivity()).getUser().getEmail());
-        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(loadRestaurantData(getActivity()).getUser().getMinimumCharger());
+        restaurantEditProfileFragmentEtMail.getEditText().setText(LoadRestaurantData(getActivity()).getUser().getEmail());
+        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(LoadRestaurantData(getActivity()).getUser().getMinimumCharger());
         restaurantEditProfileFragmentEtPhone.getEditText().setText(LoadData(getActivity(), RESTAURANT_PHONE));
         restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(LoadData(getActivity(), RESTAURANT_WHATS_APP));
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));

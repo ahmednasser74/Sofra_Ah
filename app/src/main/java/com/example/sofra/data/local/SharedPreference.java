@@ -74,7 +74,7 @@ public class SharedPreference {
     }
 
 
-    public static AuthRestaurantData loadRestaurantData(Activity activity) {
+    public static AuthRestaurantData LoadRestaurantData(Activity activity) {
         AuthRestaurantData authRestaurantData = null;
 
         Gson gson = new Gson();

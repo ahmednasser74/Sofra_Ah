@@ -30,7 +30,6 @@ import retrofit2.Response;
 
 import static android.view.View.*;
 import static com.example.sofra.data.api.ApiClient.getClient;
-import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
 
 
 public class UserOrdersFragment extends BaseFragment {
