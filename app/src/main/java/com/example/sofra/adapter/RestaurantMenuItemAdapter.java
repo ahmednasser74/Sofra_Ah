@@ -2,6 +2,7 @@ package com.example.sofra.adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuIte
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ import retrofit2.Response;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
 public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMenuItemAdapter.ViewHolder> {
@@ -89,12 +92,31 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
             @Override
             public void onClick(View view) {
                 menuItemName = convertToRequestBody(holder.itemRestaurantMenuTvMealName.getText().toString());
-                apitoken = convertToRequestBody(LoadData(activity,RESTAURANT_API_TOKEN));
+                apitoken = convertToRequestBody(LoadData(activity, RESTAURANT_API_TOKEN));
                 categoryId = convertToRequestBody(categoryData.getId().toString());
-                getClient().getRestaurantEditMenuItem(menuItemName,,apitoken,categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
+//                categoryPhoto = convertFileToMultipart(String.valueOf(holder.itemRestaurantMenuImg), "photo");
+
+                getClient().getRestaurantEditMenuItem(menuItemName, categoryPhoto, apitoken, categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
                     @Override
                     public void onResponse(Call<RestaurantEditMenuItem> call, Response<RestaurantEditMenuItem> response) {
+                        try {
+                            if (response.body().getStatus() == 1) {
 
+                                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
+                                restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
+                                restaurantAddMenuItemFragment.setMenuItemData();
+                                restaurantAddMenuItemFragment.categoryData = categoryData;
+
+                                HelperMethod.replace(restaurantAddMenuItemFragment, activity.getSupportFragmentManager(),
+                                        R.id.restaurant_cycle_fl_fragment_container, null, null);
+
+                                Snackbar snackbar = Snackbar.make(activity.findViewById(android.R.id.content),
+                                        response.body().getMsg(), Snackbar.LENGTH_LONG);
+                                snackbar.show();
+                            }
+                        } catch (Exception e) {
+
+                        }
                     }
 
                     @Override
@@ -102,13 +124,6 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
 
                     }
                 });
-                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
-                restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
-                restaurantAddMenuItemFragment.setMenuItemData();
-                restaurantAddMenuItemFragment.categoryData = categoryData;
-
-                HelperMethod.replace(restaurantAddMenuItemFragment, activity.getSupportFragmentManager(),
-                        R.id.restaurant_cycle_fl_fragment_container, null, null);
 
             }
         });
