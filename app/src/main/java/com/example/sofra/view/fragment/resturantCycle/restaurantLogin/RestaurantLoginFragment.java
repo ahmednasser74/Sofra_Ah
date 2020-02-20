@@ -95,7 +95,6 @@ public class RestaurantLoginFragment extends BaseFragment {
                         SharedPreference.SaveData(getActivity(), RESTAURANT_API_TOKEN, response.body().getData().getApiToken());
                         SharedPreference.SaveData(getActivity(), RESTAURANT_DATA, response.body().getData());
 
-
                         HelperMethod.replace(new RestaurantCategoryFragment(), getActivity().getSupportFragmentManager(),
                                 R.id.restaurant_cycle_fl_fragment_container, null, null);
 

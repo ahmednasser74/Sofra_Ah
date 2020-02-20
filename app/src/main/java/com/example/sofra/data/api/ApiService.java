@@ -222,3 +222,4 @@ public interface ApiService {
                                                          @Field("api_token") String apiToken);
 
 }
+// @Query("category") ArrayList<String> categories

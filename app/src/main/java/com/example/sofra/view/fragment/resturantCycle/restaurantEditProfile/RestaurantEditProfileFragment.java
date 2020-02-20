@@ -19,6 +19,7 @@ import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.GeneralRequestSpinner;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
+import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yanzhenjie.album.Album;
@@ -40,7 +41,9 @@ import static com.example.sofra.data.api.Keys.RESTAURANT_MINIMUM_CHARGER;
 import static com.example.sofra.data.api.Keys.RESTAURANT_PHONE;
 import static com.example.sofra.data.api.Keys.RESTAURANT_USER_NAME;
 import static com.example.sofra.data.api.Keys.RESTAURANT_WHATS_APP;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
+import static com.example.sofra.data.local.SharedPreference.loadRestaurantData;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -115,19 +118,21 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     }
 
     private void setData() {
-        restaurantEditProfileFragmentEtName.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DATA));
-        restaurantEditProfileFragmentEtMail.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MAIL));
-        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
-        restaurantEditProfileFragmentEtPhone.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_PHONE));
-        restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_WHATS_APP));
-        restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
-        restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
+        restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_DATA));
+        restaurantEditProfileFragmentEtMail.getEditText().setText(loadRestaurantData(getActivity()).getUser().getEmail());
+        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(loadRestaurantData(getActivity()).getUser().getMinimumCharger());
+        restaurantEditProfileFragmentEtPhone.getEditText().setText(LoadData(getActivity(), RESTAURANT_PHONE));
+        restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(LoadData(getActivity(), RESTAURANT_WHATS_APP));
+        restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
+        restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
         restaurantEditProfileFragmentSwitch.setChecked(true);
         if (restaurantEditProfileFragmentSwitch.isChecked()) {
             restaurantEditProfileFragmentTvState.setText("Opened");
-        } else {
+        }else {
             restaurantEditProfileFragmentTvState.setText("Closed");
+
         }
+
 //        restaurantEditProfileFragmentAddPhoto.setImageResource(Integer.parseInt(SharedPreference.LoadData(getActivity(), RESTAURANT_PHOTO)));
 //        restaurantEditProfileFragmentSpCity.setSelection(SharedPreference.LoadData(getActivity(), RESTAURANT_REGION));
     }
