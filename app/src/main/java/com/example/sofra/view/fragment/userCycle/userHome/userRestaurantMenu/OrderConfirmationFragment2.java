@@ -16,9 +16,9 @@ import butterknife.ButterKnife;
 import static com.example.sofra.data.api.ApiClient.getClient;
 
 
-public class OrderDetailsFragment1 extends BaseFragment {
+public class OrderConfirmationFragment2 extends BaseFragment {
 
-    public OrderDetailsFragment1() {
+    public OrderConfirmationFragment2() {
     }
 
     @Override
@@ -33,7 +33,7 @@ public class OrderDetailsFragment1 extends BaseFragment {
         setUpActivity();
         getClient();
 
-        View view = inflater.inflate(R.layout.fragment_order_details1, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_confirmation2, container, false);
         ButterKnife.bind(this, view);
 
 
