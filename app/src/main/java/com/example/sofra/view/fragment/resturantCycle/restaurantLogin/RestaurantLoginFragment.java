@@ -107,7 +107,7 @@ public class RestaurantLoginFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<AuthRestaurant> call, Throwable t) {
-
+                Toast.makeText(baseActivity, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
