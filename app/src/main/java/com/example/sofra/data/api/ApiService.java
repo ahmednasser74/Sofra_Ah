@@ -187,7 +187,7 @@ public interface ApiService {
     Call<RestaurantEditMenuItem> getRestaurantEditMenuItem(@Part("name") RequestBody name,
                                                            @Part MultipartBody.Part photo,
                                                            @Part("api_token") RequestBody apiToken,
-                                                           @Part("category_id") RequestBody category_id);
+                                                           @Part("category_id") RequestBody categoryId);
 
     @POST("restaurant/delete-item")
     @FormUrlEncoded

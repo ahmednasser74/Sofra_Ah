@@ -15,13 +15,17 @@ import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
+import com.example.sofra.adapter.RestaurantMenuItemAdapter;
 import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
+import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
+import com.example.sofra.data.model.restaurantMenuItem.RestaurantMenuItem;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yanzhenjie.album.Action;
@@ -71,6 +75,8 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
     MultipartBody.Part photo;
     public CategoryData categoryData;
+    public RestaurantMenuItemAdapter restaurantMenuItemAdapter;
+    public int position;
 
     public RestaurantAddMenuItemFragment() {
     }
@@ -91,7 +97,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         return view;
     }
 
-    private void convertAddNewMenuItem() {
+    private void addNewMenuItem() {
         description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
         photo = convertFileToMultipart((path), "photo");
@@ -110,7 +116,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
         } else {
             addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
-            HelperMethod.showProgressDialog(getActivity(), "Please Wait...");
+            showProgressDialog(getActivity(), "Please Wait...");
         }
 
     }
@@ -126,8 +132,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                 dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
-                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
+//                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+                        Snackbar.make(getActivity().findViewById(android.R.id.content),
+                                response.body().getMsg(), Snackbar.LENGTH_LONG);
                     }
                 } catch (Exception e) {
 
@@ -149,8 +158,56 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
         restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
         restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
+    }
 
+    @OnClick({R.id.restaurant_add_item_fragment_img_add_photo, R.id.restaurant_add_item_fragment_btn_add_item})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.restaurant_add_item_fragment_img_add_photo:
+                initImage();
+                break;
+            case R.id.restaurant_add_item_fragment_btn_add_item:
+                if (foodItemData != (null)) {
+                    editMenuItem();
+                } else {
+                    addNewMenuItem();
+                }
+                break;
+        }
+    }
 
+    private void editMenuItem() {
+        name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
+        apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
+        categoryId = convertToRequestBody(categoryData.getId().toString());
+        photo = convertFileToMultipart(path, "photo");
+
+        getClient().getRestaurantEditMenuItem(name, photo, apitoken, categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
+            @Override
+            public void onResponse(Call<RestaurantEditMenuItem> call, Response<RestaurantEditMenuItem> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+
+                        restaurantMenuItemAdapter.foodItemDataList.remove(restaurantMenuItemAdapter.position);
+//                        restaurantMenuItemAdapter.foodItemDataList.add(restaurantMenuItemAdapter.position, response.body().getData());
+                        restaurantMenuItemAdapter.notifyDataSetChanged();
+
+//                        HelperMethod.replace(restaurantAddMenuItemFragment, getActivity().getSupportFragmentManager(),
+//                                R.id.restaurant_cycle_fl_fragment_container, null, null);
+
+                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantEditMenuItem> call, Throwable t) {
+
+            }
+        });
     }
 
     private void initImage() {
@@ -174,22 +231,6 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                     }
                 })
                 .start();
-    }
-
-    @OnClick({R.id.restaurant_add_item_fragment_img_add_photo, R.id.restaurant_add_item_fragment_btn_add_item})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.restaurant_add_item_fragment_img_add_photo:
-                initImage();
-                break;
-            case R.id.restaurant_add_item_fragment_btn_add_item:
-                if (foodItemData != (null)) {
-
-                } else {
-                    convertAddNewMenuItem();
-                }
-                break;
-        }
     }
 
     @Override

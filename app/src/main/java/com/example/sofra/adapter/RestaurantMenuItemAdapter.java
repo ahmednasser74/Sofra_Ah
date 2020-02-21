@@ -48,12 +48,10 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
 
 
     private BaseActivity activity;
-    private List<FoodItemData> foodItemDataList = new ArrayList<>();
+    public List<FoodItemData> foodItemDataList = new ArrayList<>();
+    public int position;
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
-    private FoodItemData foodItemData;
     private CategoryData categoryData;
-    private RequestBody apitoken, menuItemName, categoryId;
-    private MultipartBody.Part categoryPhoto;
 
     public RestaurantMenuItemAdapter(BaseActivity activity, List<FoodItemData> foodItemDataList, CategoryData categoryData) {
         this.activity = activity;
@@ -87,43 +85,15 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
     }
 
     private void setAction(ViewHolder holder, int position) {
-
         holder.itemRestaurantMenuImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                menuItemName = convertToRequestBody(holder.itemRestaurantMenuTvMealName.getText().toString());
-                apitoken = convertToRequestBody(LoadData(activity, RESTAURANT_API_TOKEN));
-                categoryId = convertToRequestBody(categoryData.getId().toString());
-//                categoryPhoto = convertFileToMultipart(String.valueOf(holder.itemRestaurantMenuImg), "photo");
+            public void onClick(View v) {
 
-                getClient().getRestaurantEditMenuItem(menuItemName, categoryPhoto, apitoken, categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
-                    @Override
-                    public void onResponse(Call<RestaurantEditMenuItem> call, Response<RestaurantEditMenuItem> response) {
-                        try {
-                            if (response.body().getStatus() == 1) {
-
-                                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
-                                restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
-                                restaurantAddMenuItemFragment.setMenuItemData();
-                                restaurantAddMenuItemFragment.categoryData = categoryData;
-
-                                HelperMethod.replace(restaurantAddMenuItemFragment, activity.getSupportFragmentManager(),
-                                        R.id.restaurant_cycle_fl_fragment_container, null, null);
-
-                                Snackbar snackbar = Snackbar.make(activity.findViewById(android.R.id.content),
-                                        response.body().getMsg(), Snackbar.LENGTH_LONG);
-                                snackbar.show();
-                            }
-                        } catch (Exception e) {
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<RestaurantEditMenuItem> call, Throwable t) {
-
-                    }
-                });
+                RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
+                restaurantAddMenuItemFragment.setMenuItemData();
+                restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
+                restaurantAddMenuItemFragment.position = position;
+                restaurantAddMenuItemFragment.restaurantMenuItemAdapter.notifyDataSetChanged();
 
             }
         });

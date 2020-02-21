@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantCategoryAdapter;
@@ -136,32 +137,32 @@ public class RestaurantCategoryFragment extends BaseFragment {
 
     @OnClick(R.id.restaurant_list_fragment_btn_float)
     public void onViewClicked() {
-        DialogAddCategory dialogAddCategory= new DialogAddCategory(getActivity(), getActivity(), true);
+        DialogAddCategory dialogAddCategory = new DialogAddCategory(getActivity(), getActivity(), true);
         dialogAddCategory.restaurantCategoryAdapter = restaurantCategoryAdapter;
         dialogAddCategory.show();
     }
 
-private void floatHidden() {
-    restaurantCategoryFragmentRvCategory.addOnScrollListener(new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            if (dy > 0 && restaurantListFragmentBtnFloat.getVisibility() == View.VISIBLE) {
-                restaurantListFragmentBtnFloat.hide();
-            } else if (dy < 0 && restaurantListFragmentBtnFloat.getVisibility() != View.VISIBLE) {
-                restaurantListFragmentBtnFloat.show();
+    private void floatHidden() {
+        restaurantCategoryFragmentRvCategory.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && restaurantListFragmentBtnFloat.getVisibility() == View.VISIBLE) {
+                    restaurantListFragmentBtnFloat.hide();
+                } else if (dy < 0 && restaurantListFragmentBtnFloat.getVisibility() != View.VISIBLE) {
+                    restaurantListFragmentBtnFloat.show();
+                }
+
             }
 
-        }
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
 
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
-    });
-
-    restaurantListFragmentBtnFloat.show();
-}
+        restaurantListFragmentBtnFloat.show();
+    }
 
     @Override
     public void onBack() {

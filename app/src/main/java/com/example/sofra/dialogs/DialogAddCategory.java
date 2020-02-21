@@ -143,7 +143,7 @@ public class DialogAddCategory extends Dialog {
                     if (response.body().getStatus() == 1) {
 
                         restaurantCategoryAdapter.listRestaurantCategoryData.remove(restaurantCategoryAdapter.position);
-                        restaurantCategoryAdapter.listRestaurantCategoryData.add(restaurantCategoryAdapter.position,response.body().getData());
+                        restaurantCategoryAdapter.listRestaurantCategoryData.add(restaurantCategoryAdapter.position, response.body().getData());
                         restaurantCategoryAdapter.notifyDataSetChanged();
                         dismiss();
                         Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
