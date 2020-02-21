@@ -40,6 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.text.TextUtils.isEmpty;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
@@ -109,31 +110,22 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
         } else {
             addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
+            HelperMethod.showProgressDialog(getActivity(), "Please Wait...");
         }
 
-    }
-
-    private boolean isEmpty(String string) {
-        if (string.equals("")) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private void addNewMenuItem(RequestBody description, RequestBody price, RequestBody preparingTime,
                                 MultipartBody.Part photo, RequestBody name, RequestBody apiToken,
                                 RequestBody offerPrice, RequestBody categoryId) {
 
-        showProgressDialog(getActivity(), "Please Wait...");
-
         getClient().getRestaurantAddMenuItem(description, price, preparingTime, name, photo,
                 apiToken, offerPrice, categoryId).enqueue(new Callback<RestaurantAddMenuItem>() {
             @Override
             public void onResponse(Call<RestaurantAddMenuItem> call, Response<RestaurantAddMenuItem> response) {
+                dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
-                        dismissProgressDialog();
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -158,10 +150,6 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
         restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
 
-//        if (foodItemData.getHasOffer()) {
-//        } else {
-//            restaurantAddItemFragmentEtItemOfferPrice.setVisibility(View.GONE);
-//        }
 
     }
 

@@ -20,6 +20,7 @@ import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.GeneralRequestSpinner;
 import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
+import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfileData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -56,6 +57,7 @@ import static com.example.sofra.data.local.SharedPreference.RESTAURANT_PHOTO;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_REGION;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_USER_NAME;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_WHATS_APP;
+import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -88,6 +90,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     TextView restaurantEditProfileFragmentTvState;
 
     private String path;
+    RestaurantEditProfileData restaurantEditProfileData ;
     private SpinnersAdapter cityAdapter, townAdapter;
     private RequestBody email, name, phone, regionId, deliveryCost, minimumCharger, availability, apiToken, deliveryTime;
     private MultipartBody.Part photo;
@@ -185,7 +188,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
             }
 
         });
-//        restaurantEditProfileFragmentAddPhoto.setImageResource(Integer.parseInt(LoadData(getActivity(), RESTAURANT_PHOTO)));
+//        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, restaurantEditProfileData.getUser().getPhotoUrl(), getActivity());
 
 //        init();
 

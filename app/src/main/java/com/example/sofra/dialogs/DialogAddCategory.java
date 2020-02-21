@@ -45,6 +45,7 @@ import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
+import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 public class DialogAddCategory extends Dialog {
 
@@ -100,7 +101,7 @@ public class DialogAddCategory extends Dialog {
         if (categoryData != (null)) {
 
             itemRestaurantAddCategoryDialogEtCategoryName.getEditText().setText(categoryData.getName());
-            HelperMethod.onLoadImageFromUrl(itemRestaurantAddCategoryDialogImgAddPhoto, categoryData.getPhotoUrl(), activity);
+            onLoadImageFromUrl(itemRestaurantAddCategoryDialogImgAddPhoto, categoryData.getPhotoUrl(), activity);
             itemRestaurantAddCategoryDialogBtnAddCategory.setText("Edit");
             itemRestaurantAddCategoryDialogTvTitle.setText("Edit Category");
 
@@ -214,7 +215,7 @@ public class DialogAddCategory extends Dialog {
                     @Override
                     public void onAction(@NonNull ArrayList<AlbumFile> result) {
                         path = result.get(0).getPath();
-                        HelperMethod.onLoadImageFromUrl(itemRestaurantAddCategoryDialogImgAddPhoto, path, activity);
+                        onLoadImageFromUrl(itemRestaurantAddCategoryDialogImgAddPhoto, path, activity);
                     }
                 })
                 .onCancel(new com.yanzhenjie.album.Action<String>() {
