@@ -22,6 +22,8 @@ import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.yanzhenjie.album.Action;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
@@ -53,7 +55,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     @BindView(R.id.restaurant_add_item_fragment_img_add_photo)
     ImageView restaurantAddItemFragmentImgAddPhoto;
     @BindView(R.id.restaurant_add_item_fragment_et_item_name)
-    EditText restaurantAddItemFragmentEtItemName;
+    TextInputLayout restaurantAddItemFragmentEtItemName;
     @BindView(R.id.restaurant_add_item_fragment_et_item_description)
     EditText restaurantAddItemFragmentEtItemDescription;
     @BindView(R.id.restaurant_add_item_fragment_et_item_price)
@@ -92,12 +94,12 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
         photo = convertFileToMultipart((path), "photo");
-        name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getText().toString());
+        name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
-        if (restaurantAddItemFragmentEtItemName.equals("")) {
+        if (isEmpty(description.toString())) {
             restaurantAddItemFragmentEtItemName.setError("please enter name");
         } else if (restaurantAddItemFragmentEtItemDescription.equals("")) {
             restaurantAddItemFragmentEtItemDescription.setError("please enter description");
@@ -105,14 +107,25 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             restaurantAddItemFragmentEtItemPrice.setError("please enter price");
         } else if (restaurantAddItemFragmentImgAddPhoto == null) {
             Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
+        } else {
+            addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
         }
 
-        addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
+    }
+
+    private boolean isEmpty(String string) {
+        if (string.equals("")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void addNewMenuItem(RequestBody description, RequestBody price, RequestBody preparingTime,
                                 MultipartBody.Part photo, RequestBody name, RequestBody apiToken,
                                 RequestBody offerPrice, RequestBody categoryId) {
+
+        showProgressDialog(getActivity(), "Please Wait...");
 
         getClient().getRestaurantAddMenuItem(description, price, preparingTime, name, photo,
                 apiToken, offerPrice, categoryId).enqueue(new Callback<RestaurantAddMenuItem>() {
@@ -143,12 +156,12 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
         restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
         restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
+        restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
 
-        if (foodItemData.getHasOffer()) {
-            restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
-        } else {
-            restaurantAddItemFragmentEtItemOfferPrice.setVisibility(View.GONE);
-        }
+//        if (foodItemData.getHasOffer()) {
+//        } else {
+//            restaurantAddItemFragmentEtItemOfferPrice.setVisibility(View.GONE);
+//        }
 
     }
 
@@ -184,8 +197,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             case R.id.restaurant_add_item_fragment_btn_add_item:
                 if (foodItemData != (null)) {
 
-                }else {
-                    showProgressDialog(getActivity(), "Please Wait...");
+                } else {
                     convertAddNewMenuItem();
                 }
                 break;

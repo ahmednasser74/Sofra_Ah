@@ -41,15 +41,20 @@
                     android:src="@drawable/ic_add_image_icon" />
             </androidx.cardview.widget.CardView>
 
-
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/restaurant_add_item_fragment_et_item_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:background="@drawable/shadow_white_shape"
                 android:hint="Item Name"
                 android:paddingStart="@dimen/dim_16dp"
-                android:paddingEnd="@dimen/dim_16dp" />
+                android:paddingEnd="@dimen/dim_16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:id="@+id/restaurant_add_item_fragment_et_item_description"
