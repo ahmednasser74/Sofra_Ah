@@ -22,6 +22,7 @@ public class SharedPreference {
     public static String RESTAURANT_DELIVERY_TIME = "RESTAURANT_DELIVERY_TIME";
     public static String RESTAURANT_WHATS_APP = "RESTAURANT_WHATS_APP";
     public static String RESTAURANT_MINIMUM_CHARGER = "RESTAURANT_MINIMUM_CHARGER";
+    public static String RESTAURANT_CITY = "RESTAURANT_CITY";
     public static String RESTAURANT_REGION = "RESTAURANT_REGION";
     public static String RESTAURANT_ACTIVATED = "RESTAURANT_ACTIVATED";
     public static String RESTAURANT_PHOTO = "RESTAURANT_PHOTO";

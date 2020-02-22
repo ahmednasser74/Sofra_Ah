@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantOrdersAdapter;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.userOrders.UserOrders;
 import com.example.sofra.data.model.userOrders.UserOrdersData;
 import com.example.sofra.helper.OnEndLess;
@@ -29,6 +30,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
 
 public class RestaurantOrdersFragment extends BaseFragment {
@@ -91,7 +94,8 @@ public class RestaurantOrdersFragment extends BaseFragment {
 
 
     private void getRestaurantOrders(int page) {
-//        String apiToken = LoadRestaurantData(getActivity()).getApiToken();
+
+// LoadData(getActivity(), RESTAURANT_API_TOKEN)
 
         getClient().getRestaurantOrders("Jptu3JVmDXGpJEaQO9ZrjRg5RuAVCo45OC2AcOKqbVZPmu0ZJPN3T1sm0cWx", State, page).enqueue(new Callback<UserOrders>() {
             @Override

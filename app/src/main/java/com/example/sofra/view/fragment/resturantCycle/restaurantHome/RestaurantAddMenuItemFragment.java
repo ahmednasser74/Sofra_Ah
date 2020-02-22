@@ -151,13 +151,16 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     public void setMenuItemData() {
-        restaurantAddItemFragmentTvTitle.setText("Edit Menu Item");
-        restaurantAddItemFragmentBtnAddItem.setText("Edit");
-        Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
-        restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
-        restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
-        restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
-        restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
+        if (foodItemData != (null)) {
+            restaurantAddItemFragmentTvTitle.setText("Edit Menu Item");
+            restaurantAddItemFragmentBtnAddItem.setText("Edit");
+
+            Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
+            restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
+            restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
+            restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
+            restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
+        }
     }
 
     @OnClick({R.id.restaurant_add_item_fragment_img_add_photo, R.id.restaurant_add_item_fragment_btn_add_item})

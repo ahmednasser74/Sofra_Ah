@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.adapter.SpinnersAdapter;
 import com.example.sofra.data.local.SharedPreference;
@@ -21,6 +22,8 @@ import com.example.sofra.data.model.GeneralRequestSpinner;
 import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfileData;
+import com.example.sofra.data.model.restaurantLogin.AuthRestaurant;
+import com.example.sofra.data.model.restaurantLogin.AuthRestaurantData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -46,6 +49,7 @@ import static com.example.sofra.data.local.SharedPreference.LoadBoolean;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_ACTIVATED;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_CITY;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
 import static com.example.sofra.data.local.SharedPreference.LoadRestaurantData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DELIVERY_COST;
@@ -86,14 +90,13 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     TextInputLayout restaurantEditProfileFragmentEtDeliveryCost;
     @BindView(R.id.restaurant_edit_profile_fragment_switch)
     Switch restaurantEditProfileFragmentSwitch;
-    @BindView(R.id.restaurant_edit_profile_fragment_tv_state)
-    TextView restaurantEditProfileFragmentTvState;
 
     private String path;
-    RestaurantEditProfileData restaurantEditProfileData ;
+    RestaurantEditProfileData restaurantEditProfileData;
     private SpinnersAdapter cityAdapter, townAdapter;
     private RequestBody email, name, phone, regionId, deliveryCost, minimumCharger, availability, apiToken, deliveryTime;
     private MultipartBody.Part photo;
+    private RestaurantEditProfileData authRestaurantData;
 
     public RestaurantEditProfileFragment() {
     }
@@ -131,24 +134,13 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 });
 
         String token = LoadData(getActivity(), RESTAURANT_API_TOKEN);
-        String state = LoadData(getActivity(),RESTAURANT_ACTIVATED);
+        String state = LoadData(getActivity(), RESTAURANT_ACTIVATED);
 
         getClient().getRestaurantChangeState(state, token).enqueue(new Callback<RestaurantChangeState>() {
             @Override
             public void onResponse(Call<RestaurantChangeState> call, Response<RestaurantChangeState> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-                        restaurantEditProfileFragmentSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                            @Override
-                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                if (isChecked) {
-                                    restaurantEditProfileFragmentTvState.setText("Opened");
-                                } else {
-                                    restaurantEditProfileFragmentTvState.setText("Closed");
-                                }
-                            }
-
-                        });
 
                     }
                 } catch (Exception e) {
@@ -168,27 +160,22 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
     private void setData() {
         restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_USER_NAME));
-        restaurantEditProfileFragmentEtMail.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MAIL));
-        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(SharedPreference.LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
+        restaurantEditProfileFragmentEtMail.getEditText().setText(LoadData(getActivity(), RESTAURANT_MAIL));
+        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
         restaurantEditProfileFragmentEtPhone.getEditText().setText(LoadData(getActivity(), RESTAURANT_PHONE));
         restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(LoadData(getActivity(), RESTAURANT_WHATS_APP));
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
         restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
+
         restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
-        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_REGION)));
+        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(LoadData(getActivity(),RESTAURANT_CITY)));
+        restaurantEditProfileFragmentSpGovernorate.setSelected(LoadBoolean(getActivity(), RESTAURANT_REGION));
 
-        restaurantEditProfileFragmentSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    restaurantEditProfileFragmentTvState.setText("Opened");
-                } else {
-                    restaurantEditProfileFragmentTvState.setText("Closed");
-                }
-            }
 
-        });
+
+
 //        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, restaurantEditProfileData.getUser().getPhotoUrl(), getActivity());
+//        Glide.with(getActivity()).load(authRestaurantData.getUser().getPhotoUrl()).into(restaurantEditProfileFragmentAddPhoto);
 
 //        init();
 
