@@ -16,6 +16,7 @@ public class SharedPreference {
     public static String USER_PASS = "USER_PASS";
 
     public static String RESTAURANT_API_TOKEN = "RESTAURANT_API_TOKEN";
+    public static String RESTAURANT_ID= "RESTAURANT_ID";
     public static String RESTAURANT_DATA = "RESTAURANT_DATA";
     public static String RESTAURANT_USER_NAME = "RESTAURANT_USER_NAME";
     public static String RESTAURANT_DELIVERY_COST = "RESTAURANT_DELIVERY_COST";
@@ -92,7 +93,7 @@ public class SharedPreference {
         AuthRestaurantData authRestaurantData = null;
 
         Gson gson = new Gson();
-        authRestaurantData = gson.fromJson(LoadData(activity, RESTAURANT_API_TOKEN), AuthRestaurantData.class);
+        authRestaurantData = gson.fromJson(LoadData(activity, RESTAURANT_DATA), AuthRestaurantData.class);
 
         return authRestaurantData;
     }

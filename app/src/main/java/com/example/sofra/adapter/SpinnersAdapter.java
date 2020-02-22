@@ -53,6 +53,9 @@ public class SpinnersAdapter extends BaseAdapter {
 
         TextView names = (TextView) view.findViewById(R.id.item_spinner_tv_text);
 
+//        names.setText(generalResponseData.get(0).getName());
+//        selectedId = generalResponseData.get(0).getId();
+
         names.setText(generalResponseData.get(i).getName());
         selectedId = generalResponseData.get(i).getId();//da el id ely ana wa2f 3aleh now
 

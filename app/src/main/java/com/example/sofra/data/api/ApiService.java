@@ -114,6 +114,7 @@ public interface ApiService {
     Call<RestaurantListWithFilter> getRestaurantListWithFilter(@Query("keyword") String keyword,
                                                                @Query("region_id") int regionId);
 
+
     @POST("client/restaurant/review")
     @FormUrlEncoded
     Call<UserAddReview> getUserAddReview(@Field("rate") int rate,
@@ -182,7 +183,7 @@ public interface ApiService {
                                                          @Part("offer_price") RequestBody offerPrice,
                                                          @Part("category_id") RequestBody category_id);
 
-    @POST("restaurant/update-category")
+    @POST("restaurant/update-item")
     @Multipart
     Call<RestaurantEditMenuItem> getRestaurantEditMenuItem(@Part("name") RequestBody name,
                                                            @Part MultipartBody.Part photo,

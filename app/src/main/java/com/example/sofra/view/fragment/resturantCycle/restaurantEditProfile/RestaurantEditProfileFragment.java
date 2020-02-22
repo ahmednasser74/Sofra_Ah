@@ -1,5 +1,6 @@
 package com.example.sofra.view.fragment.resturantCycle.restaurantEditProfile;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfile;
 import com.example.sofra.data.model.restaurantEditProfile.RestaurantEditProfileData;
 import com.example.sofra.data.model.restaurantLogin.AuthRestaurant;
 import com.example.sofra.data.model.restaurantLogin.AuthRestaurantData;
+import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -61,6 +63,7 @@ import static com.example.sofra.data.local.SharedPreference.RESTAURANT_PHOTO;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_REGION;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_USER_NAME;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_WHATS_APP;
+import static com.example.sofra.data.model.GeneralRequestSpinner.getSpinnerCityData;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
 
 
@@ -92,11 +95,10 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     Switch restaurantEditProfileFragmentSwitch;
 
     private String path;
-    RestaurantEditProfileData restaurantEditProfileData;
     private SpinnersAdapter cityAdapter, townAdapter;
     private RequestBody email, name, phone, regionId, deliveryCost, minimumCharger, availability, apiToken, deliveryTime;
     private MultipartBody.Part photo;
-    private RestaurantEditProfileData authRestaurantData;
+    private AuthRestaurantData authRestaurantData;
 
     public RestaurantEditProfileFragment() {
     }
@@ -114,29 +116,11 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_restaurant_edit_profile, container, false);
         ButterKnife.bind(this, view);
 
+        authRestaurantData = LoadRestaurantData(getActivity());
         cityAdapter = new SpinnersAdapter(getActivity());
         townAdapter = new SpinnersAdapter(getActivity());
 
-        GeneralRequestSpinner.getSpinnerCityData(getClient().getCity(), cityAdapter
-                , restaurantEditProfileFragmentSpCity, "City", new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                        if (i != 0) {
-                            GeneralRequestSpinner.getTownSpinnerData(getClient().getTown(cityAdapter.selectedId), townAdapter
-                                    , restaurantEditProfileFragmentSpGovernorate, "Town");
-                        }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> adapterView) {
-
-                    }
-                });
-
-        String token = LoadData(getActivity(), RESTAURANT_API_TOKEN);
-        String state = LoadData(getActivity(), RESTAURANT_ACTIVATED);
-
-        getClient().getRestaurantChangeState(state, token).enqueue(new Callback<RestaurantChangeState>() {
+        getClient().getRestaurantChangeState("", LoadData(getActivity(), RESTAURANT_API_TOKEN)).enqueue(new Callback<RestaurantChangeState>() {
             @Override
             public void onResponse(Call<RestaurantChangeState> call, Response<RestaurantChangeState> response) {
                 try {
@@ -159,31 +143,42 @@ public class RestaurantEditProfileFragment extends BaseFragment {
     }
 
     private void setData() {
-        restaurantEditProfileFragmentEtName.getEditText().setText(LoadData(getActivity(), RESTAURANT_USER_NAME));
-        restaurantEditProfileFragmentEtMail.getEditText().setText(LoadData(getActivity(), RESTAURANT_MAIL));
-        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_MINIMUM_CHARGER));
-        restaurantEditProfileFragmentEtPhone.getEditText().setText(LoadData(getActivity(), RESTAURANT_PHONE));
-        restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(LoadData(getActivity(), RESTAURANT_WHATS_APP));
-        restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_TIME));
-        restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(LoadData(getActivity(), RESTAURANT_DELIVERY_COST));
 
-        restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
-        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(LoadData(getActivity(),RESTAURANT_CITY)));
-        restaurantEditProfileFragmentSpGovernorate.setSelected(LoadBoolean(getActivity(), RESTAURANT_REGION));
+        restaurantEditProfileFragmentEtName.getEditText().setText(authRestaurantData.getUser().getName());
+        restaurantEditProfileFragmentEtMail.getEditText().setText(authRestaurantData.getUser().getEmail());
+        restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(authRestaurantData.getUser().getMinimumCharger());
+        restaurantEditProfileFragmentEtPhone.getEditText().setText(authRestaurantData.getUser().getPhone());
+        restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(authRestaurantData.getUser().getWhatsapp());
+        restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(authRestaurantData.getUser().getDeliveryTime());
+        restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(authRestaurantData.getUser().getDeliveryCost());
 
+//        restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
+        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(authRestaurantData.getUser().getRegion().getCity().getName()));
+        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), authRestaurantData.getUser().getRegion().getName())));
+        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, authRestaurantData.getUser().getPhotoUrl(), getActivity());
 
+        getSpinnerCityData(getClient().getCity(), cityAdapter
+                , restaurantEditProfileFragmentSpCity, "City", new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        if (i != 0) {
+                            GeneralRequestSpinner.getTownSpinnerData(getClient().getTown(cityAdapter.selectedId), townAdapter
+                                    , restaurantEditProfileFragmentSpGovernorate, "Town");
+                        }
+                    }
 
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
 
-//        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, restaurantEditProfileData.getUser().getPhotoUrl(), getActivity());
-//        Glide.with(getActivity()).load(authRestaurantData.getUser().getPhotoUrl()).into(restaurantEditProfileFragmentAddPhoto);
-
-//        init();
+                    }
+                });
 
     }
 
-    private void init(RequestBody email, RequestBody name, RequestBody phone, RequestBody regionId
+    private void editProfile(RequestBody email, RequestBody name, RequestBody phone, RequestBody regionId
             , RequestBody deliveryCost, RequestBody minimumCharger, RequestBody availability,
-                      MultipartBody.Part photo, RequestBody apiToken, RequestBody deliveryTime) {
+                             MultipartBody.Part photo, RequestBody apiToken, RequestBody deliveryTime) {
+
         apiToken = HelperMethod.convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
 
         getClient().getRestauranEditProfile(email, name, phone, regionId, deliveryCost, minimumCharger,
@@ -214,8 +209,19 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 initImage();
                 break;
             case R.id.restaurant_edit_profile_fragment_btn_edit:
+//                editPrfile();
                 break;
         }
+    }
+
+    @Override
+    public void onBack() {
+        super.onBack();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     private void initImage() {
@@ -239,15 +245,5 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                     }
                 })
                 .start();
-    }
-
-    @Override
-    public void onBack() {
-        super.onBack();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 }

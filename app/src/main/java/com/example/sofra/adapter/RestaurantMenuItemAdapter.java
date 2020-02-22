@@ -90,10 +90,12 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
             public void onClick(View v) {
 
                 RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
-                restaurantAddMenuItemFragment.setMenuItemData();
                 restaurantAddMenuItemFragment.foodItemData = foodItemDataList.get(position);
+                restaurantAddMenuItemFragment.categoryData = categoryData;
                 restaurantAddMenuItemFragment.position = position;
-                restaurantAddMenuItemFragment.restaurantMenuItemAdapter.notifyDataSetChanged();
+
+                HelperMethod.replace(restaurantAddMenuItemFragment, activity.getSupportFragmentManager(),
+                        R.id.restaurant_cycle_fl_fragment_container, null, null);
 
             }
         });

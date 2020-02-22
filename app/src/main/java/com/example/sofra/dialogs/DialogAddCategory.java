@@ -142,8 +142,8 @@ public class DialogAddCategory extends Dialog {
                 try {
                     if (response.body().getStatus() == 1) {
 
-                        restaurantCategoryAdapter.listRestaurantCategoryData.remove(restaurantCategoryAdapter.position);
-                        restaurantCategoryAdapter.listRestaurantCategoryData.add(restaurantCategoryAdapter.position, response.body().getData());
+                        restaurantCategoryAdapter.listRestaurantCategoryData.remove(position);
+                        restaurantCategoryAdapter.listRestaurantCategoryData.add(position, response.body().getData());
                         restaurantCategoryAdapter.notifyDataSetChanged();
                         dismiss();
                         Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
@@ -187,10 +187,12 @@ public class DialogAddCategory extends Dialog {
             public void onResponse(Call<RestaurantAddNewCategory> call, Response<RestaurantAddNewCategory> response) {
                 try {
                     if (response.body().getStatus() == 1) {
+
                         restaurantCategoryAdapter.listRestaurantCategoryData.add(response.body().getData());
                         restaurantCategoryAdapter.notifyDataSetChanged();
                         dismiss();
                         Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
                     }
                 } catch (Exception e) {
                 }
@@ -226,12 +228,4 @@ public class DialogAddCategory extends Dialog {
                 .start();
     }
 
-//    public static void dismissDialog() {
-//        try {
-//            checkDialog.dismiss();
-//
-//        } catch (Exception e) {
-//
-//        }
-//    }
 }

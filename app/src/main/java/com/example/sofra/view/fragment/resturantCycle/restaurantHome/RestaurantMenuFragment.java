@@ -172,6 +172,7 @@ public class RestaurantMenuFragment extends BaseFragment {
     public void onViewClicked() {
 
         RestaurantAddMenuItemFragment restaurantAddMenuItemFragment = new RestaurantAddMenuItemFragment();
+        restaurantAddMenuItemFragment.restaurantMenuItemAdapter = restaurantMenuItemAdapter;
         restaurantAddMenuItemFragment.categoryData = categoryData;
         HelperMethod.replace(restaurantAddMenuItemFragment, getActivity().getSupportFragmentManager(),
                 R.id.restaurant_cycle_fl_fragment_container, null, null);

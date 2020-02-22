@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,13 +13,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
-import com.example.sofra.adapter.UserRestaurantMenuAdapter;
 import com.example.sofra.adapter.UserRestaurantCategoryAdapter;
+import com.example.sofra.adapter.UserRestaurantMenuAdapter;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.listRestaurantItem.FoodItems;
 import com.example.sofra.data.model.restaurantCategory.CategoriesNotPaginated;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
+import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.OnEndLess;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
@@ -34,10 +35,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 
 public class UserRestaurantMenuFragment extends BaseFragment {
-
 
     @BindView(R.id.restaurant_menu_fragment_rv_menu)
     RecyclerView restaurantMenuFragmentRvMenu;
@@ -45,6 +47,8 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     RecyclerView restaurantMenuFragmentRvCategory;
     @BindView(R.id.user_restaurant_fragment_pb_loading)
     ProgressBar userRestaurantFragmentPbLoading;
+    @BindView(R.id.restaurant_menu_fragment_tv_no_item)
+    TextView restaurantMenuFragmentTvNoItem;
 
     private int maxPage = 0;
     private LinearLayoutManager linearLayoutManager;
@@ -52,7 +56,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     private List<FoodItemData> listRestaurantItemData = new ArrayList<>();
     private List<CategoryData> listOfCategoryDataList = new ArrayList<>();
     private UserRestaurantMenuAdapter restaurantItemAdapter;
-    public int id = -1;
+    public int id = 0;
     private UserRestaurantCategoryAdapter userRestaurantCategoryAdapter;
     public Restaurant restaurantData;
 
@@ -119,7 +123,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         restaurantMenuFragmentRvCategory.setLayoutManager(linearLayoutManager);
 
-        userRestaurantCategoryAdapter = new UserRestaurantCategoryAdapter((BaseActivity) getActivity(), listOfCategoryDataList);
+        userRestaurantCategoryAdapter = new UserRestaurantCategoryAdapter((BaseActivity) getActivity(), listOfCategoryDataList, restaurantData.getId(), UserRestaurantMenuFragment.this);
         restaurantMenuFragmentRvCategory.setAdapter(userRestaurantCategoryAdapter);
         if (listOfCategoryDataList.size() == 0) {
             getCategoryList();
@@ -129,6 +133,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     }
 
     private void getCategoryList() {
+        listOfCategoryDataList.add(new CategoryData(0, "ALL", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThgwBsaHfG9JsLTxTWUboS18RYAa8W4xSBHwUx6QED-ytXC85e"));
         getClient().getUserCategory(restaurantData.getId()).enqueue(new Callback<CategoriesNotPaginated>() {
             @Override
             public void onResponse(Call<CategoriesNotPaginated> call, Response<CategoriesNotPaginated> response) {
@@ -163,7 +168,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                     if (maxPage != 0 && current_page != 1) {
                         if ((listRestaurantItemData.size() + 1) / 10 != current_page) {
                             onEndLess.previous_page = current_page;
-                            getMenuList(current_page);
+                            getMenuList(restaurantData.getId(), id, current_page);
                         }
                     } else {
                         onEndLess.current_page = onEndLess.previous_page;
@@ -179,24 +184,33 @@ public class UserRestaurantMenuFragment extends BaseFragment {
         if (listRestaurantItemData.size() == 0) {
             restaurantItemAdapter = new UserRestaurantMenuAdapter((BaseActivity) getActivity(), listRestaurantItemData);
             restaurantMenuFragmentRvMenu.setAdapter(restaurantItemAdapter);
-            getMenuList(1);
+            getMenuList(restaurantData.getId(), id, 1);
         } else {
             restaurantMenuFragmentRvMenu.setAdapter(restaurantItemAdapter);
             restaurantMenuFragmentRvMenu.setVisibility(View.VISIBLE);
         }
     }
 
-    public void getMenuList(int page) {
-        getClient().getRestaurantItem(restaurantData.getId(), id, page).
+    public void getMenuList(int restaurantId, int categoryId, int page) {
+        dismissProgressDialog();
+        getClient().getRestaurantItem(restaurantId, categoryId, page).
                 enqueue(new Callback<FoodItems>() {
                     @Override
                     public void onResponse(Call<FoodItems> call, Response<FoodItems> response) {
                         try {
                             if (response.body().getStatus() == 1) {
                                 maxPage = response.body().getData().getLastPage();
-                                listRestaurantItemData.addAll(response.body().getData().getData());
+                                if (page == 1) {
+                                    listRestaurantItemData.clear();
+                                }
+
                                 restaurantMenuFragmentRvMenu.setVisibility(View.VISIBLE);
+                                listRestaurantItemData.addAll(response.body().getData().getData());
                                 restaurantItemAdapter.notifyDataSetChanged();
+
+                                if (listRestaurantItemData.size() == 0) {
+                                    restaurantMenuFragmentTvNoItem.setVisibility(View.VISIBLE);
+                                }
                             }
 
                         } catch (Exception e) {

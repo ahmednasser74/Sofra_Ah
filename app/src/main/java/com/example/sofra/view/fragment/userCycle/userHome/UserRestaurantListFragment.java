@@ -95,7 +95,6 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
     private void initFilter() {
 
         String search = userRestaurantListFragmentEtSearch.getText().toString().trim();
-        SpinnersAdapter citySpinnerAdapter = new SpinnersAdapter(getActivity());
 
         getClient().getRestaurantListWithFilter(search, citySpinnerAdapter.selectedId).enqueue(new Callback<RestaurantListWithFilter>() {
             @Override

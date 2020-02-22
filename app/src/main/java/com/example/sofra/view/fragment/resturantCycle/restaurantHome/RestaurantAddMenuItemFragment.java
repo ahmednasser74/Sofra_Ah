@@ -94,6 +94,8 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         getClient();
         View view = inflater.inflate(R.layout.fragment_restaurant_add_item, container, false);
         ButterKnife.bind(this, view);
+
+        setMenuItemData();
         return view;
     }
 
@@ -133,10 +135,8 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                 try {
                     if (response.body().getStatus() == 1) {
 
-//                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
-                        Snackbar.make(getActivity().findViewById(android.R.id.content),
-                                response.body().getMsg(), Snackbar.LENGTH_LONG);
                     }
                 } catch (Exception e) {
 
@@ -151,15 +151,19 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     public void setMenuItemData() {
+
         if (foodItemData != (null)) {
+
             restaurantAddItemFragmentTvTitle.setText("Edit Menu Item");
             restaurantAddItemFragmentBtnAddItem.setText("Edit");
 
             Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
             restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
+            restaurantAddItemFragmentEtItemName.getEditText().setText(foodItemData.getName());
             restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
             restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
             restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
+
         }
     }
 
@@ -182,7 +186,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     private void editMenuItem() {
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
-        categoryId = convertToRequestBody(categoryData.getId().toString());
+        categoryId = convertToRequestBody(String.valueOf(categoryData.getId()));
         photo = convertFileToMultipart(path, "photo");
 
         getClient().getRestaurantEditMenuItem(name, photo, apitoken, categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {

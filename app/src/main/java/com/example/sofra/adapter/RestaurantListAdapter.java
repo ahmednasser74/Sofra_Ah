@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
@@ -25,6 +26,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_ID;
 
 public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAdapter.ViewHolder> {
 
@@ -101,8 +104,12 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 UserRestaurantItemContainerFragment restaurantMenuFragment = new UserRestaurantItemContainerFragment();
                 restaurantMenuFragment.restaurantData = restaurantDataList.get(position);
+
+                SharedPreference.SaveData(activity,RESTAURANT_ID,restaurantData.getId());
+
                 HelperMethod.replace(restaurantMenuFragment, activity.getSupportFragmentManager(),
                         R.id.user_cycle_activity_fl_container, null, null);
             }

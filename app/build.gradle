@@ -34,7 +34,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 
-
     //design
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.android.material:material:1.2.0-alpha04'
@@ -99,5 +98,8 @@ dependencies {
 
     //shimmer loading
     implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+//    //sdp and ssp for depth pixel
+//    implementation 'com.intuit.sdp:sdp-android:1.0.4'
 
 }

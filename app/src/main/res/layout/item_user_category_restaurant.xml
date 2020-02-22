@@ -7,12 +7,11 @@
     android:layout_marginEnd="@dimen/dim_8dp"
     android:orientation="vertical">
 
-    <com.mikhaellopez.circularimageview.CircularImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/item_category_restaurant_img_restaurant_logo"
-        android:layout_width="@dimen/dim_80dp"
-        android:layout_height="@dimen/dim_80dp"
+        android:layout_width="@dimen/dim_60dp"
+        android:layout_height="@dimen/dim_60dp"
         android:layout_gravity="center"
-        app:civ_border_color="@color/pink"
         app:civ_border_width="3dp"
         android:background="@null"
         app:civ_shadow="true"

@@ -15,6 +15,7 @@ import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.userCycle.userHome.UserRestaurantListFragment;
+import com.example.sofra.view.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantMenuFragment;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
@@ -22,17 +23,22 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRestaurantCategoryAdapter.ViewHolder> {
 
 
     private BaseActivity activity;
     private List<CategoryData> listOfCategoryDataList = new ArrayList<>();
-    private CategoryData listOfCategoryData;
+    private CategoryData categoryData;
+    UserRestaurantMenuFragment userRestaurantListFragment;
+    private int resId;
 
-    public UserRestaurantCategoryAdapter(BaseActivity activity, List<CategoryData> listOfCategoryDataList) {
+    public UserRestaurantCategoryAdapter(BaseActivity activity, List<CategoryData> listOfCategoryDataList, int resId, UserRestaurantMenuFragment userRestaurantMenuFragment) {
         this.activity = activity;
         this.listOfCategoryDataList = listOfCategoryDataList;
+        this.resId = resId;
+        this.userRestaurantListFragment = userRestaurantMenuFragment;
     }
 
     @Override
@@ -50,17 +56,20 @@ public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRest
     }
 
     private void setData(ViewHolder holder, int position) {
-        listOfCategoryData = listOfCategoryDataList.get(position);
+        categoryData = listOfCategoryDataList.get(position);
 
-        holder.itemUserCategoryTvCategoryName.setText(listOfCategoryData.getName());
-        Glide.with(activity).load(listOfCategoryData.getPhotoUrl()).into(holder.itemCategoryRestaurantImgRestaurantLogo);
+        holder.itemUserCategoryTvCategoryName.setText(categoryData.getName());
+        Glide.with(activity).load(categoryData.getPhotoUrl()).into(holder.itemCategoryRestaurantImgRestaurantLogo);
 
     }
 
     private void setAction(ViewHolder holder, int position) {
+
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                userRestaurantListFragment.getMenuList(resId, listOfCategoryDataList.get(position).getId(), 1);
 
             }
         });
@@ -73,9 +82,8 @@ public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRest
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_category_restaurant_img_restaurant_logo)
-        CircularImageView itemCategoryRestaurantImgRestaurantLogo;
+        CircleImageView itemCategoryRestaurantImgRestaurantLogo;
         @BindView(R.id.item_user_category_tv_category_name)
-
         TextView itemUserCategoryTvCategoryName;
         private View view;
 

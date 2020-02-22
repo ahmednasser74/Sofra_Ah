@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.view.activity.SplashCycleActivity;
 import com.example.sofra.view.fragment.resturantCycle.resaurantMore.offers.RestaurantOffersFragment;
@@ -81,6 +82,7 @@ public class RestaurantMoreFragment extends BaseFragment {
                 HelperMethod.replace(new RestaurantChangePasswordFragment(), getActivity().getSupportFragmentManager(),
                         R.id.restaurant_cycle_fl_fragment_container, null, null);                break;
             case R.id.restaurant_more_fragment_sign_out:
+
                 Dialog dialog = new Dialog(getActivity());
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View v = inflater.inflate(R.layout.dialog_sign_out, null);
@@ -93,6 +95,7 @@ public class RestaurantMoreFragment extends BaseFragment {
                         Intent intent = new Intent(getActivity(), SplashCycleActivity.class);
                         getActivity().startActivity(intent);
                         getActivity().finish();
+                        SharedPreference.Clean(getActivity());
                         Toast.makeText(baseActivity, "You Have LogOut", Toast.LENGTH_SHORT).show();
                     }
                 });
