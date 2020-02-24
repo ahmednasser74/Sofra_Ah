@@ -26,7 +26,7 @@
                 android:textSize="40sp" />
 
             <EditText
-                android:id="@+id/order_details_fragment1_et_notes"
+                android:id="@+id/order_confirmation_fragment1_et_notes"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginStart="@dimen/dim_16dp"
@@ -49,7 +49,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/order_details_fragment1_tv_address"
+                android:id="@+id/order_confirmation_fragment1_tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dim_16dp"
@@ -131,7 +131,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/order_details_fragment1_tv_total"
+                            android:id="@+id/order_confirmation_fragment1_tv_total"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
@@ -150,7 +150,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/order_details_fragment1_tv_delivery_fees"
+                            android:id="@+id/order_confirmation_fragment1_tv_delivery_fees"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
@@ -169,7 +169,7 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:id="@+id/order_details_fragment1_tv_total_amount"
+                            android:id="@+id/order_confirmation_fragment1_tv_total_amount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
@@ -180,7 +180,7 @@
             </androidx.cardview.widget.CardView>
 
             <Button
-                android:id="@+id/order_details_fragment1_order_confirmation"
+                android:id="@+id/order_confirmation_fragment1_order_confirmation"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

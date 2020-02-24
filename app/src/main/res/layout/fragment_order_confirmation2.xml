@@ -1,7 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/dim_8dp"
+                android:fontFamily="@font/yehia_font"
+                android:text="Order Details"
+                android:textColor="@color/blue"
+                android:textSize="40sp" />
+
+            <androidx.cardview.widget.CardView
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:backgroundTint="@color/gray"
+                app:cardCornerRadius="@dimen/dim_20dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/order_confirmation_fragment2_img"
+                        android:layout_width="@dimen/dim_70dp"
+                        android:layout_height="@dimen/dim_70dp"
+                        android:layout_margin="@dimen/dim_10dp"
+                        android:background="@drawable/logo" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_restaurant_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dim_16dp"
+                        android:layout_toEndOf="@id/order_confirmation_fragment2_img"
+                        android:text="restaurant name"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_order_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/order_confirmation_fragment2_tv_restaurant_name"
+                        android:layout_marginTop="@dimen/dim_8dp"
+                        android:layout_toEndOf="@id/order_confirmation_fragment2_img"
+                        android:text="Order Date"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/marginSET16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:backgroundTint="@color/gray"
+                app:cardCornerRadius="@dimen/dim_20dp">
+
+                <LinearLayout
+                    style="@style/paddingSETB16"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address : "
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_order_address_country"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_order_address_town"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_order_address_street"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/marginSET16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:backgroundTint="@color/gray"
+                app:cardCornerRadius="@dimen/dim_20dp">
+
+                <LinearLayout
+                    style="@style/marginSET8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dim_8dp"
+                        android:text="Order Details : "
+                        android:textColor="@color/blue"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_meal_name"
+                            style="@style/marginTB8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meal Name   "
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_meal_price"
+                            style="@style/marginTB8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meal Price"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                style="@style/margin_paddingSET16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:backgroundTint="@color/gray"
+                app:cardCornerRadius="@dimen/dim_20dp">
+
+                <LinearLayout
+                    style="@style/marginSETB8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dim_4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Order Price : "
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_order_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dim_4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Delivery Fees : "
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_order_Delivery_fees"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dim_4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Amount : "
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_order_total_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/dim_4dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Payment By : "
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/order_confirmation_fragment2_tv_order_payment_by"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dim_16dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/order_confirmation_fragment2_btn_cancel_order"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_shape"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="8dp"
+                        android:paddingBottom="@dimen/dim_4dp"
+                        android:src="@drawable/ic_white_close" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/order_confirmation_fragment2_btn_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/green_shape"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/order_confirmation_fragment2_img_confirm"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="@dimen/dim_4dp"
+                        android:src="@drawable/ic_white_like" />
+
+                    <TextView
+                        android:id="@+id/order_confirmation_fragment2_tv_confirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Confirm"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/order_confirmation_fragment2_btn_call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/pink_shape"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="@dimen/dim_4dp"
+                        android:src="@drawable/ic_white_phone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Call"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

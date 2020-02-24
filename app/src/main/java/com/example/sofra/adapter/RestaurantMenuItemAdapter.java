@@ -77,14 +77,17 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
     }
 
     private void setData(ViewHolder holder, int position) {
+
         FoodItemData foodItemData = foodItemDataList.get(position);
         holder.itemRestaurantMenuTvMealName.setText(foodItemData.getName());
         holder.itemRestaurantMenuTvMealPrice.setText(foodItemData.getPrice());
         holder.itemRestaurantMenuTvMealDetails.setText(foodItemData.getDescription());
         Glide.with(activity).load(foodItemData.getPhotoUrl()).into(holder.itemRestaurantMenuImg);
+
     }
 
     private void setAction(ViewHolder holder, int position) {
+
         holder.itemRestaurantMenuImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

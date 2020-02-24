@@ -28,6 +28,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -50,7 +51,7 @@ public class HelperMethod {
         }
     }
 
-    public static void initImage(Activity activity , Action<ArrayList<AlbumFile>> action) {
+    public static void initImage(Activity activity, Action<ArrayList<AlbumFile>> action) {
         Album.initialize(AlbumConfig.newBuilder(activity)
                 .setAlbumLoader(new MediaLoader())
                 .build());
@@ -66,6 +67,7 @@ public class HelperMethod {
                 })
                 .start();
     }
+
     public static void showCalender(Context context, String title, final TextView text_view_data, final DateTxt data1) {
         DatePickerDialog mDatePicker = new DatePickerDialog(context, AlertDialog.THEME_HOLO_DARK, new DatePickerDialog.OnDateSetListener() {
             public void onDateSet(DatePicker datepicker, int selectedYear, int selectedMonth, int selectedDay) {
@@ -108,6 +110,12 @@ public class HelperMethod {
         Glide.with(context)
                 .load(URl)
                 .into(imageView);
+    }
+
+    public static void onLoadImageFromUrl(CircleImageView circleImageView, String URl, Context context) {
+        Glide.with(context)
+                .load(URl)
+                .into(circleImageView);
     }
 
 

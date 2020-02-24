@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,17 +15,13 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantMenuItemAdapter;
-import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantAddMenuItem.RestaurantAddMenuItem;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
-import com.example.sofra.data.model.restaurantMenuItem.RestaurantMenuItem;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.yanzhenjie.album.Action;
 import com.yanzhenjie.album.Album;
@@ -62,11 +57,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     @BindView(R.id.restaurant_add_item_fragment_et_item_name)
     TextInputLayout restaurantAddItemFragmentEtItemName;
     @BindView(R.id.restaurant_add_item_fragment_et_item_description)
-    EditText restaurantAddItemFragmentEtItemDescription;
+    TextInputLayout restaurantAddItemFragmentEtItemDescription;
     @BindView(R.id.restaurant_add_item_fragment_et_item_price)
-    EditText restaurantAddItemFragmentEtItemPrice;
+    TextInputLayout restaurantAddItemFragmentEtItemPrice;
     @BindView(R.id.restaurant_add_item_fragment_et_item_offer_price)
-    EditText restaurantAddItemFragmentEtItemOfferPrice;
+    TextInputLayout restaurantAddItemFragmentEtItemOfferPrice;
     @BindView(R.id.restaurant_add_item_fragment_btn_add_item)
     Button restaurantAddItemFragmentBtnAddItem;
 
@@ -100,12 +95,12 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     private void addNewMenuItem() {
-        description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
-        price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getText().toString());
+        description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getEditText().getText().toString());
+        price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getEditText().getText().toString());
         photo = convertFileToMultipart((path), "photo");
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
-        offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getText().toString());
+        offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getEditText().getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
         if (isEmpty(description.toString())) {
@@ -160,9 +155,9 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
             restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
             restaurantAddItemFragmentEtItemName.getEditText().setText(foodItemData.getName());
-            restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
-            restaurantAddItemFragmentEtItemPrice.setText(foodItemData.getPrice());
-            restaurantAddItemFragmentEtItemOfferPrice.setText(foodItemData.getOfferPrice());
+            restaurantAddItemFragmentEtItemDescription.getEditText().setText(foodItemData.getDescription());
+            restaurantAddItemFragmentEtItemPrice.getEditText().setText(foodItemData.getPrice());
+            restaurantAddItemFragmentEtItemOfferPrice.getEditText().setText(foodItemData.getOfferPrice());
 
         }
     }
@@ -184,6 +179,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     private void editMenuItem() {
+
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
         categoryId = convertToRequestBody(String.valueOf(categoryData.getId()));
@@ -199,10 +195,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 //                        restaurantMenuItemAdapter.foodItemDataList.add(restaurantMenuItemAdapter.position, response.body().getData());
                         restaurantMenuItemAdapter.notifyDataSetChanged();
 
-//                        HelperMethod.replace(restaurantAddMenuItemFragment, getActivity().getSupportFragmentManager(),
+                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+
+//                        HelperMethod.replace(new RestaurantMenuFragment(), getActivity().getSupportFragmentManager(),
 //                                R.id.restaurant_cycle_fl_fragment_container, null, null);
 
-                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
                 } catch (Exception e) {

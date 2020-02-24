@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
-                android:gravity="start"
                 android:hint="Item Description"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp">
@@ -73,26 +72,38 @@
                     android:background="@null" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <EditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/restaurant_add_item_fragment_et_item_price"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dim_50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="Item Price"
+                android:hint="Item Description"
                 android:paddingStart="@dimen/dim_16dp"
-                android:paddingEnd="@dimen/dim_16dp" />
+                android:paddingEnd="@dimen/dim_16dp">
 
-            <EditText
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/restaurant_add_item_fragment_et_item_offer_price"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dim_50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="Offer Price"
+                android:hint="Item Description"
                 android:paddingStart="@dimen/dim_16dp"
-                android:paddingEnd="@dimen/dim_16dp" />
+                android:paddingEnd="@dimen/dim_16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dim_50dp"
+                    android:background="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
                 android:id="@+id/restaurant_add_item_fragment_btn_add_item"

@@ -17,6 +17,202 @@
         <item name="android:layout_marginStart">@dimen/dim_16dp</item>
         <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
     </style>
+
+    <!--margin-->
+    <style name="marginSETB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="marginSET16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="marginSEB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="marginSE16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="marginTB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <!--padding-->
+    <style name="paddingSETB16" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="paddingSET16" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="paddingSE16" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="paddingSEB16" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="paddingTB16" parent="TextAppearance.AppCompat">
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <!--margin + padding-->
+
+    <style name="margin_paddingSETB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="margin_paddingSET16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="margin_paddingSEB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_16dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+        <item name="android:paddingStart">@dimen/dim_16dp</item>
+        <item name="android:paddingEnd">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+
+    <style name="margin_paddingTB16" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">@dimen/dim_16dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_16dp</item>
+        <item name="android:paddingTop">@dimen/dim_16dp</item>
+        <item name="android:paddingBottom">@dimen/dim_16dp</item>
+    </style>
+    <!--margin8-->
+    <style name="marginSETB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="marginSE8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="marginSET8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="marginSEB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="marginTB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <!--padding-->
+    <style name="paddingSETB8" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="paddingSE8" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="paddingSET8" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="paddingSEB8" parent="TextAppearance.AppCompat">
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="paddingTB8" parent="TextAppearance.AppCompat">
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <!--margin + padding-->
+    <!--margin-->
+    <style name="margin_paddingSETB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="margin_paddingSET8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="margin_paddingSEB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
+    <style name="margin_paddingTB8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginTop">@dimen/dim_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+        <item name="android:paddingTop">@dimen/dim_8dp</item>
+        <item name="android:paddingBottom">@dimen/dim_8dp</item>
+    </style>
+
     <!--switch style -->
     <style name="Switch">
         <item name="android:colorControlActivated" tools:targetApi="lollipop">
@@ -30,6 +226,7 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
     <style name="scrollBarStyle">
         <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
         <item name="android:scrollbarStyle">outsideOverlay</item>
