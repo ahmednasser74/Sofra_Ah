@@ -8,6 +8,7 @@
         android:id="@+id/restaurant_more_fragment_fragment_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_60dp"
+        android:fontFamily="@font/yehia_font"
         android:gravity="center"
         android:text="More Setting"
         android:textColor="@color/blue"
@@ -36,9 +37,10 @@
                     android:background="@drawable/ic_gift" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="Offers"
@@ -67,10 +69,11 @@
                     android:background="@drawable/ic_blue_mail_none" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
                     android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="ContactUs"
@@ -99,9 +102,10 @@
                     android:background="@drawable/ic_blue_lamp" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="About App"
@@ -130,9 +134,10 @@
                     android:background="@drawable/ic_blue_star" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="Rating and Comments"
@@ -161,9 +166,10 @@
                     android:background="@drawable/ic_blue_lock" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="Change Password"
@@ -192,17 +198,16 @@
                     android:background="@drawable/ic_blue_log_out" />
 
                 <TextView
-                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
+                    android:fontFamily="@font/yehia_font"
+                    android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
                     android:text="Sign Out"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

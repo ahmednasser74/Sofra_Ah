@@ -9,6 +9,7 @@ import com.example.sofra.data.model.restaurantAddNewCategory.RestaurantAddNewCat
 import com.example.sofra.data.model.restaurantAddOffer.RestaurantAddOffer;
 import com.example.sofra.data.model.restaurantCategory.CategoriesNotPaginated;
 import com.example.sofra.data.model.restaurantCategory.CategoriesPaginated;
+import com.example.sofra.data.model.restaurantChangePassword.RestaurantChangePassword;
 import com.example.sofra.data.model.restaurantChangeState.RestaurantChangeState;
 import com.example.sofra.data.model.restaurantCommission.RestaurantCommission;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
@@ -221,6 +222,14 @@ public interface ApiService {
     @FormUrlEncoded
     Call<RestaurantDeleteOffer> getRestaurantDeleteOffer(@Field("offer_id") int offerId,
                                                          @Field("api_token") String apiToken);
+
+    @POST("restaurant/change-password")
+    @FormUrlEncoded
+    Call<RestaurantChangePassword> getRestaurantChangePassword(@Field("api_token") String apiToken,
+                                                               @Field("old_password") String oldPassword,
+                                                               @Field("password") String password,
+                                                               @Field("password_confirmation") String password_confirmation);
+
 
 }
 // @Query("category") ArrayList<String> categories

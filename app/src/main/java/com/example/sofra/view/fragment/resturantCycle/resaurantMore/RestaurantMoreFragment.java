@@ -41,7 +41,7 @@ public class RestaurantMoreFragment extends BaseFragment {
                              @Nullable Bundle savedInstanceState) {
 
         setUpActivity();
-        View view = inflater.inflate(R.layout.fragment_restaurnat_more, container, false);
+        View view = inflater.inflate(R.layout.fragment_restaurant_more, container, false);
         ButterKnife.bind(this, view);
 
 

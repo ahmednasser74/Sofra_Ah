@@ -45,7 +45,9 @@ import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 public class DialogAddCategory extends Dialog {
 
@@ -135,10 +137,11 @@ public class DialogAddCategory extends Dialog {
         String apiToken = LoadData(activity, RESTAURANT_API_TOKEN);
         apitoken = convertToRequestBody(apiToken);
         categoryId = convertToRequestBody(categoryData.getId().toString());
-
+        showProgressDialog(activity, "please wait...");
         getClient().getRestaurantUpdateCategory(categoryName, categoryPhoto, apitoken, categoryId).enqueue(new Callback<RestaurantUpdateCategory>() {
             @Override
             public void onResponse(Call<RestaurantUpdateCategory> call, Response<RestaurantUpdateCategory> response) {
+                dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
 
@@ -175,6 +178,7 @@ public class DialogAddCategory extends Dialog {
         }
 
         init(categoryName, categoryPhoto);
+        showProgressDialog(activity, "please wait...");
 
     }
 
@@ -187,7 +191,7 @@ public class DialogAddCategory extends Dialog {
             public void onResponse(Call<RestaurantAddNewCategory> call, Response<RestaurantAddNewCategory> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-
+                        dismissProgressDialog();
                         restaurantCategoryAdapter.listRestaurantCategoryData.add(response.body().getData());
                         restaurantCategoryAdapter.notifyDataSetChanged();
                         dismiss();

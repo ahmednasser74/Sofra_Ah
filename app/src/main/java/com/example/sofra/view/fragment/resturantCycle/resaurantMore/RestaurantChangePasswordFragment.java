@@ -38,6 +38,7 @@ public class RestaurantChangePasswordFragment extends BaseFragment {
 
 
         return view;
+
     }
 
 

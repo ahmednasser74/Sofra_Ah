@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.agrawalsuneet.dotsloader.utils.Helper;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantMenuItemAdapter;
@@ -47,6 +48,7 @@ import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
+import static com.example.sofra.helper.HelperMethod.replace;
 import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 public class RestaurantAddMenuItemFragment extends BaseFragment {
@@ -135,6 +137,8 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
+//                        replace(new RestaurantMenuFragment(), getActivity().getSupportFragmentManager()
+//                                , R.id.restaurant_cycle_fl_fragment_container, null, null);
                     }
                 } catch (Exception e) {
 

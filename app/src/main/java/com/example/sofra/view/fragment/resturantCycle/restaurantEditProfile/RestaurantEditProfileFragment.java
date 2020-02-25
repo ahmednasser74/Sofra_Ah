@@ -156,8 +156,11 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(authRestaurantData.getUser().getWhatsapp());
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(authRestaurantData.getUser().getDeliveryTime());
         restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(authRestaurantData.getUser().getDeliveryCost());
-
-//        restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
+        if (restaurantEditProfileFragmentSwitch.equals("open")) {
+            restaurantEditProfileFragmentSwitch.setChecked(true);
+        } else {
+            restaurantEditProfileFragmentSwitch.setChecked(false);
+        }
 //        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(authRestaurantData.getUser().getRegion().getCity().getName()));
 //        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), authRestaurantData.getUser().getRegion().getName())));
 
