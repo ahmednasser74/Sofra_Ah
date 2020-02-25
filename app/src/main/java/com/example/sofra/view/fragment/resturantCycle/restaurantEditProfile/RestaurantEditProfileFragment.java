@@ -67,7 +67,9 @@ import static com.example.sofra.data.local.SharedPreference.RESTAURANT_WHATS_APP
 import static com.example.sofra.data.model.GeneralRequestSpinner.getSpinnerCityData;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
 import static com.example.sofra.helper.HelperMethod.onLoadImageFromUrl;
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 
 public class RestaurantEditProfileFragment extends BaseFragment {
@@ -188,7 +190,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
             public void onResponse(Call<RestaurantEditProfile> call, Response<RestaurantEditProfile> response) {
                 try {
                     if (response.body().getStatus() == 1) {
-
+                        dismissProgressDialog();
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -212,6 +214,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 initImage();
                 break;
             case R.id.restaurant_edit_profile_fragment_btn_edit:
+
                 Email = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getEmail()));
                 Name = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getName()));
                 Phone = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getPhone()));
@@ -223,6 +226,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
                 DeliveryTime = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryTime()));
                 editProfile(Email, Name, Phone, RegionId, DeliveryCost, MinimumCharger, Availability, Photo, apitoken, DeliveryTime);
+                showProgressDialog(getActivity(), "Please Wait...");
                 break;
         }
     }
