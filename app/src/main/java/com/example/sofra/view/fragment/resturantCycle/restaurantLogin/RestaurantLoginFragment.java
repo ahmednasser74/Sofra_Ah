@@ -45,6 +45,7 @@ public class RestaurantLoginFragment extends BaseFragment {
     TextInputLayout restaurantLoginFragmentEtMail;
     @BindView(R.id.restaurant_login_fragment_et_password)
     TextInputLayout restaurantLoginFragmentEtPassword;
+    public static String password;
 
     public RestaurantLoginFragment() {
     }
@@ -71,7 +72,7 @@ public class RestaurantLoginFragment extends BaseFragment {
 
     private void login() {
         String email = restaurantLoginFragmentEtMail.getEditText().getText().toString();
-        String password = restaurantLoginFragmentEtPassword.getEditText().getText().toString();
+        password = restaurantLoginFragmentEtPassword.getEditText().getText().toString();
 
         if (email.isEmpty()) {
             restaurantLoginFragmentEtMail.setError("please enter email");
@@ -99,6 +100,8 @@ public class RestaurantLoginFragment extends BaseFragment {
                                 R.id.restaurant_cycle_fl_fragment_container, null, null);
 
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(baseActivity, "User or Password Incorrect", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (Exception e) {
@@ -107,7 +110,6 @@ public class RestaurantLoginFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<AuthRestaurant> call, Throwable t) {
-                Toast.makeText(baseActivity, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

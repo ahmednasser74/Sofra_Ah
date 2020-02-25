@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.UserRestaurantReviewAdapter;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReview;
 import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReviewData;
 import com.example.sofra.helper.OnEndLess;
 import com.example.sofra.view.activity.BaseActivity;
 import com.example.sofra.view.fragment.untitledFolder.BaseFragment;
+import com.example.sofra.view.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantReviewFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.helper.HelperMethod.replace;
 
 
 public class RestaurantCommentsFragment extends BaseFragment {
@@ -41,7 +46,7 @@ public class RestaurantCommentsFragment extends BaseFragment {
     private int maxPage = 0;
     private List<UserRestaurantReviewData> userRestaurantReviewDataList = new ArrayList<>();
     private UserRestaurantReviewAdapter userRestaurantReviewAdapter;
-    public Restaurant restaurantData;
+    public UserRestaurantReviewData restaurantData;
 
     public RestaurantCommentsFragment() {
     }
@@ -60,7 +65,6 @@ public class RestaurantCommentsFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_restaurant_comments, container, false);
         ButterKnife.bind(this, view);
-
 //        init();
         return view;
     }
@@ -91,7 +95,8 @@ public class RestaurantCommentsFragment extends BaseFragment {
     }
 
     private void getReviewList(int page) {
-        getClient().getUserRestaurantReview("HRbqKFSaq5ZpsOKITYoztpFZNylmzL9elnlAThxZSZ52QWqVBIj8Rdq7RhoB",
+
+        getClient().getUserRestaurantReview(LoadData(getActivity(), RESTAURANT_API_TOKEN),
                 restaurantData.getId(), page).enqueue(new Callback<UserRestaurantReview>() {
             @Override
             public void onResponse(Call<UserRestaurantReview> call, Response<UserRestaurantReview> response) {
@@ -115,6 +120,7 @@ public class RestaurantCommentsFragment extends BaseFragment {
 
             }
         });
+
     }
 
 

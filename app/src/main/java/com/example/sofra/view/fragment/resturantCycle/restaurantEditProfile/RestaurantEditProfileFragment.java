@@ -149,6 +149,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
     private void setData() {
 
+        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, authRestaurantData.getUser().getPhotoUrl(), getActivity());
         restaurantEditProfileFragmentEtName.getEditText().setText(authRestaurantData.getUser().getName());
         restaurantEditProfileFragmentEtMail.getEditText().setText(authRestaurantData.getUser().getEmail());
         restaurantEditProfileFragmentEtMinimumDelivery.getEditText().setText(authRestaurantData.getUser().getMinimumCharger());
@@ -156,15 +157,15 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         restaurantEditProfileFragmentEtWhatsapp.getEditText().setText(authRestaurantData.getUser().getWhatsapp());
         restaurantEditProfileFragmentEtDurationDelivery.getEditText().setText(authRestaurantData.getUser().getDeliveryTime());
         restaurantEditProfileFragmentEtDeliveryCost.getEditText().setText(authRestaurantData.getUser().getDeliveryCost());
-        if (restaurantEditProfileFragmentSwitch.equals("open")) {
-            restaurantEditProfileFragmentSwitch.setChecked(true);
-        } else {
+
+        if (!authRestaurantData.getUser().getAvailability().equals("open")) {
             restaurantEditProfileFragmentSwitch.setChecked(false);
+        } else {
+            restaurantEditProfileFragmentSwitch.setChecked(true);
         }
-//        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(authRestaurantData.getUser().getRegion().getCity().getName()));
+//        restaurantEditProfileFragmentSpCity.setSelected(authRestaurantData.getUser().getRegion().getCity().getName());
 //        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), authRestaurantData.getUser().getRegion().getName())));
 
-        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, authRestaurantData.getUser().getPhotoUrl(), getActivity());
         getSpinnerCityData(getClient().getCity(), cityAdapter
                 , restaurantEditProfileFragmentSpCity, "City", new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -221,8 +222,10 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         Photo = convertFileToMultipart(String.valueOf(getActivity()), authRestaurantData.getUser().getPhotoUrl());
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
         DeliveryTime = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryTime()));
-        editProfile(Email, Name, Phone, RegionId, DeliveryCost, MinimumCharger, Availability, Photo, apitoken, DeliveryTime);
+
         showProgressDialog(getActivity(), "please wait...");
+
+        editProfile(Email, Name, Phone, RegionId, DeliveryCost, MinimumCharger, Availability, Photo, apitoken, DeliveryTime);
     }
 
     @OnClick({R.id.restaurant_edit_profile_fragment_et_minimum_delivery, R.id.restaurant_edit_profile_fragment_btn_edit, R.id.restaurant_edit_profile_fragment_add_photo})
