@@ -328,9 +328,7 @@
                         android:text="Call"
                         android:textColor="#fff" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
