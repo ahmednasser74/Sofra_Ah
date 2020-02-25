@@ -196,7 +196,12 @@
         <item name="android:paddingEnd">@dimen/dim_8dp</item>
         <item name="android:paddingTop">@dimen/dim_8dp</item>
     </style>
-
+    <style name="margin_paddingSE8" parent="TextAppearance.AppCompat">
+        <item name="android:layout_marginStart">@dimen/dim_8dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_8dp</item>
+        <item name="android:paddingStart">@dimen/dim_8dp</item>
+        <item name="android:paddingEnd">@dimen/dim_8dp</item>
+    </style>
     <style name="margin_paddingSEB8" parent="TextAppearance.AppCompat">
         <item name="android:layout_marginStart">@dimen/dim_8dp</item>
         <item name="android:layout_marginEnd">@dimen/dim_8dp</item>

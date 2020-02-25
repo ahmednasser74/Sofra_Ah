@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,7 +58,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     @BindView(R.id.restaurant_add_item_fragment_et_item_name)
     TextInputLayout restaurantAddItemFragmentEtItemName;
     @BindView(R.id.restaurant_add_item_fragment_et_item_description)
-    TextInputLayout restaurantAddItemFragmentEtItemDescription;
+    EditText restaurantAddItemFragmentEtItemDescription;
     @BindView(R.id.restaurant_add_item_fragment_et_item_price)
     TextInputLayout restaurantAddItemFragmentEtItemPrice;
     @BindView(R.id.restaurant_add_item_fragment_et_item_offer_price)
@@ -95,7 +96,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
     }
 
     private void addNewMenuItem() {
-        description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getEditText().getText().toString());
+        description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getEditText().getText().toString());
         photo = convertFileToMultipart((path), "photo");
         name = convertToRequestBody(restaurantAddItemFragmentEtItemName.getEditText().getText().toString());
@@ -103,14 +104,16 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getEditText().getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
-        if (isEmpty(description.toString())) {
-            restaurantAddItemFragmentEtItemName.setError("please enter name");
-        } else if (restaurantAddItemFragmentEtItemDescription.equals("")) {
-            restaurantAddItemFragmentEtItemDescription.setError("please enter description");
-        } else if (restaurantAddItemFragmentEtItemPrice.equals("")) {
-            restaurantAddItemFragmentEtItemPrice.setError("please enter price");
-        } else if (restaurantAddItemFragmentImgAddPhoto == null) {
+        if (path == null) {
             Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
+        } else if (restaurantAddItemFragmentEtItemName == null) {
+            Toast.makeText(baseActivity, "please write item name", Toast.LENGTH_SHORT).show();
+            restaurantAddItemFragmentEtItemName.setError("please enter price");
+        } else if (restaurantAddItemFragmentEtItemDescription.toString().trim().length() == 0) {
+            Toast.makeText(baseActivity, "please write item description", Toast.LENGTH_SHORT).show();
+        } else if (restaurantAddItemFragmentEtItemPrice == null) {
+            Toast.makeText(baseActivity, "please write item price", Toast.LENGTH_SHORT).show();
+            restaurantAddItemFragmentEtItemPrice.setError("please enter name");
         } else {
             addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
             showProgressDialog(getActivity(), "Please Wait...");
@@ -155,7 +158,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             Glide.with(getActivity()).load(foodItemData.getPhotoUrl()).into(restaurantAddItemFragmentImgAddPhoto);
             restaurantAddItemFragmentTvTitle.setText(foodItemData.getName());
             restaurantAddItemFragmentEtItemName.getEditText().setText(foodItemData.getName());
-            restaurantAddItemFragmentEtItemDescription.getEditText().setText(foodItemData.getDescription());
+            restaurantAddItemFragmentEtItemDescription.setText(foodItemData.getDescription());
             restaurantAddItemFragmentEtItemPrice.getEditText().setText(foodItemData.getPrice());
             restaurantAddItemFragmentEtItemOfferPrice.getEditText().setText(foodItemData.getOfferPrice());
 
@@ -196,11 +199,6 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                         restaurantMenuItemAdapter.notifyDataSetChanged();
 
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
-
-//                        HelperMethod.replace(new RestaurantMenuFragment(), getActivity().getSupportFragmentManager(),
-//                                R.id.restaurant_cycle_fl_fragment_container, null, null);
-
-
                     }
                 } catch (Exception e) {
 

@@ -160,8 +160,8 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 //        restaurantEditProfileFragmentSwitch.setChecked(Boolean.parseBoolean(LoadData(getActivity(), RESTAURANT_ACTIVATED)));
 //        restaurantEditProfileFragmentSpCity.setSelected(Boolean.parseBoolean(authRestaurantData.getUser().getRegion().getCity().getName()));
 //        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), authRestaurantData.getUser().getRegion().getName())));
-        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, authRestaurantData.getUser().getPhotoUrl(), getActivity());
 
+        onLoadImageFromUrl(restaurantEditProfileFragmentAddPhoto, authRestaurantData.getUser().getPhotoUrl(), getActivity());
         getSpinnerCityData(getClient().getCity(), cityAdapter
                 , restaurantEditProfileFragmentSpCity, "City", new AdapterView.OnItemSelectedListener() {
                     @Override
@@ -188,9 +188,9 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 availability, photo, apiToken, deliveryTime).enqueue(new Callback<RestaurantEditProfile>() {
             @Override
             public void onResponse(Call<RestaurantEditProfile> call, Response<RestaurantEditProfile> response) {
+                dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
-                        dismissProgressDialog();
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -198,7 +198,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
                 }
             }
-  
+
             @Override
             public void onFailure(Call<RestaurantEditProfile> call, Throwable t) {
 
@@ -206,6 +206,21 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         });
     }
 
+    private void getEdits() {
+
+        Email = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getEmail()));
+        Name = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getName()));
+        Phone = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getPhone()));
+        RegionId = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getRegionId()));
+        DeliveryCost = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryCost()));
+        MinimumCharger = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getMinimumCharger()));
+        Availability = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getAvailability()));
+        Photo = convertFileToMultipart(String.valueOf(getActivity()), authRestaurantData.getUser().getPhotoUrl());
+        apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
+        DeliveryTime = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryTime()));
+        editProfile(Email, Name, Phone, RegionId, DeliveryCost, MinimumCharger, Availability, Photo, apitoken, DeliveryTime);
+        showProgressDialog(getActivity(), "please wait...");
+    }
 
     @OnClick({R.id.restaurant_edit_profile_fragment_et_minimum_delivery, R.id.restaurant_edit_profile_fragment_btn_edit, R.id.restaurant_edit_profile_fragment_add_photo})
     public void onViewClicked(View view) {
@@ -214,19 +229,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                 initImage();
                 break;
             case R.id.restaurant_edit_profile_fragment_btn_edit:
-
-                Email = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getEmail()));
-                Name = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getName()));
-                Phone = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getPhone()));
-                RegionId = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getRegionId()));
-                DeliveryCost = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryCost()));
-                MinimumCharger = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getMinimumCharger()));
-                Availability = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getAvailability()));
-                Photo = convertFileToMultipart(String.valueOf(getActivity()), authRestaurantData.getUser().getPhotoUrl());
-                apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
-                DeliveryTime = convertToRequestBody(LoadData(getActivity(), authRestaurantData.getUser().getDeliveryTime()));
-                editProfile(Email, Name, Phone, RegionId, DeliveryCost, MinimumCharger, Availability, Photo, apitoken, DeliveryTime);
-                showProgressDialog(getActivity(), "Please Wait...");
+                getEdits();
                 break;
         }
     }
