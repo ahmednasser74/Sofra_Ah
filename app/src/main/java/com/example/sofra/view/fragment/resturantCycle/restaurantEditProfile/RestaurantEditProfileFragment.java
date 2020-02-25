@@ -198,7 +198,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
 
                 }
             }
-
+  
             @Override
             public void onFailure(Call<RestaurantEditProfile> call, Throwable t) {
 
