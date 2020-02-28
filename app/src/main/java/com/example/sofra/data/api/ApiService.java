@@ -26,8 +26,10 @@ import com.example.sofra.data.model.restaurantRegister.RestaurantRegister;
 import com.example.sofra.data.model.restaurantUpdateCategory.RestaurantUpdateCategory;
 import com.example.sofra.data.model.userAddReview.UserAddReview;
 import com.example.sofra.data.model.userDetailsOffer.UserDetailsOffer;
+import com.example.sofra.data.model.userLogin.UserLogin;
 import com.example.sofra.data.model.userOffer.UserOffer;
 import com.example.sofra.data.model.userOrders.UserOrders;
+import com.example.sofra.data.model.userResetPassword.UserResetPassword;
 import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReview;
 
 import okhttp3.MultipartBody;
@@ -116,13 +118,6 @@ public interface ApiService {
                                                                @Query("region_id") int regionId);
 
 
-    @POST("client/restaurant/review")
-    @FormUrlEncoded
-    Call<UserAddReview> getUserAddReview(@Field("rate") int rate,
-                                         @Field("comment") String comment,
-                                         @Field("restaurant_id") int restaurantId,
-                                         @Field("api_token") String apiToken);
-
     @POST("restaurant/sign-up")
     @Multipart
     Call<RestaurantRegister> getRestauranRegister(@Field("name") String name,
@@ -196,6 +191,13 @@ public interface ApiService {
     Call<RestaurantDeleteMenuItem> getRestaurantDeleteMenuItem(@Field("api_token") String apiToken,
                                                                @Field("item_id") int itemId);
 
+    @POST("restaurant/change-password")
+    @FormUrlEncoded
+    Call<RestaurantChangePassword> getRestaurantChangePassword(@Field("api_token") String apiToken,
+                                                               @Field("old_password") String oldPassword,
+                                                               @Field("password") String password,
+                                                               @Field("password_confirmation") String password_confirmation);
+
     @POST("restaurant/new-offer")
     @Multipart
     Call<RestaurantAddOffer> getRestaurantAddOffer(@Part("description") RequestBody description,
@@ -223,12 +225,21 @@ public interface ApiService {
     Call<RestaurantDeleteOffer> getRestaurantDeleteOffer(@Field("offer_id") int offerId,
                                                          @Field("api_token") String apiToken);
 
-    @POST("restaurant/change-password")
+    @POST("client/restaurant/review")
     @FormUrlEncoded
-    Call<RestaurantChangePassword> getRestaurantChangePassword(@Field("api_token") String apiToken,
-                                                               @Field("old_password") String oldPassword,
-                                                               @Field("password") String password,
-                                                               @Field("password_confirmation") String password_confirmation);
+    Call<UserAddReview> getUserAddReview(@Field("rate") int rate,
+                                         @Field("comment") String comment,
+                                         @Field("restaurant_id") int restaurantId,
+                                         @Field("api_token") String apiToken);
+
+    @POST("client/reset-password")
+    @FormUrlEncoded
+    Call<UserResetPassword> getUserResetPassword(@Field("email") String email);
+
+    @POST("client/login")
+    @FormUrlEncoded
+    Call<UserLogin> getUserLogin(@Field("email") String email,
+                                 @Field("password") String password);
 
 
 }

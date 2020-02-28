@@ -65,6 +65,10 @@ public class Restaurant {
     @Expose
     private List<CategoryData> categories = null;
 
+    @SerializedName("profile_image")
+    @Expose
+    private String profileImage;
+
     public Integer getId() {
         return id;
     }
@@ -207,5 +211,13 @@ public class Restaurant {
 
     public void setCategories(List<CategoryData> categories) {
         this.categories = categories;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }
