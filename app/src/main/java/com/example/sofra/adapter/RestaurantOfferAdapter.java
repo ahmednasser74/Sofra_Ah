@@ -15,8 +15,8 @@ import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantOffer.OfferData;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.view.activity.BaseActivity;
-import com.example.sofra.view.fragment.resturantCycle.resaurantMore.offers.RestaurantAddOffersFragment;
+import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.UI.fragment.resturantCycle.resaurantMore.offers.RestaurantAddOffersFragment;
 
 import java.util.ArrayList;
 import java.util.List;

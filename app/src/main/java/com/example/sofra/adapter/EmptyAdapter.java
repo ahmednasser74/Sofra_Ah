@@ -8,11 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
-import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReview;
-import com.example.sofra.view.activity.BaseActivity;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.sofra.UI.activity.BaseActivity;
 
 import butterknife.ButterKnife;
 

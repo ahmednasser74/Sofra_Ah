@@ -9,10 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReviewData;
-import com.example.sofra.view.activity.BaseActivity;
+import com.example.sofra.UI.activity.BaseActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

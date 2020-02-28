@@ -2,7 +2,6 @@ package com.example.sofra.adapter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,21 +18,16 @@ import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
-import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
-import com.example.sofra.data.model.restaurantEditMenuItem.RestaurantEditMenuItem;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.view.activity.BaseActivity;
-import com.example.sofra.view.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.UI.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,8 +35,6 @@ import retrofit2.Response;
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
-import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
-import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
 import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 

@@ -27,6 +27,7 @@ import com.example.sofra.data.model.restaurantUpdateCategory.RestaurantUpdateCat
 import com.example.sofra.data.model.userAddReview.UserAddReview;
 import com.example.sofra.data.model.userDetailsOffer.UserDetailsOffer;
 import com.example.sofra.data.model.userLogin.UserLogin;
+import com.example.sofra.data.model.userNewPassword.UserNewPassword;
 import com.example.sofra.data.model.userOffer.UserOffer;
 import com.example.sofra.data.model.userOrders.UserOrders;
 import com.example.sofra.data.model.userResetPassword.UserResetPassword;
@@ -235,6 +236,12 @@ public interface ApiService {
     @POST("client/reset-password")
     @FormUrlEncoded
     Call<UserResetPassword> getUserResetPassword(@Field("email") String email);
+
+    @POST("client/new-password")
+    @FormUrlEncoded
+    Call<UserNewPassword> getUserNewPassword(@Field("code") String code,
+                                             @Field("password") String password,
+                                             @Field("password_confirmation") String password_confirmation);
 
     @POST("client/login")
     @FormUrlEncoded

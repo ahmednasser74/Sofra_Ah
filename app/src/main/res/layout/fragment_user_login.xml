@@ -100,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_40dp"
         android:layout_alignParentBottom="true"
-        android:background="#BC747373"
+        android:background="#BC6B6B6B"
         android:text="create new account"
         android:textColor="#fff"
         android:textStyle="bold" />

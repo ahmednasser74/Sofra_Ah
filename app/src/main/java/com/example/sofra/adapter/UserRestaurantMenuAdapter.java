@@ -14,8 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.view.activity.BaseActivity;
-import com.example.sofra.view.fragment.userCycle.userHome.userRestaurantMenu.UserItemDetailsFragment;
+import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.UI.fragment.userCycle.userHome.userRestaurantMenu.UserItemDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
