@@ -20,8 +20,8 @@ import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.UI.activity.BaseActivity;
-import com.example.sofra.UI.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
+import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.fragment.resturantCycle.restaurantHome.RestaurantAddMenuItemFragment;
 
 import java.util.ArrayList;
 import java.util.List;

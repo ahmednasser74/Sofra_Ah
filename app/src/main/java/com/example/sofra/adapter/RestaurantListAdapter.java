@@ -17,8 +17,8 @@ import com.example.sofra.R;
 import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.UI.activity.BaseActivity;
-import com.example.sofra.UI.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantItemContainerFragment;
+import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantItemContainerFragment;
 
 import java.util.ArrayList;
 import java.util.List;

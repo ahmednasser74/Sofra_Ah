@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.model.userOrders.UserOrdersData;
-import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.ui.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

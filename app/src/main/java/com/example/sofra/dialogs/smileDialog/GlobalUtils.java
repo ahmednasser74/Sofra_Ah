@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
-import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.ui.activity.BaseActivity;
 import com.hsalf.smilerating.SmileRating;
 
 import butterknife.BindView;

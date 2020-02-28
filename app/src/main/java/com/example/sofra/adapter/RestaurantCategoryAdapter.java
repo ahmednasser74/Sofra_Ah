@@ -20,8 +20,8 @@ import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.data.model.restaurantDeleteCategory.RestaurantDeleteCategory;
 import com.example.sofra.dialogs.DialogAddCategory;
 import com.example.sofra.helper.HelperMethod;
-import com.example.sofra.UI.activity.BaseActivity;
-import com.example.sofra.UI.fragment.resturantCycle.restaurantHome.RestaurantMenuFragment;
+import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.fragment.resturantCycle.restaurantHome.RestaurantMenuFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

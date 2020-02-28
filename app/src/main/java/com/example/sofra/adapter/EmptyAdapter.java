@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
-import com.example.sofra.UI.activity.BaseActivity;
+import com.example.sofra.ui.activity.BaseActivity;
 
 import butterknife.ButterKnife;
 

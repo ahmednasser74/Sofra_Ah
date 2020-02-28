@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
-import com.example.sofra.UI.activity.BaseActivity;
-import com.example.sofra.UI.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantMenuFragment;
+import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantMenuFragment;
 
 import java.util.ArrayList;
 import java.util.List;
