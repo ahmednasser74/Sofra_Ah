@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
+import com.example.sofra.data.model.userLogin.UserLogin;
 import com.example.sofra.data.model.userResetPassword.UserResetPassword;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
@@ -56,12 +57,12 @@ public class UserForgetPasswordFragment1 extends BaseFragment {
     private void getEmail() {
 
         String email = userForgetPasswordFragment1EtEmail.getText().toString().trim();
-
+        UserLogin userLogin = new UserLogin();
         if (email.isEmpty()) {
-
             Toast.makeText(baseActivity, "please enter email", Toast.LENGTH_SHORT).show();
+        } else if (!email.equals(userLogin.getData().getUser().getEmail())) {
+            Toast.makeText(baseActivity, "email didn't match", Toast.LENGTH_SHORT).show();
         } else {
-
             HelperMethod.showProgressDialog(getActivity(), "Please wait...");
         }
 

@@ -2,6 +2,8 @@
 package com.example.sofra.data.model.restaurantMenuItem;
 
 import java.util.List;
+
+import com.example.sofra.data.model.userNewOrder.Item;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,7 +14,7 @@ public class Data {
     private Integer currentPage;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<Item> data = null;
     @SerializedName("first_page_url")
     @Expose
     private String firstPageUrl;
@@ -52,11 +54,11 @@ public class Data {
         this.currentPage = currentPage;
     }
 
-    public List<Datum> getData() {
+    public List<Item> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<Item> data) {
         this.data = data;
     }
 

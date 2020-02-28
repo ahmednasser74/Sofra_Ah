@@ -1,10 +1,11 @@
 
-package com.example.sofra.data.model.restaurantMenuItem;
+package com.example.sofra.data.model.userNewOrder;
 
+import com.example.sofra.data.model.listRestaurantItem.Pivot;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum {
+public class Item {
 
     @SerializedName("id")
     @Expose
@@ -42,6 +43,9 @@ public class Datum {
     @SerializedName("has_offer")
     @Expose
     private Boolean hasOffer;
+    @SerializedName("pivot")
+    @Expose
+    private Pivot pivot;
 
     public Integer getId() {
         return id;
@@ -137,6 +141,14 @@ public class Datum {
 
     public void setHasOffer(Boolean hasOffer) {
         this.hasOffer = hasOffer;
+    }
+
+    public Pivot getPivot() {
+        return pivot;
+    }
+
+    public void setPivot(Pivot pivot) {
+        this.pivot = pivot;
     }
 
 }

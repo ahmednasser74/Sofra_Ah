@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.sofra.data.model.listOfTown.GeneralResponseData;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
+import com.example.sofra.data.model.restaurantEditProfile.Region;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
