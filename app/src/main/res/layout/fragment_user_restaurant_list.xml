@@ -22,12 +22,6 @@
             android:paddingTop="@dimen/dim_4dp"
             android:paddingEnd="@dimen/dim_16dp">
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_alignParentEnd="true"-->
-            <!--                android:background="@drawable/ic_pink_search_black_24dp" />-->
-
             <EditText
                 android:id="@+id/user_restaurant_list_fragment_et_search"
                 android:layout_width="match_parent"
@@ -85,23 +79,23 @@
         android:textStyle="bold"
         android:visibility="gone" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/user_restaurant_list_fragment_swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/user_restaurant_list_fragment_swipe_refresh"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <io.supercharge.shimmerlayout.ShimmerLayout
+                    android:id="@+id/user_restaurant_list_fragment_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-                    <io.supercharge.shimmerlayout.ShimmerLayout
-                        android:id="@+id/user_restaurant_list_fragment_shimmer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/user_restaurant_list_fragment_rv_restaurant"
@@ -112,26 +106,19 @@
                         android:scrollbarStyle="outsideInset"
                         android:scrollbarThumbVertical="@drawable/pink_shape"
                         android:scrollbars="vertical" />
-                    </io.supercharge.shimmerlayout.ShimmerLayout>
-<!--                    <ProgressBar-->
-<!--                        android:id="@+id/user_restaurant_list_fragment_pb_loading"-->
-<!--                        style="@style/Widget.AppCompat.ProgressBar"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginTop="@dimen/dim_10dp" />-->
+                </io.supercharge.shimmerlayout.ShimmerLayout>
 
-                    <ProgressBar
-                        android:id="@+id/user_restaurant_list_fragment_pagination_progress"
-                        style="@style/Widget.AppCompat.ProgressBar"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_gravity="bottom"
-                        android:visibility="gone" />
+                <ProgressBar
+                    android:id="@+id/user_restaurant_list_fragment_pagination_progress"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="bottom"
+                    android:background="#31A8A8A8"
+                    android:visibility="gone" />
 
-                </RelativeLayout>
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

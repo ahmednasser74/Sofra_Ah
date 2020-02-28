@@ -53,8 +53,6 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
     Spinner restaurantListFragmentSpCity;
     @BindView(R.id.user_restaurant_list_fragment_rv_restaurant)
     RecyclerView restaurantListFragmentRvRestaurant;
-    //    @BindView(R.id.user_restaurant_list_fragment_pb_loading)
-//    ProgressBar restaurantListFragmentPbLoading;
     @BindView(R.id.user_restaurant_list_fragment_swipe_refresh)
     SwipeRefreshLayout restaurantListFragmentSwipeRefresh;
     @BindView(R.id.user_restaurant_list_fragment_pagination_progress)
@@ -91,13 +89,13 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
         setUpActivity();
         View view = inflater.inflate(R.layout.fragment_user_restaurant_list, container, false);
         ButterKnife.bind(this, view);
-        userRestaurantListFragmentShimmer.startShimmerAnimation();
+
+
         init();
         return view;
     }
 
     private void initFilter() {
-        restaurantListFragmentSwipeRefresh.setRefreshing(false);
         String search = userRestaurantListFragmentEtSearch.getText().toString().trim();
 
         getClient().getRestaurantListWithFilter(search, citySpinnerAdapter.selectedId).enqueue(new Callback<RestaurantListWithFilter>() {
@@ -129,6 +127,7 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
     }
 
     public void init() {
+
         linearLayoutManager = new LinearLayoutManager(getActivity());
         restaurantListFragmentRvRestaurant.setLayoutManager(linearLayoutManager);
 
@@ -148,7 +147,6 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
                 }
             }
         };
-
         restaurantListFragmentRvRestaurant.addOnScrollListener(onEndLess);
 
         citySpinnerAdapter = new SpinnersAdapter(getActivity());
@@ -161,17 +159,17 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
             getRestaurantList(1);
         } else {
             restaurantListFragmentRvRestaurant.setAdapter(restaurantListAdapter);
-//            restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
+            restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
         }
 
-//        restaurantListFragmentSwipeRefresh.setOnRefreshListener(
-//                new SwipeRefreshLayout.OnRefreshListener() {
-//                    @Override
-//                    public void onRefresh() {
-//                        init();
-//                    }
-//                }
-//        );
+        restaurantListFragmentSwipeRefresh.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        init();
+                    }
+                }
+        );
     }
 
     private void getRestaurantList(int page) {
@@ -185,7 +183,6 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
                             ListRestaurantData.addAll(response.body().getData().getData());
                             restaurantListFragmentSwipeRefresh.setRefreshing(false);
                             restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
-//                            restaurantListFragmentPbLoading.setVisibility(View.GONE);
                             restaurantListAdapter.notifyDataSetChanged();
                             userRestaurantListFragmentPaginationProgress.setVisibility(View.GONE);
                             userRestaurantListFragmentShimmer.stopShimmerAnimation();
@@ -202,6 +199,7 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
         } else {
             Toast.makeText(baseActivity, "Check internet connection", Toast.LENGTH_LONG).show();
         }
+
     }
 
     @Override
@@ -223,7 +221,21 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
     public void onViewClicked() {
         initFilter();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        userRestaurantListFragmentShimmer.startShimmerAnimation();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        userRestaurantListFragmentShimmer.stopShimmerAnimation();
+    }
+
 }
+
 //    private void onFilter(int page) {
 //        keyword = restaurantListFragmentEtCity.getText().toString().trim();
 //

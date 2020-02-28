@@ -67,11 +67,11 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
     private String path;
     public FoodItemData foodItemData;
-    RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
-    MultipartBody.Part photo;
     public CategoryData categoryData;
     public RestaurantMenuItemAdapter restaurantMenuItemAdapter;
     public int position;
+    RequestBody description, price, preparingTime, name, apitoken, offerPrice, categoryId;
+    MultipartBody.Part photo;
 
     public RestaurantAddMenuItemFragment() {
     }
@@ -91,10 +91,12 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         ButterKnife.bind(this, view);
 
         setMenuItemData();
+
         return view;
     }
 
     private void addNewMenuItem() {
+
         description = convertToRequestBody(restaurantAddItemFragmentEtItemDescription.getText().toString());
         price = convertToRequestBody(restaurantAddItemFragmentEtItemPrice.getEditText().getText().toString());
         photo = convertFileToMultipart((path), "photo");

@@ -1,10 +1,13 @@
 package com.example.sofra.adapter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +16,10 @@ import com.bumptech.glide.Glide;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
 import com.example.sofra.R;
+import com.example.sofra.data.local.SharedPreference;
+import com.example.sofra.data.model.restaurantAddOffer.RestaurantAddOffer;
+import com.example.sofra.data.model.restaurantDeleteMenuItem.RestaurantDeleteMenuItem;
+import com.example.sofra.data.model.restaurantDeleteOffer.RestaurantDeleteOffer;
 import com.example.sofra.data.model.restaurantOffer.OfferData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
@@ -24,6 +31,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.LoadData;
+import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOfferAdapter.ViewHolder> {
 
@@ -31,6 +47,7 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
     private BaseActivity activity;
     private List<OfferData> offerDataList = new ArrayList<>();
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
+    private OfferData offerData;
 
     public RestaurantOfferAdapter(BaseActivity activity, List<OfferData> offerDataList) {
         this.activity = activity;
@@ -75,6 +92,61 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
 
             }
         });
+        holder.itemRestaurantOffersImgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                RestaurantAddOffersFragment restaurantAddOffersFragment = new RestaurantAddOffersFragment();
+                restaurantAddOffersFragment.offerData = offerDataList.get(position);
+                restaurantAddOffersFragment.position = position;
+
+            }
+        });
+
+        holder.itemRestaurantOffersImgRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final AlertDialog alert;
+                AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
+                alert = dialog2.create();
+                alert.setTitle("Delete ?");
+                alert.setMessage("Are you sure you want to delete this Category?");
+                showProgressDialog(activity, "please wait...");
+                alert.setButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        getClient().getRestaurantDeleteOffer(offerData.getId(), LoadData(activity, RESTAURANT_API_TOKEN)).enqueue(new Callback<RestaurantDeleteOffer>() {
+                            @Override
+                            public void onResponse(Call<RestaurantDeleteOffer> call, Response<RestaurantDeleteOffer> response) {
+                                try {
+
+                                    if (response.body().getStatus() == 1) {
+                                        offerDataList.remove(position);
+                                        notifyItemRemoved(position);
+                                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } catch (Exception e) {
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<RestaurantDeleteOffer> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                });
+                alert.setButton2("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
+            }
+        });
+
     }
 
     @Override

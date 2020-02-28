@@ -207,7 +207,6 @@ public interface ApiService {
     @POST("restaurant/new-offer")
     @Multipart
     Call<RestaurantAddOffer> getRestaurantAddOffer(@Part("description") RequestBody description,
-                                                   @Part("price") RequestBody price,
                                                    @Part("starting_at") RequestBody startingAt,
                                                    @Part("name") RequestBody name,
                                                    @Part MultipartBody.Part photo,
@@ -218,7 +217,6 @@ public interface ApiService {
     @POST("restaurant/update-offer")
     @Multipart
     Call<RestaurantEditOffer> getRestaurantEditOffer(@Part("description") RequestBody description,
-                                                     @Part("price") RequestBody price,
                                                      @Part("starting_at") RequestBody startingAt,
                                                      @Part("name") RequestBody name,
                                                      @Part MultipartBody.Part photo,

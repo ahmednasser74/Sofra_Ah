@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sofra.R;
 import com.example.sofra.adapter.RestaurantOfferAdapter;
+import com.example.sofra.data.model.restaurantAddOffer.RestaurantAddOffer;
+import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.data.model.restaurantOffer.OfferData;
 import com.example.sofra.data.model.restaurantOffer.RestaurantOffer;
 import com.example.sofra.helper.HelperMethod;
@@ -51,6 +53,7 @@ public class RestaurantOffersFragment extends BaseFragment {
     private RestaurantOfferAdapter restaurantOfferAdapter;
     private OnEndLess onEndLess;
     private int maxPage = 0;
+    private OfferData offerData;
 
     public RestaurantOffersFragment() {
     }
@@ -103,10 +106,12 @@ public class RestaurantOffersFragment extends BaseFragment {
             restaurantOffersFragmentRvOffer.setAdapter(restaurantOfferAdapter);
             restaurantOffersFragmentRvOffer.setVisibility(View.VISIBLE);
         }
+
     }
 
     private void getRestaurantOrders(int page) {
-        getClient().getRestaurantOffer(LoadData(getActivity(),RESTAURANT_API_TOKEN), page).enqueue(new Callback<RestaurantOffer>() {
+
+        getClient().getRestaurantOffer(LoadData(getActivity(), RESTAURANT_API_TOKEN), page).enqueue(new Callback<RestaurantOffer>() {
             @Override
             public void onResponse(Call<RestaurantOffer> call, Response<RestaurantOffer> response) {
                 try {
@@ -163,6 +168,11 @@ public class RestaurantOffersFragment extends BaseFragment {
 
     @OnClick(R.id.restaurant_offers_fragment_btn_add_offer)
     public void onViewClicked() {
+
+        RestaurantAddOffersFragment restaurantAddOffersFragment = new RestaurantAddOffersFragment();
+        restaurantAddOffersFragment.restaurantOfferAdapter = restaurantOfferAdapter;
+        restaurantAddOffersFragment.offerData = offerData;
+
         HelperMethod.replace(new RestaurantAddOffersFragment(), getActivity().getSupportFragmentManager()
                 , R.id.restaurant_cycle_fl_fragment_container, null, null);
     }

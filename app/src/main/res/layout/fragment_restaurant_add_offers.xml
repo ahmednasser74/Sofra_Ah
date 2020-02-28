@@ -15,7 +15,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/restaurant_add_offer_fragment_tv_add_image"
+                android:id="@+id/restaurant_add_offer_fragment_tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
