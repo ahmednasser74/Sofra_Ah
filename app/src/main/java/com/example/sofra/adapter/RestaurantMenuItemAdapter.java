@@ -106,14 +106,12 @@ public class RestaurantMenuItemAdapter extends RecyclerView.Adapter<RestaurantMe
                 alert = dialog2.create();
                 alert.setTitle("Delete ?");
                 alert.setMessage("Are you sure you want to delete this Category?");
-                showProgressDialog(activity, "please wait...");
                 alert.setButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         getClient().getRestaurantDeleteMenuItem(LoadData(activity, RESTAURANT_API_TOKEN),
                                 foodItemDataList.get(position).getId()).enqueue(new Callback<RestaurantDeleteMenuItem>() {
                             @Override
                             public void onResponse(Call<RestaurantDeleteMenuItem> call, Response<RestaurantDeleteMenuItem> response) {
-                                dismissProgressDialog();
                                 try {
                                     if (response.body().getStatus() == 1) {
                                         foodItemDataList.remove(position);

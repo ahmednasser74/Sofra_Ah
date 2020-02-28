@@ -56,7 +56,6 @@ public class UserCycleActivity extends BaseActivity {
 
         initNavigation();
         internetConnection();
-
     }
 
     private void internetConnection() {
@@ -66,12 +65,6 @@ public class UserCycleActivity extends BaseActivity {
         } else {
             userCycleActivityLayoutNoConnection.setVisibility(View.VISIBLE);
             userCycleActivityFlContainer.setVisibility(View.GONE);
-            userCycleActivityBtnRety.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
     }
 
@@ -91,6 +84,18 @@ public class UserCycleActivity extends BaseActivity {
         }
         return haveConnectedWifi || haveConnectedMobile;
     }
+
+//    public static boolean isConnected(Context context) {
+//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+//        NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+//
+//        if ((wifiInfo != null && wifiInfo.isConnected()) || (mobileInfo != null && mobileInfo.isConnected())) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     private void initNavigation() {
 
@@ -124,7 +129,7 @@ public class UserCycleActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_cycle_activity_btn_rety:
-                haveNetworkConnection();
+                internetConnection();
                 break;
             case R.id.user_cycle_activity_img_notification:
                 HelperMethod.replace(new UserNotificationListFragment(), getSupportFragmentManager(),

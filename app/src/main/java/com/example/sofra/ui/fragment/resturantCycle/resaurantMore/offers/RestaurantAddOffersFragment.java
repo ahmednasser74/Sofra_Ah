@@ -46,6 +46,7 @@ import static com.example.sofra.data.local.SharedPreference.LoadData;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 import static com.example.sofra.helper.HelperMethod.convertFileToMultipart;
 import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
 import static com.example.sofra.helper.HelperMethod.showCalender;
 import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
@@ -105,7 +106,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
         name = convertToRequestBody(restaurantAddOfferFragmentEtOfferName.getText().toString());
         photo = convertFileToMultipart(path, "photo");
         endingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateTill.getText().toString());
-        offerId = convertToRequestBody(String.valueOf(offerData.getId()));
+        offerId = convertToRequestBody(offerData.getId().toString());
         apiToken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
 
         getClient().getRestaurantEditOffer(description, startingAt, name, photo, endingAt, offerId, apiToken).enqueue(new Callback<RestaurantEditOffer>() {
@@ -158,7 +159,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
         startingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateFrom.getText().toString());
         endingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateTill.getText().toString());
         photo = convertFileToMultipart(path, "photo");
-        offerId = convertToRequestBody(String.valueOf(offerData.getId()));
+//        offerId = convertToRequestBody(offerData.getId().toString());
         apiToken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
 
         if (path == null) {
@@ -185,11 +186,14 @@ public class RestaurantAddOffersFragment extends BaseFragment {
         getClient().getRestaurantAddOffer(description, startingAt, name, photo, endingAt, offerId, apiToken).enqueue(new Callback<RestaurantAddOffer>() {
             @Override
             public void onResponse(Call<RestaurantAddOffer> call, Response<RestaurantAddOffer> response) {
+                dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
 
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
+                    }else {
+                        Toast.makeText(baseActivity, "something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
 

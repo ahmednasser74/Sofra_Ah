@@ -134,7 +134,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                 try {
                     if (response.body().getStatus() == 1) {
 
-                        Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
 //                        replace(new RestaurantMenuFragment(), getActivity().getSupportFragmentManager()
 //                                , R.id.restaurant_cycle_fl_fragment_container, null, null);

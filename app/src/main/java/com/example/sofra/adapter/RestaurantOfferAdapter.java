@@ -92,7 +92,7 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
                 RestaurantAddOffersFragment restaurantAddOffersFragment = new RestaurantAddOffersFragment();
                 restaurantAddOffersFragment.offerData = offerDataList.get(position);
                 restaurantAddOffersFragment.position = position;
-                restaurantAddOffersFragment.restaurantOfferAdapter.notifyDataSetChanged();
+//                restaurantAddOffersFragment.restaurantOfferAdapter.notifyDataSetChanged();
 
             }
         });
