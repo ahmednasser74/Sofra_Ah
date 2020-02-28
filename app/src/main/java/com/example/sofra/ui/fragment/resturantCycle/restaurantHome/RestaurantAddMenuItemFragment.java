@@ -116,9 +116,9 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
             Toast.makeText(baseActivity, "please write item price", Toast.LENGTH_SHORT).show();
             restaurantAddItemFragmentEtItemPrice.setError("please enter name");
         } else {
-            addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
             showProgressDialog(getActivity(), "Please Wait...");
         }
+        addNewMenuItem(description, price, preparingTime, photo, name, apitoken, offerPrice, categoryId);
 
     }
 

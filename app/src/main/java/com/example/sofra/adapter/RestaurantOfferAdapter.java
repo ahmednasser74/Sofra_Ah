@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,9 +46,10 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
 
 
     private BaseActivity activity;
-    private List<OfferData> offerDataList = new ArrayList<>();
+    public List<OfferData> offerDataList = new ArrayList<>();
+    public OfferData offerData;
+    public int position;
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
-    private OfferData offerData;
 
     public RestaurantOfferAdapter(BaseActivity activity, List<OfferData> offerDataList) {
         this.activity = activity;
@@ -72,30 +74,21 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
     }
 
     private void setData(ViewHolder holder, int position) {
+
         OfferData offerData = offerDataList.get(position);
         holder.itemRestaurantOffersTvOffer.setText(offerData.getName());
         Glide.with(activity).load(offerData.getPhotoUrl()).into(holder.itemRestaurantOffersImgOffer);
+
     }
 
     private void setAction(ViewHolder holder, int position) {
         holder.position = position;
-        holder.itemRestaurantOffersImgEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                OfferData offerData = offerDataList.get(position);
-                RestaurantAddOffersFragment restaurantAddOffersFragment = new RestaurantAddOffersFragment();
-                restaurantAddOffersFragment.offerData = offerDataList.get(position);
 
-                HelperMethod.replace(new RestaurantAddOffersFragment(), activity.getSupportFragmentManager(),
-                        R.id.restaurant_cycle_fl_fragment_container, null, null);
-                holder.textView.setText(offerData.getStartingAt());
-
-            }
-        });
         holder.itemRestaurantOffersImgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                offerData = offerDataList.get(position);
                 RestaurantAddOffersFragment restaurantAddOffersFragment = new RestaurantAddOffersFragment();
                 restaurantAddOffersFragment.offerData = offerDataList.get(position);
                 restaurantAddOffersFragment.position = position;
@@ -165,8 +158,6 @@ public class RestaurantOfferAdapter extends RecyclerView.Adapter<RestaurantOffer
         ImageView itemRestaurantOffersImgRemove;
         @BindView(R.id.item_restaurant_offers_swipe)
         SwipeRevealLayout itemRestaurantOffersSwipe;
-
-        TextView textView = (TextView) activity.findViewById(R.id.restaurant_add_offer_fragment_et_date_from);
 
         private View view;
         int position;

@@ -114,6 +114,10 @@ public class RestaurantAddOffersFragment extends BaseFragment {
                 try {
                     if (response.body().getStatus() == 1) {
 
+                        restaurantOfferAdapter.offerDataList.remove(restaurantOfferAdapter.position);
+                        restaurantOfferAdapter.offerDataList.add(restaurantOfferAdapter.position, response.body().getData());
+                        restaurantOfferAdapter.notifyDataSetChanged();
+
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
                     }
@@ -130,7 +134,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
 
     }
 
-    public void setOfferData() {
+    private void setOfferData() {
 
         if (offerData != null) {
 
