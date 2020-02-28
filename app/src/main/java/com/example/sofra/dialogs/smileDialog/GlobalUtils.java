@@ -1,5 +1,6 @@
 package com.example.sofra.dialogs.smileDialog;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,12 +11,17 @@ import android.widget.Toast;
 
 import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
+import com.example.sofra.data.model.userAddReview.UserAddReview;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.hsalf.smilerating.SmileRating;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.ContentValues.TAG;
+import static com.example.sofra.data.api.ApiClient.getClient;
 
 public class GlobalUtils {
     public static String rating = "Not given yet";
@@ -24,9 +30,9 @@ public class GlobalUtils {
     SmileRating smileRating;
     @BindView(R.id.dialog_btn_add_review)
     Button dialogBtnAddReview;
-    @BindView(R.id.et_review_description)
-    EditText etReviewDescription;
-    BaseActivity activity;
+    @BindView(R.id.et_review_comment)
+    EditText etReviewComment;
+    private Activity activity;
 
     public static void showDiallog(Context context, final DialogCallback dialogCallback) {
         //create the dialog
@@ -36,9 +42,9 @@ public class GlobalUtils {
 
         dialog.setContentView(v);
 
-        Button btn_done = (Button) dialog.findViewById(R.id.dialog_btn_add_review);
+        Button dialogBtnAddReview = (Button) dialog.findViewById(R.id.dialog_btn_add_review);
         SmileRating smileRating = (SmileRating) dialog.findViewById(R.id.smile_rating);
-        EditText editText = (EditText) dialog.findViewById(R.id.et_review_description);
+        EditText etReviewComment = (EditText) dialog.findViewById(R.id.et_review_comment);
 
         smileRating.setOnSmileySelectionListener(new SmileRating.OnSmileySelectionListener() {
             @Override
@@ -68,13 +74,14 @@ public class GlobalUtils {
             }
         });
 
-        btn_done.setOnClickListener(new View.OnClickListener() {
+        dialogBtnAddReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (dialogCallback != null && editText != null) {
+
+                if (dialogCallback != null && etReviewComment != null) {
                     dialogCallback.callback(rating);
                 } else {
-                    if (editText == null) {
+                    if (etReviewComment.equals("")) {
                         Toast.makeText(context, "Please Write Comment", Toast.LENGTH_SHORT).show();
                     }
 
@@ -83,19 +90,38 @@ public class GlobalUtils {
                 dialog.dismiss();
             }
         });
+
         dialog.show();
+
     }
 
-    private void getData() {
-        Restaurant restaurant = null;
-        String comment = etReviewDescription.getText().toString();
+    private void getReview() {
+        Restaurant restaurant = new Restaurant();
+        String comment = etReviewComment.getText().toString();
         int rate = smileRating.getRating(); // level is from 1 to 5
 
-        init(rate, comment, restaurant.getId(), "");
+        init(rate, comment, restaurant.getId());
     }
 
-    private void init(int rate, String comment, int restaurantId, String apiToken) {
+    private void init(int rate, String comment, int restaurantId) {
 
+        getClient().getUserAddReview(rate, comment, restaurantId, "HRbqKFSaq5ZpsOKITYoztpFZNylmzL9elnlAThxZSZ52QWqVBIj8Rdq7RhoB").enqueue(new Callback<UserAddReview>() {
+            @Override
+            public void onResponse(Call<UserAddReview> call, Response<UserAddReview> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserAddReview> call, Throwable t) {
+
+            }
+        });
     }
 }
 

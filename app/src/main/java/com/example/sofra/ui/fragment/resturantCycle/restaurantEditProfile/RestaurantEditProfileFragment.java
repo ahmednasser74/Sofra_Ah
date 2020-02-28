@@ -167,7 +167,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
             , RequestBody deliveryCost, RequestBody minimumCharger, RequestBody availability,
                              MultipartBody.Part photo, RequestBody apiToken, RequestBody deliveryTime) {
 
-        getClient().getRestauranEditProfile(email, name, phone, regionId, deliveryCost, minimumCharger,
+        getClient().getRestaurantEditProfile(email, name, phone, regionId, deliveryCost, minimumCharger,
                 availability, photo, apiToken, deliveryTime).enqueue(new Callback<RestaurantEditProfile>() {
             @Override
             public void onResponse(Call<RestaurantEditProfile> call, Response<RestaurantEditProfile> response) {

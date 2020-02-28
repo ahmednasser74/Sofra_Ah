@@ -32,6 +32,7 @@ import com.example.sofra.data.model.userNewOrder.UserNewOrder;
 import com.example.sofra.data.model.userNewPassword.UserNewPassword;
 import com.example.sofra.data.model.userOffer.UserOffer;
 import com.example.sofra.data.model.userOrders.UserOrders;
+import com.example.sofra.data.model.userRegister.UserRegister;
 import com.example.sofra.data.model.userResetPassword.UserResetPassword;
 import com.example.sofra.data.model.userRestaurantReview.UserRestaurantReview;
 
@@ -125,30 +126,30 @@ public interface ApiService {
 
     @POST("restaurant/sign-up")
     @Multipart
-    Call<RestaurantRegister> getRestauranRegister(@Field("name") String name,
-                                                  @Field("email") String email,
-                                                  @Field("password") String password,
-                                                  @Field("password_confirmation") String passwordConfirmation,
-                                                  @Field("phone") String phone,
-                                                  @Field("whatsapp") String whatsapp,
-                                                  @Field("region_id") int regionId,
-                                                  @Field("delivery_cost") String deliveryCost,
-                                                  @Field("minimum_charger") String minimumCharger,
-                                                  @Field("photo") int photo,
-                                                  @Field("delivery_time") String deliveryTime);
+    Call<RestaurantRegister> getRestaurantRegister(@Part("name") RequestBody name,
+                                                   @Part("email") RequestBody email,
+                                                   @Part("password") RequestBody password,
+                                                   @Part("password_confirmation") RequestBody passwordConfirmation,
+                                                   @Part("phone") RequestBody phone,
+                                                   @Part("whatsapp") RequestBody whatsapp,
+                                                   @Part("region_id") RequestBody regionId,
+                                                   @Part("delivery_cost") RequestBody deliveryCost,
+                                                   @Part("minimum_charger") RequestBody minimumCharger,
+                                                   @Part("photo") MultipartBody.Part photo,
+                                                   @Part("delivery_time") RequestBody deliveryTime);
 
     @POST("restaurant/sign-up")
     @Multipart
-    Call<RestaurantEditProfile> getRestauranEditProfile(@Part("email") RequestBody email,
-                                                        @Part("name") RequestBody name,
-                                                        @Part("phone") RequestBody phone,
-                                                        @Part("region_id") RequestBody regionId,
-                                                        @Part("delivery_cost") RequestBody deliveryCost,
-                                                        @Part("minimum_charger") RequestBody minimumCharger,
-                                                        @Part("availability") RequestBody availability,
-                                                        @Part MultipartBody.Part photo,
-                                                        @Part("api_token") RequestBody apiToken,
-                                                        @Part("delivery_time") RequestBody deliveryTime);
+    Call<RestaurantEditProfile> getRestaurantEditProfile(@Part("email") RequestBody email,
+                                                         @Part("name") RequestBody name,
+                                                         @Part("phone") RequestBody phone,
+                                                         @Part("region_id") RequestBody regionId,
+                                                         @Part("delivery_cost") RequestBody deliveryCost,
+                                                         @Part("minimum_charger") RequestBody minimumCharger,
+                                                         @Part("availability") RequestBody availability,
+                                                         @Part MultipartBody.Part photo,
+                                                         @Part("api_token") RequestBody apiToken,
+                                                         @Part("delivery_time") RequestBody deliveryTime);
 
     @POST("restaurant/change-state")
     @FormUrlEncoded
@@ -263,6 +264,15 @@ public interface ApiService {
                                        @Field("quantities") ArrayList<Integer> quantities,
                                        @Field("notes") ArrayList<String> notes);
 
+    @POST("client/sign-up")
+    @Multipart
+    Call<UserRegister> getUserRegister(@Part("name") RequestBody name,
+                                       @Part("email") RequestBody email,
+                                       @Part("password") RequestBody password,
+                                       @Part("password_confirmation") RequestBody passwordConfirmation,
+                                       @Part("phone") RequestBody phone,
+                                       @Part("region_id") RequestBody regionId,
+                                       @Part("profile_image") MultipartBody.Part profileImage);
 
     @POST("client/restaurant/review")
     @FormUrlEncoded
@@ -270,5 +280,6 @@ public interface ApiService {
                                          @Field("comment") String comment,
                                          @Field("restaurant_id") int restaurantId,
                                          @Field("api_token") String apiToken);
+
 }
 // @Query("category") ArrayList<String> categories

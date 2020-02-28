@@ -126,30 +126,29 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
 //                whatsapp, regionId, deliveryCost, minimumCharger, photo, deliveryTime);
     }
 
-    private void getRegister(String name, String email, String password, String passwordConfirmation, String phone,
-                             String whatsapp, int regionId, String deliveryCost,
-                             String minimumCharger, int photo, String deliveryTime) {
-
-        getClient().getRestauranRegister(name, email, password, passwordConfirmation, phone, whatsapp, regionId, deliveryCost,
-                minimumCharger, photo, deliveryTime).enqueue(new Callback<RestaurantRegister>() {
-            @Override
-            public void onResponse(Call<RestaurantRegister> call, Response<RestaurantRegister> response) {
-                if (response.body().getStatus() == 1) {
-
-                    HelperMethod.replace(new RestaurantRegisterFragment2(), getActivity().getSupportFragmentManager(),
-                            R.id.restaurant_cycle_fl_fragment_container, null, null);
-                    Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RestaurantRegister> call, Throwable t) {
-
-            }
-        });
-
-    }
+//    private void getRegister(String name, String email, String password, String passwordConfirmation, String phone,
+//                             String whatsapp, int regionId, String deliveryCost,
+//                             String minimumCharger, int photo, String deliveryTime) {
+//
+//        getClient().getRestauranRegister(name, email, password, passwordConfirmation, phone, whatsapp, regionId, deliveryCost,
+//                minimumCharger, photo, deliveryTime).enqueue(new Callback<RestaurantRegister>() {
+//            @Override
+//            public void onResponse(Call<RestaurantRegister> call, Response<RestaurantRegister> response) {
+//                if (response.body().getStatus() == 1) {
+//
+//                    HelperMethod.replace(new RestaurantRegisterFragment2(), getActivity().getSupportFragmentManager(),
+//                            R.id.restaurant_cycle_fl_fragment_container, null, null);
+//                    Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<RestaurantRegister> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
 
     @Override
