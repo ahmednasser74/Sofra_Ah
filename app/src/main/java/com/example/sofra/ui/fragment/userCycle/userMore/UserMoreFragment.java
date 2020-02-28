@@ -45,9 +45,11 @@ public class UserMoreFragment extends BaseFragment {
         setUpActivity();
         View view = inflater.inflate(R.layout.fragment_user_more, container, false);
         ButterKnife.bind(this, view);
+
         userCycleActivity = (UserCycleActivity) getActivity();
 
         return view;
+
     }
 
     @Override
