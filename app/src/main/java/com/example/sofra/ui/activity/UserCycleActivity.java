@@ -20,6 +20,7 @@ import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.fragment.userCycle.UserNotificationListFragment;
 import com.example.sofra.ui.fragment.userCycle.userEditProfile.UserEditProfileFragment;
 import com.example.sofra.ui.fragment.userCycle.userHome.UserRestaurantListFragment;
+import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.ShoppingCartFragment;
 import com.example.sofra.ui.fragment.userCycle.userMore.UserMoreFragment;
 import com.example.sofra.ui.fragment.userCycle.userOrders.UserOrdersContainerFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -92,7 +93,7 @@ public class UserCycleActivity extends BaseActivity {
     }
 
     private void initNavigation() {
-        activityUserBottomNavBar = findViewById(R.id.activity_user_bottom_nav_bar);
+
         activityUserBottomNavBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -117,19 +118,22 @@ public class UserCycleActivity extends BaseActivity {
                 return true;
             }
         });
-
-
     }
 
-    @OnClick({R.id.user_cycle_activity_fl_container, R.id.user_cycle_activity_img_shopping_cart, R.id.user_cycle_activity_img_notification})
+    @OnClick({R.id.user_cycle_activity_btn_rety, R.id.user_cycle_activity_fl_container, R.id.user_cycle_activity_img_shopping_cart, R.id.user_cycle_activity_img_notification})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.user_cycle_activity_btn_rety:
+                haveNetworkConnection();
+                break;
             case R.id.user_cycle_activity_img_notification:
                 HelperMethod.replace(new UserNotificationListFragment(), getSupportFragmentManager(),
                         R.id.user_cycle_activity_fl_container, null, null);
                 break;
 
             case R.id.user_cycle_activity_img_shopping_cart:
+                HelperMethod.replace(new ShoppingCartFragment(), getSupportFragmentManager(),
+                        R.id.user_cycle_activity_fl_container, null, null);
                 break;
 
             case R.id.user_cycle_activity_fl_container:

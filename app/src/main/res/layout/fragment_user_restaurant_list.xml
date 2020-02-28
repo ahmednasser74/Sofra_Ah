@@ -95,13 +95,13 @@
                 <io.supercharge.shimmerlayout.ShimmerLayout
                     android:id="@+id/user_restaurant_list_fragment_shimmer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/user_restaurant_list_fragment_pagination_progress">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/user_restaurant_list_fragment_rv_restaurant"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_above="@id/user_restaurant_list_fragment_pagination_progress"
                         android:scrollbarSize="5dp"
                         android:scrollbarStyle="outsideInset"
                         android:scrollbarThumbVertical="@drawable/pink_shape"
@@ -115,7 +115,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentBottom="true"
                     android:layout_gravity="bottom"
-                    android:background="#31A8A8A8"
+                    android:background="#238F8D8D"
                     android:visibility="gone" />
 
             </RelativeLayout>
