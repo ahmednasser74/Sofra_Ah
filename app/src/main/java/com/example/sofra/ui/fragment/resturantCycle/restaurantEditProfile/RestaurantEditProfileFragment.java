@@ -142,6 +142,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
         } else {
             restaurantEditProfileFragmentSwitch.setChecked(true);
         }
+
 //        restaurantEditProfileFragmentSpCity.setSelected(authRestaurantData.getUser().getRegion().getCity().getName());
 //        restaurantEditProfileFragmentSpGovernorate.setSelected(Boolean.parseBoolean(LoadData(getActivity(), authRestaurantData.getUser().getRegion().getName())));
 

@@ -98,6 +98,7 @@ public class RestaurantOffersFragment extends BaseFragment {
             }
         };
         restaurantOffersFragmentRvOffer.addOnScrollListener(onEndLess);
+
         if (offerDataList.size() == 0) {
             restaurantOfferAdapter = new RestaurantOfferAdapter((BaseActivity) getActivity(), offerDataList);
             restaurantOffersFragmentRvOffer.setAdapter(restaurantOfferAdapter);

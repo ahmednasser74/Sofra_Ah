@@ -65,6 +65,7 @@ public class UserOffersFragment extends BaseFragment {
     }
 
     private void init() {
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         userOfferFragmentRvOffers.setLayoutManager(linearLayoutManager);
 
@@ -86,6 +87,7 @@ public class UserOffersFragment extends BaseFragment {
         userOfferAdapter = new UserOfferAdapter((BaseActivity) getActivity(), offerDataList);
         userOfferFragmentRvOffers.setAdapter(userOfferAdapter);
         getUserOffer(1);
+
     }
 
     private void getUserOffer(int page) {

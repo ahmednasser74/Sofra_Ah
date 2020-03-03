@@ -95,37 +95,6 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
         return view;
     }
 
-    private void initFilter() {
-        String search = userRestaurantListFragmentEtSearch.getText().toString().trim();
-
-        getClient().getRestaurantListWithFilter(search, citySpinnerAdapter.selectedId).enqueue(new Callback<RestaurantListWithFilter>() {
-            @Override
-            public void onResponse(Call<RestaurantListWithFilter> call, Response<RestaurantListWithFilter> response) {
-                try {
-                    if (response.body().getStatus() == 1) {
-                        maxPage = response.body().getData().getLastPage();
-                        ListRestaurantData.clear();
-                        restaurantListFragmentSwipeRefresh.setRefreshing(false);
-                        ListRestaurantData.addAll(response.body().getData().getData());
-                        restaurantListAdapter.notifyDataSetChanged();
-
-                        if (Objects.requireNonNull(restaurantListFragmentRvRestaurant.getAdapter()).getItemCount() == 0) {
-                            userRestaurantListFragmentNoResult.setVisibility(View.VISIBLE);
-                            restaurantListFragmentRvRestaurant.setVisibility(View.GONE);
-                        }
-
-                    }
-                } catch (Exception e) {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<RestaurantListWithFilter> call, Throwable t) {
-            }
-        });
-    }
-
     public void init() {
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -154,10 +123,15 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
                 , restaurantListFragmentSpCity, "City");
 
         if (ListRestaurantData.size() == 0) {
+
+            userRestaurantListFragmentShimmer.startShimmerAnimation();
+            userRestaurantListFragmentShimmer.setVisibility(View.VISIBLE);
             restaurantListAdapter = new RestaurantListAdapter((BaseActivity) getActivity(), ListRestaurantData);
             restaurantListFragmentRvRestaurant.setAdapter(restaurantListAdapter);
             getRestaurantList(1);
         } else {
+            userRestaurantListFragmentShimmer.stopShimmerAnimation();
+            userRestaurantListFragmentShimmer.setVisibility(View.GONE);
             restaurantListFragmentRvRestaurant.setAdapter(restaurantListAdapter);
             restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
         }
@@ -172,6 +146,39 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
         );
     }
 
+    private void initFilter() {
+        String search = userRestaurantListFragmentEtSearch.getText().toString().trim();
+
+        getClient().getRestaurantListWithFilter(search, citySpinnerAdapter.selectedId).enqueue(new Callback<RestaurantListWithFilter>() {
+            @Override
+            public void onResponse(Call<RestaurantListWithFilter> call, Response<RestaurantListWithFilter> response) {
+                try {
+                    if (response.body().getStatus() == 1) {
+                        maxPage = response.body().getData().getLastPage();
+                        ListRestaurantData.clear();
+                        restaurantListFragmentSwipeRefresh.setRefreshing(false);
+                        ListRestaurantData.addAll(response.body().getData().getData());
+                        restaurantListAdapter.notifyDataSetChanged();
+
+                        if (Objects.requireNonNull(restaurantListFragmentRvRestaurant.getAdapter()).getItemCount() == 0) {
+                            userRestaurantListFragmentNoResult.setVisibility(View.VISIBLE);
+                            restaurantListFragmentRvRestaurant.setVisibility(View.GONE);
+                        }
+
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RestaurantListWithFilter> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     private void getRestaurantList(int page) {
         if (InternetState.isConnected(getActivity())) {
             getClient().getRestaurant(page).enqueue(new Callback<RestaurantList>() {
@@ -185,7 +192,9 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
                             restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
                             restaurantListAdapter.notifyDataSetChanged();
                             userRestaurantListFragmentPaginationProgress.setVisibility(View.GONE);
+
                             userRestaurantListFragmentShimmer.stopShimmerAnimation();
+                            userRestaurantListFragmentShimmer.setVisibility(View.GONE);
                         }
                     } catch (Exception e) {
                     }
@@ -204,7 +213,7 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
 
     @Override
     public void onBack() {
-        super.onBack();
+        getActivity().finish();
     }
 
     @Override

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.agrawalsuneet.dotsloader.utils.Helper;
 import com.example.sofra.R;
 import com.example.sofra.adapter.SpinnersAdapter;
 import com.example.sofra.data.model.GeneralRequestSpinner;
@@ -96,20 +97,15 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
         return view;
     }
 
-    private void register() {
-
-        ImageView imageView = (ImageView) getActivity().findViewById(R.id.restaurant_register2_fragment_img_add_photo);
+    private void getRegister1() {
 
         String name = restaurantRegister1FragmentEtRestaurantName.getEditText().getText().toString();
         String email = restaurantRegister1FragmentEtPassword.getEditText().getText().toString();
         String password = restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString();
         String passwordConfirmation = restaurantRegister1FragmentEtMail.getEditText().getText().toString();
-//        String phone = restaurantLoginFragmentEtMail.getEditText().getText().toString();
-//        String whatsapp = restaurantLoginFragmentEtPassword.getEditText().getText().toString();
         int regionId = restaurantRegister1FragmentSpTown.getId();
         String deliveryCost = restaurantRegister1FragmentEtDeliveryCost.getEditText().getText().toString();
         String minimumCharger = restaurantRegister1FragmentEtMinimumDelivery.getEditText().getText().toString();
-        int photo = imageView.getImageAlpha();
         String deliveryTime = restaurantRegister1FragmentEtDeliveryDuration.getEditText().getText().toString();
 
         if (name.isEmpty() && email.isEmpty() && password.isEmpty() && passwordConfirmation.isEmpty()
@@ -122,33 +118,7 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
             Toast.makeText(baseActivity, "Password confirmation not matched", Toast.LENGTH_SHORT).show();
         }
 
-//        getRegister(name, email, password, passwordConfirmation, phone,
-//                whatsapp, regionId, deliveryCost, minimumCharger, photo, deliveryTime);
     }
-
-//    private void getRegister(String name, String email, String password, String passwordConfirmation, String phone,
-//                             String whatsapp, int regionId, String deliveryCost,
-//                             String minimumCharger, int photo, String deliveryTime) {
-//
-//        getClient().getRestauranRegister(name, email, password, passwordConfirmation, phone, whatsapp, regionId, deliveryCost,
-//                minimumCharger, photo, deliveryTime).enqueue(new Callback<RestaurantRegister>() {
-//            @Override
-//            public void onResponse(Call<RestaurantRegister> call, Response<RestaurantRegister> response) {
-//                if (response.body().getStatus() == 1) {
-//
-//                    HelperMethod.replace(new RestaurantRegisterFragment2(), getActivity().getSupportFragmentManager(),
-//                            R.id.restaurant_cycle_fl_fragment_container, null, null);
-//                    Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<RestaurantRegister> call, Throwable t) {
-//
-//            }
-//        });
-//    }
 
 
     @Override
@@ -163,6 +133,9 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
 
     @OnClick(R.id.restaurant_register1_fragment_btn_continue)
     public void onViewClicked() {
-        register();
+
+        HelperMethod.replace(new RestaurantRegisterFragment2(), getActivity().getSupportFragmentManager(),
+                R.id.restaurant_cycle_fl_fragment_container, null, null);
+
     }
 }

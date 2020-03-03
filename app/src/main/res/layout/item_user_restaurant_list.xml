@@ -10,12 +10,12 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
-            android:layout_marginStart="@dimen/dim_80dp"
-            android:layout_marginTop="@dimen/dim_16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="@dimen/dim_16dp"
             android:layout_width="match_parent"
             android:layout_height="130dp"
+            android:layout_marginStart="@dimen/dim_80dp"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginEnd="@dimen/dim_16dp"
+            android:layout_marginBottom="8dp"
             app:cardCornerRadius="@dimen/dim_30dp">
 
             <LinearLayout
@@ -37,7 +37,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="restaurant name"
                         android:textColor="@color/colorPrimary" />
 
                     <LinearLayout
@@ -51,14 +50,12 @@
                             android:layout_width="@dimen/dim_16dp"
                             android:layout_height="@dimen/dim_16dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="@dimen/dim_4dp"
-                            android:src="@drawable/logo" />
+                            android:layout_marginEnd="@dimen/dim_4dp" />
 
                         <TextView
                             android:id="@+id/item_restaurant_list_tv_opened"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="opened"
                             android:textColor="#9A5A5959" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -69,7 +66,7 @@
                     android:layout_height="45dp"
                     android:isIndicator="true"
                     android:numStars="4"
-                    android:scaleX=".7"
+                    android:scaleX=".9"
                     android:scaleY=".7" />
 
                 <LinearLayout
@@ -87,7 +84,7 @@
                         android:id="@+id/item_restaurant_list_tv_minimum_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="minimum order"
+
                         android:textColor="#9A5A5959" />
                 </LinearLayout>
 
@@ -106,7 +103,6 @@
                         android:id="@+id/item_restaurant_list_tv_delivery_fees"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="delivery fees"
                         android:textColor="#9A5A5959" />
                 </LinearLayout>
             </LinearLayout>
@@ -120,23 +116,9 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/dim_16dp"
         android:paddingTop="@dimen/dim_16dp"
-        android:src="@drawable/logo"
-        app:civ_border_color="@color/pink"
+        app:civ_border_color="@color/white"
         app:civ_border_width="4dp"
         app:civ_shadow="true"
         app:civ_shadow_radius="10" />
 
-    <!--    <com.mikhaellopez.circularimageview.CircularImageView-->
-    <!--        android:id="@+id/item_restaurant_list_img_restaurant_logo"-->
-    <!--        android:layout_width="@dimen/dim_100dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_centerVertical="true"-->
-    <!--        android:layout_marginStart="@dimen/dim_16dp"-->
-    <!--        android:background="@null"-->
-    <!--        android:src="@drawable/logo"-->
-    <!--        app:civ_border_color="@color/pink"-->
-    <!--        app:civ_border_width="4dp"-->
-    <!--        app:civ_shadow="true"-->
-    <!--        app:civ_shadow_color="#000"-->
-    <!--        app:civ_shadow_radius="10" />-->
 </RelativeLayout>

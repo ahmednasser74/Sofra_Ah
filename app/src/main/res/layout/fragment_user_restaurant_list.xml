@@ -95,18 +95,38 @@
                 <io.supercharge.shimmerlayout.ShimmerLayout
                     android:id="@+id/user_restaurant_list_fragment_shimmer"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_above="@id/user_restaurant_list_fragment_pagination_progress">
+                    android:layout_height="match_parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/user_restaurant_list_fragment_rv_restaurant"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scrollbarSize="5dp"
-                        android:scrollbarStyle="outsideInset"
-                        android:scrollbarThumbVertical="@drawable/pink_shape"
-                        android:scrollbars="vertical" />
+                        android:orientation="vertical">
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                        <include layout="@layout/item_user_restaurant_list" />
+
+                    </LinearLayout>
+
                 </io.supercharge.shimmerlayout.ShimmerLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/user_restaurant_list_fragment_rv_restaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@id/user_restaurant_list_fragment_pagination_progress"
+                    android:scrollbarSize="5dp"
+                    android:scrollbarStyle="outsideInset"
+                    android:scrollbarThumbVertical="@drawable/pink_shape"
+                    android:scrollbars="vertical" />
 
                 <ProgressBar
                     android:id="@+id/user_restaurant_list_fragment_pagination_progress"

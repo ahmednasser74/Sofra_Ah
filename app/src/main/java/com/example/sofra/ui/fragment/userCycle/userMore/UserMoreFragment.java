@@ -67,8 +67,8 @@ public class UserMoreFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_more_fragment_offers:
-                HelperMethod.replace(new UserOffersFragment(), getActivity().getSupportFragmentManager(),
-                        R.id.user_cycle_activity_fl_container, null, null);
+                HelperMethod.replaceFragmentWithAnimation(getActivity().getSupportFragmentManager(),
+                        R.id.user_cycle_activity_fl_container, new UserOffersFragment(), "r");
                 break;
             case R.id.user_more_fragment_contact_us:
                 HelperMethod.replace(new UserContactUsFragment(), getActivity().getSupportFragmentManager(),
@@ -105,6 +105,7 @@ public class UserMoreFragment extends BaseFragment {
                 Toast.makeText(baseActivity, "You Have LogOut", Toast.LENGTH_SHORT).show();
             }
         });
+
         Button btn_done = (Button) dialog.findViewById(R.id.item_sign_out_dialog_btn_no);
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override

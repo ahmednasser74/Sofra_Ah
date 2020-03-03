@@ -34,7 +34,7 @@ public class GlobalUtils {
     EditText etReviewComment;
     private Activity activity;
 
-    public static void showDiallog(Context context, final DialogCallback dialogCallback) {
+    public static void showDiallog(Context context, final DialogCallback dialogCallback,Restaurant restaurant ) {
         //create the dialog
         final CustomDialog dialog = new CustomDialog(context, R.style.customDialogTheme);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -78,6 +78,7 @@ public class GlobalUtils {
             @Override
             public void onClick(View v) {
 
+
                 if (dialogCallback != null && etReviewComment != null) {
                     dialogCallback.callback(rating);
                 } else {
@@ -87,30 +88,31 @@ public class GlobalUtils {
 
                     Toast.makeText(context, "Please Select & Write Review", Toast.LENGTH_SHORT).show();
                 }
-                dialog.dismiss();
+
+
+                String comment = etReviewComment.getText().toString();
+                int rate = smileRating.getRating(); // level is from 1 to 5
+
+                init( context, rate, comment, restaurant.getId(), dialog);
+
+//                dialog.dismiss();
+
             }
         });
 
         dialog.show();
-
     }
 
-    private void getReview() {
-        Restaurant restaurant = new Restaurant();
-        String comment = etReviewComment.getText().toString();
-        int rate = smileRating.getRating(); // level is from 1 to 5
-
-        init(rate, comment, restaurant.getId());
-    }
-
-    private void init(int rate, String comment, int restaurantId) {
+    private static void init(Context activity, int rate, String comment, int restaurantId, CustomDialog dialog) {
 
         getClient().getUserAddReview(rate, comment, restaurantId, "HRbqKFSaq5ZpsOKITYoztpFZNylmzL9elnlAThxZSZ52QWqVBIj8Rdq7RhoB").enqueue(new Callback<UserAddReview>() {
             @Override
             public void onResponse(Call<UserAddReview> call, Response<UserAddReview> response) {
+
                 try {
                     if (response.body().getStatus() == 1) {
                         Toast.makeText(activity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                     }
                 } catch (Exception e) {
 

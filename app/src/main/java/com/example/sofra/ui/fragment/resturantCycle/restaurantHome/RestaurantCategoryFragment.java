@@ -142,6 +142,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
     }
 
     private void floatHidden() {
+
         restaurantCategoryFragmentRvCategory.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -161,6 +162,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
         });
 
         restaurantListFragmentBtnFloat.show();
+
     }
 
     @Override

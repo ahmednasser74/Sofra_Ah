@@ -79,7 +79,7 @@ public class UserRestaurantReviewFragment extends BaseFragment {
             public void callback(String rating) {
                 Toast.makeText(getActivity(), "Thanks For Review", Toast.LENGTH_SHORT).show();
             }
-        });
+        }, restaurantData);
     }
 
     private void init() {
