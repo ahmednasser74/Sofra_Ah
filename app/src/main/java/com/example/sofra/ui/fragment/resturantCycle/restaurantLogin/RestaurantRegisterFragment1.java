@@ -113,7 +113,7 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
             Toast.makeText(baseActivity, "Please Complete Register Information", Toast.LENGTH_SHORT).show();
         } else if (regionId == 0) {
             Toast.makeText(baseActivity, "Please Complete Register Information", Toast.LENGTH_SHORT).show();
-        } else if (restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString().
+        } else if (!restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString().
                 equals(restaurantRegister1FragmentEtPassword.getEditText().getText().toString())) {
             Toast.makeText(baseActivity, "Password confirmation not matched", Toast.LENGTH_SHORT).show();
         }

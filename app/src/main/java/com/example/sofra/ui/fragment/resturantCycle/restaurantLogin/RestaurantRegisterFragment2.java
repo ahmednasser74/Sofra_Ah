@@ -78,7 +78,7 @@ public class RestaurantRegisterFragment2 extends BaseFragment {
         whatsApp = convertToRequestBody(restaurantRegister2FragmentEtPhoneWhatsapp.getText().toString().trim());
         Phone = convertToRequestBody(restaurantRegister2FragmentEtPhone.getText().toString().trim());
         photo = convertFileToMultipart(path, "photo");
-        Register();
+
     }
 
     private void Register(RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConfirmation, RequestBody phone,

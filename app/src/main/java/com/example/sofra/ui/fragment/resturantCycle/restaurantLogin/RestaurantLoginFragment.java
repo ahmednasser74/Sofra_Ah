@@ -121,15 +121,15 @@ public class RestaurantLoginFragment extends BaseFragment {
                 login();
                 break;
             case R.id.restaurant_login_fragment_btn_register:
-                HelperMethod.replace(new RestaurantRegisterFragment1(), getActivity().getSupportFragmentManager(),
-                        R.id.restaurant_cycle_fl_fragment_container, null, null);
+                HelperMethod.replaceFragmentWithAnimation(getActivity().getSupportFragmentManager(),
+                        R.id.restaurant_cycle_fl_fragment_container, new RestaurantRegisterFragment1(), "b");
                 break;
         }
     }
 
     @Override
     public void onBack() {
-        super.onBack();
+        getActivity().finish();
     }
 
     @Override
