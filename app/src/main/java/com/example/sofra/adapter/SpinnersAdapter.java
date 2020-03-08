@@ -18,7 +18,7 @@ public class SpinnersAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater inflter;
-    private List<GeneralResponseData> generalResponseData = new ArrayList<>();
+    public List<GeneralResponseData> generalResponseData = new ArrayList<>();
     public int selectedId = 0;
 
     public SpinnersAdapter(Context applicationContext) {

@@ -190,15 +190,16 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         apitoken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
         categoryId = convertToRequestBody(String.valueOf(categoryData.getId()));
         photo = convertFileToMultipart(path, "photo");
+        HelperMethod.showProgressDialog(getActivity(), "please wait...");
 
         getClient().getRestaurantEditMenuItem(name, photo, apitoken, categoryId).enqueue(new Callback<RestaurantEditMenuItem>() {
             @Override
             public void onResponse(Call<RestaurantEditMenuItem> call, Response<RestaurantEditMenuItem> response) {
                 try {
+                    HelperMethod.dismissProgressDialog();
                     if (response.body().getStatus() == 1) {
-
                         restaurantMenuItemAdapter.foodItemDataList.remove(restaurantMenuItemAdapter.position);
-//                        restaurantMenuItemAdapter.foodItemDataList.add(restaurantMenuItemAdapter.position, response.body().getData());
+                        restaurantMenuItemAdapter.foodItemDataList.add(restaurantMenuItemAdapter.position, response.body().getData());
                         restaurantMenuItemAdapter.notifyDataSetChanged();
 
                         Toast.makeText(getActivity(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
@@ -210,6 +211,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
 
             @Override
             public void onFailure(Call<RestaurantEditMenuItem> call, Throwable t) {
+                HelperMethod.dismissProgressDialog();
 
             }
         });

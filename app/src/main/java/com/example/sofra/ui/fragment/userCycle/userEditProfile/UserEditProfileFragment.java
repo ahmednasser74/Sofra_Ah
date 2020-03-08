@@ -77,7 +77,7 @@ public class UserEditProfileFragment extends BaseFragment {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         if (i != 0) {
                             GeneralRequestSpinner.getTownSpinnerData(getClient().getTown(cityAdapter.selectedId), townAdapter
-                                    , userEditProfileFragmentSpTown, "Town");
+                                    , userEditProfileFragmentSpTown, "Town", 0);
                         }
                     }
 
@@ -85,7 +85,7 @@ public class UserEditProfileFragment extends BaseFragment {
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
                     }
-                });
+                }, 0);
 
         return view;
     }

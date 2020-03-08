@@ -212,7 +212,8 @@ public interface ApiService {
                                                    @Part MultipartBody.Part photo,
                                                    @Part("ending_at") RequestBody endingAt,
                                                    @Part("api_token") RequestBody apiToken,
-                                                   @Part("offer_price") RequestBody offerPrice);
+                                                   @Part("offer_price") RequestBody offerPrice,
+                                                   @Part("price") RequestBody Price);
 
     @POST("restaurant/update-offer")
     @Multipart

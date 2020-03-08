@@ -1,7 +1,7 @@
 
 package com.example.sofra.data.model.restaurantEditMenuItem;
 
-import com.example.sofra.data.model.restaurantCategory.CategoryData;
+import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,7 +15,7 @@ public class RestaurantEditMenuItem {
     private String msg;
     @SerializedName("data")
     @Expose
-    private CategoryData data;
+    private FoodItemData data;
 
     public Integer getStatus() {
         return status;
@@ -33,11 +33,11 @@ public class RestaurantEditMenuItem {
         this.msg = msg;
     }
 
-    public CategoryData getData() {
+    public FoodItemData getData() {
         return data;
     }
 
-    public void setData(CategoryData data) {
+    public void setData(FoodItemData data) {
         this.data = data;
     }
 

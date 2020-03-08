@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
+import com.example.sofra.data.model.StepOne;
 import com.example.sofra.data.model.restaurantRegister.RestaurantRegister;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.MediaLoader;
@@ -40,6 +41,7 @@ import static com.example.sofra.helper.HelperMethod.convertToRequestBody;
 
 public class RestaurantRegisterFragment2 extends BaseFragment {
 
+    public StepOne stepOne;
     @BindView(R.id.restaurant_register2_fragment_et_phone)
     TextInputEditText restaurantRegister2FragmentEtPhone;
     @BindView(R.id.restaurant_register2_fragment_et_phone_whatsapp)
@@ -50,8 +52,6 @@ public class RestaurantRegisterFragment2 extends BaseFragment {
     Button restaurantRegister2FragmentBtnRegister;
 
     private String path;
-    private RequestBody Phone, whatsApp;
-    private MultipartBody.Part photo;
 
     public RestaurantRegisterFragment2() {
     }
@@ -75,10 +75,14 @@ public class RestaurantRegisterFragment2 extends BaseFragment {
 
     private void getRegister() {
 
-        whatsApp = convertToRequestBody(restaurantRegister2FragmentEtPhoneWhatsapp.getText().toString().trim());
-        Phone = convertToRequestBody(restaurantRegister2FragmentEtPhone.getText().toString().trim());
-        photo = convertFileToMultipart(path, "photo");
+        RequestBody whatsApp = convertToRequestBody(restaurantRegister2FragmentEtPhoneWhatsapp.getText().toString().trim());
+        RequestBody Phone = convertToRequestBody(restaurantRegister2FragmentEtPhone.getText().toString().trim());
+        MultipartBody.Part photo = convertFileToMultipart(path, "photo");
 
+        Register(stepOne.getName(), stepOne.getEmail(), stepOne.getPassword(),
+                stepOne.getPasswordConfirmation(), Phone,
+                whatsApp, stepOne.getRegionId(),
+                stepOne.getDeliveryCost(), stepOne.getMinimumCharger(), photo,stepOne.getDeliveryTime());
     }
 
     private void Register(RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConfirmation, RequestBody phone,

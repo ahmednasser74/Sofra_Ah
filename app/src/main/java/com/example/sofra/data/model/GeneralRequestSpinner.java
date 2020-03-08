@@ -37,7 +37,7 @@ public class GeneralRequestSpinner {
     private List<CategoryData> listOfCategoryDatalist = new ArrayList<>();
 
     public static void getSpinnerCityData(Call<GeneralResponse> call, SpinnersAdapter spinnerAdapter, Spinner spinner,
-                                          String hint, AdapterView.OnItemSelectedListener listener) {
+                                          String hint, AdapterView.OnItemSelectedListener listener, int selectedId) {
 
         call.enqueue(new Callback<GeneralResponse>() {
             @Override
@@ -46,6 +46,16 @@ public class GeneralRequestSpinner {
                     if (response.body().getStatus() == 1) {
                         spinnerAdapter.setData(response.body().getData(), hint);
                         spinner.setAdapter(spinnerAdapter);
+
+                        int pos = 0;
+                        for (int i = 0; i < spinnerAdapter.generalResponseData.size(); i++) {
+                            if (selectedId == spinnerAdapter.generalResponseData.get(i).getId()) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        spinner.setSelection(pos);
+
                         spinner.setOnItemSelectedListener(listener);
                     }
                 } catch (Exception e) {
@@ -59,6 +69,7 @@ public class GeneralRequestSpinner {
             }
         });
     }
+
     public static void getSpinnerCityData2(Call<GeneralResponse> call, SpinnersAdapter spinnerAdapter, Spinner spinner,
                                            String hint) {
 
@@ -68,7 +79,10 @@ public class GeneralRequestSpinner {
                 try {
                     if (response.body().getStatus() == 1) {
                         spinnerAdapter.setData(response.body().getData(), hint);
+
                         spinner.setAdapter(spinnerAdapter);
+
+
                     }
                 } catch (Exception e) {
 
@@ -82,7 +96,7 @@ public class GeneralRequestSpinner {
         });
     }
 
-    public static void getTownSpinnerData(Call<GeneralResponse> call, SpinnersAdapter spinnerAdapter, Spinner spinner, String hint) {
+    public static void getTownSpinnerData(Call<GeneralResponse> call, SpinnersAdapter spinnerAdapter, Spinner spinner, String hint, int selectedId) {
 
         call.enqueue(new Callback<GeneralResponse>() {
             @Override
@@ -91,6 +105,16 @@ public class GeneralRequestSpinner {
                     if (response.body().getStatus() == 1) {
                         spinnerAdapter.setData(response.body().getData(), hint);
                         spinner.setAdapter(spinnerAdapter);
+
+                        int pos = 0;
+                        for (int i = 0; i < spinnerAdapter.generalResponseData.size(); i++) {
+                            if (selectedId == spinnerAdapter.generalResponseData.get(i).getId()) {
+                                pos = i;
+                                break;
+                            }
+                        }
+                        spinner.setSelection(pos);
+
                     }
                 } catch (Exception e) {
 

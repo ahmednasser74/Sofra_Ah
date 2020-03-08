@@ -152,7 +152,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         if (i != 0) {
                             GeneralRequestSpinner.getTownSpinnerData(getClient().getTown(cityAdapter.selectedId), townAdapter
-                                    , restaurantEditProfileFragmentSpGovernorate, "Town");
+                                    , restaurantEditProfileFragmentSpGovernorate, "Town", 0);
                         }
                     }
 
@@ -160,7 +160,7 @@ public class RestaurantEditProfileFragment extends BaseFragment {
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
                     }
-                });
+                }, 0);
 
     }
 

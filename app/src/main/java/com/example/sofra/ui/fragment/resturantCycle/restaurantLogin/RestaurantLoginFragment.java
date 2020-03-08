@@ -32,7 +32,6 @@ import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_DATA;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
 
-
 public class RestaurantLoginFragment extends BaseFragment {
 
     @BindView(R.id.restaurant_login_fragment_tv_forget_password)
@@ -71,6 +70,7 @@ public class RestaurantLoginFragment extends BaseFragment {
     }
 
     private void login() {
+
         String email = restaurantLoginFragmentEtMail.getEditText().getText().toString();
         password = restaurantLoginFragmentEtPassword.getEditText().getText().toString();
 
@@ -87,6 +87,7 @@ public class RestaurantLoginFragment extends BaseFragment {
     }
 
     private void getLogin(String email, String password) {
+
         getClient().getRestaurantLogin(email, password).enqueue(new Callback<AuthRestaurant>() {
             @Override
             public void onResponse(Call<AuthRestaurant> call, Response<AuthRestaurant> response) {

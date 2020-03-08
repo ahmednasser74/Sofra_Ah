@@ -17,6 +17,7 @@ import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.restaurantCategory.CategoriesPaginated;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.dialogs.DialogAddCategory;
+import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.helper.OnEndLess;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.activity.RestaurantCycleActivity;
@@ -35,6 +36,7 @@ import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
 import static com.example.sofra.data.local.SharedPreference.RESTAURANT_API_TOKEN;
+import static com.example.sofra.helper.HelperMethod.dismissProgressDialog;
 
 
 public class RestaurantCategoryFragment extends BaseFragment {
@@ -117,6 +119,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
             public void onResponse(Call<CategoriesPaginated> call, Response<CategoriesPaginated> response) {
                 try {
                     if (response.body().getStatus() == 1) {
+                        dismissProgressDialog();
                         maxPage = response.body().getData().getLastPage();
                         listOfCategoryDatalist.addAll(response.body().getData().getData());
                         restaurantCategoryFragmentPbLoading.setVisibility(View.GONE);

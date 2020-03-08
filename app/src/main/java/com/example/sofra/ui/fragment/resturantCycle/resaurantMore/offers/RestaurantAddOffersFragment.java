@@ -159,7 +159,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
         startingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateFrom.getText().toString());
         endingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateTill.getText().toString());
         photo = convertFileToMultipart(path, "photo");
-        offerId = convertToRequestBody(offerData.getId().toString());
+        offerId = convertToRequestBody(String.valueOf(50));
         apiToken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
 
         if (path == null) {
@@ -183,7 +183,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
     private void getNewOffer(RequestBody description, RequestBody startingAt, RequestBody name,
                              MultipartBody.Part photo, RequestBody endingAt, RequestBody offerId, RequestBody apiToken) {
 
-        getClient().getRestaurantAddOffer(description, startingAt, name, photo, endingAt, offerId, apiToken).enqueue(new Callback<RestaurantAddOffer>() {
+        getClient().getRestaurantAddOffer(description, startingAt, name, photo, endingAt, apiToken, offerId, offerId).enqueue(new Callback<RestaurantAddOffer>() {
             @Override
             public void onResponse(Call<RestaurantAddOffer> call, Response<RestaurantAddOffer> response) {
                 dismissProgressDialog();
@@ -192,7 +192,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
 
                         Toast.makeText(baseActivity, response.body().getMsg(), Toast.LENGTH_SHORT).show();
 
-                    }else {
+                    } else {
                         Toast.makeText(baseActivity, "something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
@@ -203,6 +203,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
             @Override
             public void onFailure(Call<RestaurantAddOffer> call, Throwable t) {
 
+                dismissProgressDialog();
             }
         });
 
