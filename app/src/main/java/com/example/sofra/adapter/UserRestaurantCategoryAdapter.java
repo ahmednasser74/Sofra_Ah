@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantCategory.CategoryData;
+import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantMenuFragment;
 
@@ -20,6 +21,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.sofra.helper.HelperMethod.showProgressDialog;
 
 public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRestaurantCategoryAdapter.ViewHolder> {
 
@@ -67,6 +70,7 @@ public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRest
 
                 userRestaurantListFragment.getMenuList(resId, listOfCategoryDataList.get(position).getId(), 1);
 
+                showProgressDialog(activity,"please wait...");
             }
         });
     }

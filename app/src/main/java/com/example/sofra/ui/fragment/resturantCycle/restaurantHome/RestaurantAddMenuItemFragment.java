@@ -105,16 +105,15 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
         offerPrice = convertToRequestBody(restaurantAddItemFragmentEtItemOfferPrice.getEditText().getText().toString());
         categoryId = convertToRequestBody(categoryData.getId().toString());
 
-        if (path == null) {
+        if (photo == null) {
             Toast.makeText(baseActivity, "please select photo", Toast.LENGTH_SHORT).show();
-        } else if (restaurantAddItemFragmentEtItemName == null) {
+        } else if (restaurantAddItemFragmentEtItemName.equals("")) {
             Toast.makeText(baseActivity, "please write item name", Toast.LENGTH_SHORT).show();
             restaurantAddItemFragmentEtItemName.setError("please enter price");
-        } else if (restaurantAddItemFragmentEtItemDescription.toString().trim().length() == 0) {
+        } else if (restaurantAddItemFragmentEtItemDescription.equals("")) {
             Toast.makeText(baseActivity, "please write item description", Toast.LENGTH_SHORT).show();
-        } else if (restaurantAddItemFragmentEtItemPrice == null) {
+        } else if (restaurantAddItemFragmentEtItemPrice.equals("")) {
             Toast.makeText(baseActivity, "please write item price", Toast.LENGTH_SHORT).show();
-            restaurantAddItemFragmentEtItemPrice.setError("please enter name");
         } else {
             showProgressDialog(getActivity(), "Please Wait...");
         }

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -29,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.supercharge.shimmerlayout.ShimmerLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,10 +43,12 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     RecyclerView restaurantMenuFragmentRvMenu;
     @BindView(R.id.restaurant_menu_fragment_rv_category)
     RecyclerView restaurantMenuFragmentRvCategory;
-    @BindView(R.id.user_restaurant_fragment_pb_loading)
-    ProgressBar userRestaurantFragmentPbLoading;
     @BindView(R.id.restaurant_menu_fragment_tv_no_item)
     TextView restaurantMenuFragmentTvNoItem;
+    @BindView(R.id.restaurant_menu_fragment_shimmer_menu)
+    ShimmerLayout restaurantMenuFragmentShimmerMenu;
+    @BindView(R.id.restaurant_menu_fragment_shimmer_category)
+    ShimmerLayout restaurantMenuFragmentShimmerCategory;
 
     private LinearLayoutManager linearLayoutManager;
     private OnEndLess onEndLess;
@@ -75,8 +77,6 @@ public class UserRestaurantMenuFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_user_restaurant_item, container, false);
         ButterKnife.bind(this, view);
 
-        restaurantMenuFragmentRvCategory.setVisibility(View.GONE);
-        restaurantMenuFragmentRvMenu.setVisibility(View.GONE);
         menuInit();
         categoryInit();
         hideRecycler();
@@ -117,6 +117,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     }
 
     private void categoryInit() {
+
         linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         restaurantMenuFragmentRvCategory.setLayoutManager(linearLayoutManager);
@@ -125,13 +126,20 @@ public class UserRestaurantMenuFragment extends BaseFragment {
         restaurantMenuFragmentRvCategory.setAdapter(userRestaurantCategoryAdapter);
         if (listOfCategoryDataList.size() == 0) {
             getCategoryList();
+            restaurantMenuFragmentShimmerCategory.startShimmerAnimation();
+            restaurantMenuFragmentShimmerCategory.setVisibility(View.VISIBLE);
         } else {
-            restaurantMenuFragmentRvCategory.setVisibility(View.VISIBLE);
+
+            restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
+            restaurantMenuFragmentShimmerMenu.setVisibility(View.GONE);
         }
+
     }
 
     private void getCategoryList() {
+
         listOfCategoryDataList.add(new CategoryData(0, "ALL", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcThgwBsaHfG9JsLTxTWUboS18RYAa8W4xSBHwUx6QED-ytXC85e"));
+
         getClient().getUserCategory(restaurantData.getId()).enqueue(new Callback<CategoriesNotPaginated>() {
             @Override
             public void onResponse(Call<CategoriesNotPaginated> call, Response<CategoriesNotPaginated> response) {
@@ -140,6 +148,8 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                         listOfCategoryDataList.addAll(response.body().getData());
                         restaurantMenuFragmentRvCategory.setVisibility(View.VISIBLE);
                         userRestaurantCategoryAdapter.notifyDataSetChanged();
+                        restaurantMenuFragmentShimmerCategory.stopShimmerAnimation();
+                        restaurantMenuFragmentShimmerCategory.setVisibility(View.GONE);
                     }
                 } catch (Exception e) {
                 }
@@ -148,7 +158,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
             @Override
             public void onFailure(Call<CategoriesNotPaginated> call, Throwable t) {
                 try {
-
+                    dismissProgressDialog();
                 } catch (Exception e) {
                 }
             }
@@ -180,6 +190,10 @@ public class UserRestaurantMenuFragment extends BaseFragment {
 
 
         if (listRestaurantItemData.size() == 0) {
+
+            restaurantMenuFragmentShimmerMenu.startShimmerAnimation();
+            restaurantMenuFragmentShimmerMenu.setVisibility(View.VISIBLE);
+
             restaurantItemAdapter = new UserRestaurantMenuAdapter((BaseActivity) getActivity(), listRestaurantItemData);
             restaurantMenuFragmentRvMenu.setAdapter(restaurantItemAdapter);
             getMenuList(restaurantData.getId(), id, 1);
@@ -195,11 +209,14 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                 enqueue(new Callback<FoodItems>() {
                     @Override
                     public void onResponse(Call<FoodItems> call, Response<FoodItems> response) {
+                        dismissProgressDialog();
                         try {
                             if (response.body().getStatus() == 1) {
                                 maxPage = response.body().getData().getLastPage();
                                 if (page == 1) {
                                     listRestaurantItemData.clear();
+                                    restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
+                                    restaurantMenuFragmentShimmerMenu.setVisibility(View.GONE);
                                 }
 
                                 restaurantMenuFragmentRvMenu.setVisibility(View.VISIBLE);
@@ -218,6 +235,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<FoodItems> call, Throwable t) {
                         try {
+                            dismissProgressDialog();
 
                         } catch (Exception e) {
 

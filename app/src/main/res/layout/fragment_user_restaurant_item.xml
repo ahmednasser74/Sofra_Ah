@@ -5,6 +5,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/restaurant_menu_fragment_shimmer_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <include layout="@layout/item_user_category_restaurant" />
+            <include layout="@layout/item_user_category_restaurant" />
+            <include layout="@layout/item_user_category_restaurant" />
+            <include layout="@layout/item_user_category_restaurant" />
+            <include layout="@layout/item_user_category_restaurant" />
+
+        </LinearLayout>
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/restaurant_menu_fragment_shimmer_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/item_user_menu" />
+            <include layout="@layout/item_user_menu" />
+            <include layout="@layout/item_user_menu" />
+            <include layout="@layout/item_user_menu" />
+            <include layout="@layout/item_user_menu" />
+
+        </LinearLayout>
+
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/restaurant_menu_fragment_rv_category"
         android:layout_width="match_parent"
@@ -25,11 +64,4 @@
         android:textSize="20sp"
         android:visibility="gone" />
 
-    <ProgressBar
-        android:id="@+id/user_restaurant_fragment_pb_loading"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dim_10dp" />
 </LinearLayout>

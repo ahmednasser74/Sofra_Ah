@@ -124,7 +124,7 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
 
         if (ListRestaurantData.size() == 0) {
 
-            userRestaurantListFragmentShimmer.startShimmerAnimation();
+            userRestaurantListFragmentShimmer.animate();
             userRestaurantListFragmentShimmer.setVisibility(View.VISIBLE);
             restaurantListAdapter = new RestaurantListAdapter((BaseActivity) getActivity(), ListRestaurantData);
             restaurantListFragmentRvRestaurant.setAdapter(restaurantListAdapter);
