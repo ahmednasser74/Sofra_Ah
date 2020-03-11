@@ -159,7 +159,7 @@ public class RestaurantAddOffersFragment extends BaseFragment {
         startingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateFrom.getText().toString());
         endingAt = convertToRequestBody(restaurantAddOfferFragmentEtDateTill.getText().toString());
         photo = convertFileToMultipart(path, "photo");
-        offerId = convertToRequestBody(String.valueOf(50));
+        offerId = convertToRequestBody(String.valueOf(60));
         apiToken = convertToRequestBody(LoadData(getActivity(), RESTAURANT_API_TOKEN));
 
         if (path == null) {

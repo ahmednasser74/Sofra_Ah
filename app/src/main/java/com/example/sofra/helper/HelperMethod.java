@@ -50,47 +50,27 @@ public class HelperMethod {
             Tool_Bar_Title.setText(title);
         }
     }
-//
-//    public static void replaceFragmentWithAnimation(Fragment fragment , FragmentManager getChildFragmentManager, int id,String fromWhere) {
-//        FragmentTransaction transaction = getChildFragmentManager.beginTransaction();
-//        if(fromWhere=="l"){
-////            android.R.anim.slide_in_left
-//            transaction.setCustomAnimations(R.anim.slide_in_left,
-//                    R.anim.slide_out_right);}
-//        if(fromWhere=="r"){
-//            transaction.setCustomAnimations(R.anim.enter_from_right,
-//                    R.anim.exit_to_left);}
-//        if(fromWhere=="t"){
-//            transaction.setCustomAnimations(R.anim.slide_out_down, R.anim.slide_in_down);}
-//        if(fromWhere=="b"){
-//            transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up);}
-////        if(fromWhere=="rr"){
-////            transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.slide_in_left, R.anim.slide_out_right);}
-////        if(fromWhere=="t"){
-////            transaction.setCustomAnimations(R.anim.slide_in_down, R.anim.slide_out_up);}
-////        if(fromWhere=="b"){
-////            transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_down);}
-//        transaction.replace(id, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
 
-    public static void replaceFragmentWithAnimation(FragmentManager getChildFragmentManager, int id, Fragment fragment,String fromWhere) {
+    public static void replaceFragmentWithAnimation(FragmentManager getChildFragmentManager, int id, Fragment fragment, String fromWhere) {
         FragmentTransaction transaction = getChildFragmentManager.beginTransaction();
 
-        if(fromWhere=="l"){
+        if (fromWhere == "l") {
 //            android.R.anim.slide_in_left
             transaction.setCustomAnimations(R.anim.slide_in_left,
-                    R.anim.slide_out_right);}
-        if(fromWhere=="r"){
+                    R.anim.slide_out_right);
+        }
+        if (fromWhere == "r") {
             transaction.setCustomAnimations(R.anim.enter_from_right,
-                    R.anim.exit_to_left);}
-        if(fromWhere=="t"){
+                    R.anim.exit_to_left);
+        }
+        if (fromWhere == "t") {
             transaction.setCustomAnimations(R.anim.slide_out_down,
-                    R.anim.slide_in_down);}
-        if(fromWhere=="b"){
+                    R.anim.slide_in_down);
+        }
+        if (fromWhere == "b") {
             transaction.setCustomAnimations(R.anim.slide_in_up,
-                    R.anim.slide_out_up);}
+                    R.anim.slide_out_up);
+        }
 //        if(fromWhere=="rr"){
 //            transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.slide_in_left, R.anim.slide_out_right);}
 //        if(fromWhere=="t"){
@@ -101,6 +81,7 @@ public class HelperMethod {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     public static void initImage(Activity activity, Action<ArrayList<AlbumFile>> action) {
         Album.initialize(AlbumConfig.newBuilder(activity)
                 .setAlbumLoader(new MediaLoader())

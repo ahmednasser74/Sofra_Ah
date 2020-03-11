@@ -102,5 +102,7 @@ dependencies {
     //sdp and ssp for depth pixel
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    //auto slider
+    implementation 'com.github.smarteist:autoimageslider:1.3.5'
 
 }

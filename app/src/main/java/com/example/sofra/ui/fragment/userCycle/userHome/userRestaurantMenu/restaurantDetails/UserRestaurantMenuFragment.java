@@ -48,15 +48,15 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     @BindView(R.id.restaurant_menu_fragment_tv_no_item)
     TextView restaurantMenuFragmentTvNoItem;
 
-    private int maxPage = 0;
     private LinearLayoutManager linearLayoutManager;
     private OnEndLess onEndLess;
     private List<FoodItemData> listRestaurantItemData = new ArrayList<>();
     private List<CategoryData> listOfCategoryDataList = new ArrayList<>();
     private UserRestaurantMenuAdapter restaurantItemAdapter;
-    public int id = 0;
     private UserRestaurantCategoryAdapter userRestaurantCategoryAdapter;
     public Restaurant restaurantData;
+    private int maxPage = 0;
+    public int id = 0;
 
     public UserRestaurantMenuFragment() {
     }

@@ -116,7 +116,7 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/dim_16dp"
         android:paddingTop="@dimen/dim_16dp"
-        app:civ_border_color="@color/white"
+        app:civ_border_color="@color/gray"
         app:civ_border_width="4dp"
         app:civ_shadow="true"
         app:civ_shadow_radius="10" />
