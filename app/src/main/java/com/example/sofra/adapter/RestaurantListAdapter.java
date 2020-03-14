@@ -135,7 +135,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         @BindView(R.id.item_restaurant_list_tv_opened)
         TextView itemRestaurantListTvOpened;
         @BindView(R.id.item_restaurant_list_img_restaurant_logo)
-        CircleImageView itemRestaurantListImgRestaurantLogo;
+        ImageView itemRestaurantListImgRestaurantLogo;
 
         private View view;
         public int position;

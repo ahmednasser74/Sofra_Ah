@@ -5,24 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <io.supercharge.shimmerlayout.ShimmerLayout
-        android:id="@+id/restaurant_menu_fragment_shimmer_category"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/restaurant_menu_fragment_rv_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <include layout="@layout/item_user_category_restaurant" />
-            <include layout="@layout/item_user_category_restaurant" />
-            <include layout="@layout/item_user_category_restaurant" />
-            <include layout="@layout/item_user_category_restaurant" />
-            <include layout="@layout/item_user_category_restaurant" />
-
-        </LinearLayout>
-    </io.supercharge.shimmerlayout.ShimmerLayout>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 
     <io.supercharge.shimmerlayout.ShimmerLayout
         android:id="@+id/restaurant_menu_fragment_shimmer_menu"
@@ -37,17 +25,12 @@
             <include layout="@layout/item_user_menu" />
             <include layout="@layout/item_user_menu" />
             <include layout="@layout/item_user_menu" />
-            <include layout="@layout/item_user_menu" />
-            <include layout="@layout/item_user_menu" />
+
 
         </LinearLayout>
 
-    </io.supercharge.shimmerlayout.ShimmerLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/restaurant_menu_fragment_rv_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    </io.supercharge.shimmerlayout.ShimmerLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/restaurant_menu_fragment_rv_menu"

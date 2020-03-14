@@ -47,16 +47,14 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     TextView restaurantMenuFragmentTvNoItem;
     @BindView(R.id.restaurant_menu_fragment_shimmer_menu)
     ShimmerLayout restaurantMenuFragmentShimmerMenu;
-    @BindView(R.id.restaurant_menu_fragment_shimmer_category)
-    ShimmerLayout restaurantMenuFragmentShimmerCategory;
 
     private LinearLayoutManager linearLayoutManager;
-    private OnEndLess onEndLess;
     private List<FoodItemData> listRestaurantItemData = new ArrayList<>();
     private List<CategoryData> listOfCategoryDataList = new ArrayList<>();
     private UserRestaurantMenuAdapter restaurantItemAdapter;
     private UserRestaurantCategoryAdapter userRestaurantCategoryAdapter;
     public Restaurant restaurantData;
+    private OnEndLess onEndLess;
     private int maxPage = 0;
     public int id = 0;
 
@@ -126,8 +124,6 @@ public class UserRestaurantMenuFragment extends BaseFragment {
         restaurantMenuFragmentRvCategory.setAdapter(userRestaurantCategoryAdapter);
         if (listOfCategoryDataList.size() == 0) {
             getCategoryList();
-            restaurantMenuFragmentShimmerCategory.startShimmerAnimation();
-            restaurantMenuFragmentShimmerCategory.setVisibility(View.VISIBLE);
         } else {
 
             restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
@@ -146,10 +142,7 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                 try {
                     if (response.body().getStatus() == 1) {
                         listOfCategoryDataList.addAll(response.body().getData());
-                        restaurantMenuFragmentRvCategory.setVisibility(View.VISIBLE);
                         userRestaurantCategoryAdapter.notifyDataSetChanged();
-                        restaurantMenuFragmentShimmerCategory.stopShimmerAnimation();
-                        restaurantMenuFragmentShimmerCategory.setVisibility(View.GONE);
                     }
                 } catch (Exception e) {
                 }
@@ -214,12 +207,11 @@ public class UserRestaurantMenuFragment extends BaseFragment {
                             if (response.body().getStatus() == 1) {
                                 maxPage = response.body().getData().getLastPage();
                                 if (page == 1) {
-                                    listRestaurantItemData.clear();
                                     restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
                                     restaurantMenuFragmentShimmerMenu.setVisibility(View.GONE);
+                                    listRestaurantItemData.clear();
                                 }
 
-                                restaurantMenuFragmentRvMenu.setVisibility(View.VISIBLE);
                                 listRestaurantItemData.addAll(response.body().getData().getData());
                                 restaurantItemAdapter.notifyDataSetChanged();
 
@@ -245,6 +237,18 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        restaurantMenuFragmentShimmerMenu.startShimmerAnimation();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
+    }
+
+    @Override
     public void onBack() {
         super.onBack();
     }
@@ -252,5 +256,11 @@ public class UserRestaurantMenuFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        restaurantMenuFragmentShimmerMenu.stopShimmerAnimation();
     }
 }
