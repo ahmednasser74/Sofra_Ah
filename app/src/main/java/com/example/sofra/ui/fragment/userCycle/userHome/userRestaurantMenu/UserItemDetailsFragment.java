@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,14 +14,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
+import com.example.sofra.data.local.room.OrderItem;
+import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.data.model.listRestaurantItem.FoodItemData;
+import com.example.sofra.data.model.userNewOrder.Item;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
 import com.squareup.picasso.Picasso;
 
+import java.util.concurrent.Executors;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.sofra.data.local.room.RoomManger.getInstance;
 
 
 public class UserItemDetailsFragment extends BaseFragment {
@@ -41,11 +49,14 @@ public class UserItemDetailsFragment extends BaseFragment {
     TextView itemDetailsFragmentTvMealDetails;
     @BindView(R.id.item_details_fragment_tv_meal_price)
     TextView itemDetailsFragmentTvMealPrice;
+    @BindView(R.id.item_details_fragment_note)
+    EditText itemDetailsFragmentNote;
 
     public FoodItemData restaurantItem;
     private int quantity = 1;
     private int id = -1;
-    private BaseActivity activity;
+    OrderItem orderItem;
+    RoomDao roomDao;
 
     public UserItemDetailsFragment() {
     }
@@ -62,6 +73,8 @@ public class UserItemDetailsFragment extends BaseFragment {
         setUpActivity();
         View view = inflater.inflate(R.layout.fragment_user_item_details, container, false);
         ButterKnife.bind(this, view);
+
+        roomDao = getInstance(getActivity()).roomDao();
 
         getItemDetailsData();
         return view;
@@ -102,7 +115,7 @@ public class UserItemDetailsFragment extends BaseFragment {
         itemDetailsFragmentTvQuantity.setText("" + number1);
     }
 
-    @OnClick({R.id.item_details_fragment_btn_plus, R.id.item_details_fragment_tv_quantity, R.id.item_details_fragment_btn_minus})
+    @OnClick({R.id.item_details_fragment_btn_plus, R.id.item_details_fragment_tv_quantity, R.id.item_details_fragment_btn_minus, R.id.item_details_fragment_btn_shopping_cart})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.item_details_fragment_btn_plus:
@@ -113,6 +126,20 @@ public class UserItemDetailsFragment extends BaseFragment {
                 break;
             case R.id.item_details_fragment_btn_minus:
                 decrement();
+                break;
+            case R.id.item_details_fragment_btn_shopping_cart:
+
+                String note = itemDetailsFragmentNote.getText().toString().trim();
+                Executors.newSingleThreadExecutor().execute(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                orderItem = new OrderItem(restaurantItem.getId(), Integer.parseInt(restaurantItem.getRestaurantId()),
+                                        Double.parseDouble(restaurantItem.getPrice()), quantity,
+                                        "ahmed", note, restaurantItem.getPhotoUrl(), restaurantItem.getName());
+                                roomDao.addItem(orderItem);
+                            }
+                        });
                 break;
         }
     }

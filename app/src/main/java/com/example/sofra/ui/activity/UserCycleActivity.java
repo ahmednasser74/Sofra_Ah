@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import com.example.sofra.R;
+import com.example.sofra.data.local.room.OrderItem;
+import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.fragment.userCycle.UserNotificationListFragment;
 import com.example.sofra.ui.fragment.userCycle.userEditProfile.UserEditProfileFragment;
@@ -25,9 +27,16 @@ import com.example.sofra.ui.fragment.userCycle.userMore.UserMoreFragment;
 import com.example.sofra.ui.fragment.userCycle.userOrders.UserOrdersContainerFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Executors;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.sofra.data.local.room.RoomManger.getInstance;
+import static com.example.sofra.helper.HelperMethod.replace;
 
 public class UserCycleActivity extends BaseActivity {
 
@@ -44,6 +53,10 @@ public class UserCycleActivity extends BaseActivity {
     @BindView(R.id.user_cycle_activity_fl_container)
     FrameLayout userCycleActivityFlContainer;
 
+    List<OrderItem> orderItems;
+    RoomDao roomDao;
+    ShoppingCartFragment shoppingCartFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +67,8 @@ public class UserCycleActivity extends BaseActivity {
                 R.id.user_cycle_activity_fl_container, null, null);
         HelperMethod.disappearKeypad(this, userCycleActivityFlContainer);
 
+        shoppingCartFragment = new ShoppingCartFragment();
+        roomDao = getInstance(UserCycleActivity.this).roomDao();
         initNavigation();
         internetConnection();
     }
@@ -137,8 +152,21 @@ public class UserCycleActivity extends BaseActivity {
                 break;
 
             case R.id.user_cycle_activity_img_shopping_cart:
-                HelperMethod.replace(new ShoppingCartFragment(), getSupportFragmentManager(),
-                        R.id.user_cycle_activity_fl_container, null, null);
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        orderItems = roomDao.getAll();
+                        shoppingCartFragment.listOrderItem = orderItems;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                HelperMethod.replace(shoppingCartFragment, getSupportFragmentManager(),
+                                        R.id.user_cycle_activity_fl_container, null, null);
+                            }
+                        });
+                    }
+                });
                 break;
 
             case R.id.user_cycle_activity_fl_container:

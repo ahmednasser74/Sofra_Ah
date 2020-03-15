@@ -38,6 +38,15 @@
             android:textColor="@color/blue"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/item_shopping_cart_tv_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:textColor="@color/pink"
+            android:layout_toEndOf="@id/item_shopping_cart_tv_item_name" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

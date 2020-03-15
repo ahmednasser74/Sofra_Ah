@@ -7,20 +7,25 @@
     android:layout_marginEnd="@dimen/dim_8dp"
     android:orientation="vertical">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/item_category_restaurant_img_restaurant_logo"
-        android:layout_width="@dimen/dim_60dp"
-        android:layout_height="@dimen/dim_60dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:civ_border_width="3dp"
-        android:background="@null"
-        app:civ_shadow="true"
-        app:civ_shadow_color="#000"/>
+        android:layout_marginTop="4dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="4dp">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_category_restaurant_img_restaurant_logo"
+            android:layout_width="@dimen/dim_60dp"
+            android:layout_height="@dimen/dim_60dp" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/item_user_category_tv_category_name"
-        android:layout_width="@dimen/album_dp_80"
-        android:layout_height="@dimen/dim_40dp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Pizza" />
