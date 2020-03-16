@@ -3,6 +3,7 @@ package com.example.sofra.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import com.example.sofra.data.model.restaurantCategory.CategoryData;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantMenuFragment;
+import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +84,7 @@ public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRest
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_category_restaurant_img_restaurant_logo)
-        CircleImageView itemCategoryRestaurantImgRestaurantLogo;
+        ImageView itemCategoryRestaurantImgRestaurantLogo;
         @BindView(R.id.item_user_category_tv_category_name)
         TextView itemUserCategoryTvCategoryName;
         private View view;

@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/dim_8dp"
-    android:layout_marginEnd="@dimen/dim_8dp"
+    android:layout_marginStart="@dimen/dim_4dp"
+    android:layout_marginEnd="@dimen/dim_4dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -12,14 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="4dp"
-        app:cardCornerRadius="50dp"
+        app:cardCornerRadius="@dimen/_30sdp"
         app:cardElevation="4dp">
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/item_category_restaurant_img_restaurant_logo"
-            android:layout_width="@dimen/dim_60dp"
-            android:layout_height="@dimen/dim_60dp" />
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:scaleType="fitXY" />
     </androidx.cardview.widget.CardView>
 
     <TextView
