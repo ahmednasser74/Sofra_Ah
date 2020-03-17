@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -75,8 +76,8 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
     private void setAnimation(View viewToAnimate, int position, ViewHolder holder) {
 //        de 3shan lw 3ayz al animation mysht3sh w ana tal3 tany
         if (position > lastPosition) {
-        Animation animation = AnimationUtils.loadAnimation(activity, R.anim.animation_down_to_up);
-        viewToAnimate.startAnimation(animation);
+            Animation animation = AnimationUtils.loadAnimation(activity, R.anim.animation_down_to_up);
+            viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }
     }
@@ -85,10 +86,17 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
         restaurantData = restaurantDataList.get(position);
 
         holder.itemRestaurantListTvRestaurantName.setText(restaurantData.getName());
-        if (restaurantData.getActivated().equals("1")) {
+        if (restaurantData.getAvailability().equals("open")) {
             holder.itemRestaurantListImgOpened.setImageResource(R.drawable.shape_green_circle);
         } else {
             holder.itemRestaurantListImgOpened.setImageResource(R.drawable.shape_red_circle);
+
+//            if (holder.view.isClickable()) {
+//                if (!restaurantData.getAvailability().equals("open")) {
+//                    Toast.makeText(activity, restaurantData.getName() + "is closed", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+
         }
 
         Glide.with(activity).load(restaurantData.getPhotoUrl()).into(holder.itemRestaurantListImgRestaurantLogo);
@@ -108,7 +116,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 UserRestaurantItemContainerFragment restaurantMenuFragment = new UserRestaurantItemContainerFragment();
                 restaurantMenuFragment.restaurantData = restaurantDataList.get(position);
 
-                SharedPreference.SaveData(activity,RESTAURANT_ID,restaurantData.getId());
+                SharedPreference.SaveData(activity, RESTAURANT_ID, restaurantData.getId());
 
                 HelperMethod.replace(restaurantMenuFragment, activity.getSupportFragmentManager(),
                         R.id.user_cycle_activity_fl_container, null, null);

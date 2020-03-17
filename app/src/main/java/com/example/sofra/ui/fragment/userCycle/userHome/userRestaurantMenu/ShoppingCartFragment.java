@@ -76,6 +76,10 @@ public class ShoppingCartFragment extends BaseFragment {
         shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
         shoppingCartAdapter.notifyDataSetChanged();
 
+      setTotalPrice();
+    }
+
+    public void setTotalPrice() {
         for (int i = 0; i < listOrderItem.size(); i++) {
 
             total = (int) (total + (listOrderItem.get(i).getQuantity() * listOrderItem.get(i).getPrice()));

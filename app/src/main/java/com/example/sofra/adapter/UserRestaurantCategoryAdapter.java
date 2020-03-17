@@ -84,7 +84,7 @@ public class UserRestaurantCategoryAdapter extends RecyclerView.Adapter<UserRest
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_category_restaurant_img_restaurant_logo)
-        ImageView itemCategoryRestaurantImgRestaurantLogo;
+        CircleImageView itemCategoryRestaurantImgRestaurantLogo;
         @BindView(R.id.item_user_category_tv_category_name)
         TextView itemUserCategoryTvCategoryName;
         private View view;

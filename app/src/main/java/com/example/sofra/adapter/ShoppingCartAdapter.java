@@ -19,6 +19,7 @@ import com.example.sofra.data.local.room.OrderItem;
 import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.data.model.restaurantDeleteOffer.RestaurantDeleteOffer;
 import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.ShoppingCartFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,9 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
 
     private BaseActivity activity;
     private List<OrderItem> listOrderItem = new ArrayList<>();
-    RoomDao roomDao;
-    private int quantity ;
+    private RoomDao roomDao;
+    private int quantity;
+    private ShoppingCartFragment shoppingCartFragment;
 
     public ShoppingCartAdapter(BaseActivity activity, List<OrderItem> listOrderItem) {
         this.activity = activity;
@@ -75,114 +77,76 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
 
     private void setAction(ViewHolder holder, int position) {
         OrderItem orderItem = listOrderItem.get(position);
-        quantity = orderItem.getQuantity();
 
         holder.itemShoppingCartImgPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (quantity < 100) {
-                    quantity++;
-                    orderItem.setQuantity(quantity);
-                    roomDao.update(orderItem);
-                    holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-
-                } else {
-                    Toast.makeText(activity, "can't order above 100 cup ", Toast.LENGTH_SHORT).show();
-                }
+//                Executors.newSingleThreadExecutor().execute(new Runnable() {
+//                    @Override
+//                    public void run() {
+                quantity = orderItem.getQuantity();
+                quantity++;
+                orderItem.setQuantity(quantity);
+                roomDao.update(orderItem);
+                holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
 
             }
+//                });
+//            }
         });
 
         holder.itemShoppingCartImgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity = orderItem.getQuantity();
-                if (quantity > 1) {
-                    quantity--;
-                    orderItem.setQuantity(quantity);
-                    roomDao.update(orderItem);
-                    holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-
-                } else if (quantity < 1) {
-
-                    final AlertDialog alert;
-                    AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
-                    alert = dialog2.create();
-                    alert.setTitle("Delete ?");
-                    alert.setMessage("Are you sure you want to delete this Category?");
-                    showProgressDialog(activity, "please wait...");
-                    alert.setButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                @Override
-                                public void run() {
-                                    roomDao.removeItem(orderItem);
-                                    (activity).runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            listOrderItem.remove(position);
-                                            notifyDataSetChanged();
-                                        }
-                                    });
-                                }
-                            });
-
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        quantity = orderItem.getQuantity();
+                        if (quantity > 1) {
+                            quantity--;
+                            orderItem.setQuantity(quantity);
+                            roomDao.update(orderItem);
+                            holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
                         }
-                    });
-                    alert.setButton2("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            alert.dismiss();
-                        }
-                    });
-                    alert.show();
-                }
+                    }
+                });
             }
         });
 
         holder.itemShoppingCartImgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        roomDao.removeItem(orderItem);
-                        (activity).runOnUiThread(new Runnable() {
+                final AlertDialog alert;
+                AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
+                alert = dialog2.create();
+                alert.setTitle("Delete ?");
+                alert.setMessage("sure about delete item from cart?");
+                alert.setButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Executors.newSingleThreadExecutor().execute(new Runnable() {
                             @Override
                             public void run() {
-                                final AlertDialog alert;
-                                AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
-                                alert = dialog2.create();
-                                alert.setTitle("Delete ?");
-                                alert.setMessage("Are you sure you want to delete this Category?");
-                                alert.setButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Executors.newSingleThreadExecutor().execute(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                roomDao.removeItem(orderItem);
-                                                (activity).runOnUiThread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        listOrderItem.remove(position);
-                                                        notifyDataSetChanged();
-                                                    }
-                                                });
-                                            }
-                                        });
-
+                                roomDao.removeItem(orderItem);
+                                (activity).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        listOrderItem.remove(position);
+                                        notifyDataSetChanged();
+                                        roomDao.update(orderItem);
+                                        holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
                                     }
                                 });
-                                alert.setButton2("No", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        alert.dismiss();
-                                    }
-                                });
-                                alert.show();
                             }
                         });
+
                     }
                 });
-
+                alert.setButton2("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
             }
         });
     }
@@ -242,3 +206,36 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         }
     }
 }
+//                else if (quantity < 1) {
+//
+//                    final AlertDialog alert;
+//                    AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
+//                    alert = dialog2.create();
+//                    alert.setTitle("Delete ?");
+//                    alert.setMessage("Are you sure you want to delete this Category?");
+//                    showProgressDialog(activity, "please wait...");
+//                    alert.setButton("Yes", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Executors.newSingleThreadExecutor().execute(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    roomDao.removeItem(orderItem);
+//                                    (activity).runOnUiThread(new Runnable() {
+//                                        @Override
+//                                        public void run() {
+//                                            listOrderItem.remove(position);
+//                                            notifyDataSetChanged();
+//                                        }
+//                                    });
+//                                }
+//                            });
+//
+//                        }
+//                    });
+//                    alert.setButton2("No", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            alert.dismiss();
+//                        }
+//                    });
+//                    alert.show();
+//                }
