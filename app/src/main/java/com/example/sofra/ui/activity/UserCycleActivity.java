@@ -1,7 +1,9 @@
 package com.example.sofra.ui.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -152,21 +154,21 @@ public class UserCycleActivity extends BaseActivity {
                 break;
 
             case R.id.user_cycle_activity_img_shopping_cart:
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
 
-                        orderItems = roomDao.getAll();
-                        shoppingCartFragment.listOrderItem = orderItems;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                HelperMethod.replace(shoppingCartFragment, getSupportFragmentManager(),
-                                        R.id.user_cycle_activity_fl_container, null, null);
-                            }
-                        });
-                    }
-                });
+                    Executors.newSingleThreadExecutor().execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            orderItems = roomDao.getAll();
+                            shoppingCartFragment.listOrderItem = orderItems;
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    HelperMethod.replace(shoppingCartFragment, getSupportFragmentManager(),
+                                            R.id.user_cycle_activity_fl_container, null, null);
+                                }
+                            });
+                        }
+                    });
                 break;
 
             case R.id.user_cycle_activity_fl_container:

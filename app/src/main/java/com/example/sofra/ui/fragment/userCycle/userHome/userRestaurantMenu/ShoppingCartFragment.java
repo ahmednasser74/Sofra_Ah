@@ -1,5 +1,7 @@
 package com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +17,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sofra.R;
 import com.example.sofra.adapter.ShoppingCartAdapter;
 import com.example.sofra.data.local.room.OrderItem;
+import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.activity.UserCycleActivity;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,7 +46,7 @@ public class ShoppingCartFragment extends BaseFragment {
 
     private LinearLayoutManager linearLayoutManager;
     public List<OrderItem> listOrderItem = new ArrayList<>();
-    private ShoppingCartAdapter shoppingCartAdapter;
+    public ShoppingCartAdapter shoppingCartAdapter;
     private int total;
 
     public ShoppingCartFragment() {
@@ -68,15 +73,30 @@ public class ShoppingCartFragment extends BaseFragment {
     }
 
     private void initRecycler() {
+        if (listOrderItem.size() == 0) {
+            final AlertDialog alert;
+            AlertDialog.Builder dialog2 = new AlertDialog.Builder(getActivity());
+            alert = dialog2.create();
+            alert.setMessage("sorry cart is empty");
+            alert.setButton2("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    onBack();
+                    alert.dismiss();
+                }
+            });
+            alert.show();
 
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        shoppingCartFragmentRv.setLayoutManager(linearLayoutManager);
+        } else {
 
-        shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem);
-        shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
-        shoppingCartAdapter.notifyDataSetChanged();
+            linearLayoutManager = new LinearLayoutManager(getActivity());
+            shoppingCartFragmentRv.setLayoutManager(linearLayoutManager);
 
-      setTotalPrice();
+            shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem);
+            shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
+            shoppingCartAdapter.notifyDataSetChanged();
+
+        }
+        setTotalPrice();
     }
 
     public void setTotalPrice() {

@@ -49,12 +49,11 @@ public class UserItemDetailsFragment extends BaseFragment {
     TextView itemDetailsFragmentTvMealDetails;
     @BindView(R.id.item_details_fragment_tv_meal_price)
     TextView itemDetailsFragmentTvMealPrice;
+
     @BindView(R.id.item_details_fragment_note)
     EditText itemDetailsFragmentNote;
-
-    public FoodItemData restaurantItem;
     private int quantity = 1;
-    private int id = -1;
+    public FoodItemData restaurantItem;
     OrderItem orderItem;
     RoomDao roomDao;
 
@@ -102,7 +101,6 @@ public class UserItemDetailsFragment extends BaseFragment {
     }
 
     public void decrement() {
-        int x = 0;
         if (quantity > 1) {
             quantity--;
         } else {
