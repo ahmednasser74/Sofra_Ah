@@ -1,4 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+<!--        <array name="icons">-->
+<!--            <item>@drawable/album_ic_image_camera_white</item>-->
+<!--            <item>@drawable/ic_white_plus</item>-->
+<!--        </array>-->
+<!--        <array name="colors">-->
+<!--            <item>@color/pink</item>-->
+<!--        </array>-->
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">

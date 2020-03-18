@@ -79,7 +79,7 @@ public class UserCycleActivity extends BaseActivity {
         if (haveNetworkConnection()) {
             userCycleActivityLayoutNoConnection.setVisibility(View.GONE);
             userCycleActivityFlContainer.setVisibility(View.VISIBLE);
-        } else {
+        } else if (!haveNetworkConnection()) {
             userCycleActivityLayoutNoConnection.setVisibility(View.VISIBLE);
             userCycleActivityFlContainer.setVisibility(View.GONE);
         }
@@ -101,18 +101,6 @@ public class UserCycleActivity extends BaseActivity {
         }
         return haveConnectedWifi || haveConnectedMobile;
     }
-
-//    public static boolean isConnected(Context context) {
-//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-//        NetworkInfo mobileInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-//
-//        if ((wifiInfo != null && wifiInfo.isConnected()) || (mobileInfo != null && mobileInfo.isConnected())) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
 
     private void initNavigation() {
 
@@ -146,7 +134,13 @@ public class UserCycleActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.user_cycle_activity_btn_rety:
-                internetConnection();
+                if (haveNetworkConnection()) {
+                    userCycleActivityLayoutNoConnection.setVisibility(View.GONE);
+                    userCycleActivityFlContainer.setVisibility(View.VISIBLE);
+                } else if (!haveNetworkConnection()) {
+                    userCycleActivityLayoutNoConnection.setVisibility(View.VISIBLE);
+                    userCycleActivityFlContainer.setVisibility(View.GONE);
+                }
                 break;
             case R.id.user_cycle_activity_img_notification:
                 HelperMethod.replace(new UserNotificationListFragment(), getSupportFragmentManager(),
@@ -155,20 +149,20 @@ public class UserCycleActivity extends BaseActivity {
 
             case R.id.user_cycle_activity_img_shopping_cart:
 
-                    Executors.newSingleThreadExecutor().execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            orderItems = roomDao.getAll();
-                            shoppingCartFragment.listOrderItem = orderItems;
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    HelperMethod.replace(shoppingCartFragment, getSupportFragmentManager(),
-                                            R.id.user_cycle_activity_fl_container, null, null);
-                                }
-                            });
-                        }
-                    });
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        orderItems = roomDao.getAll();
+                        shoppingCartFragment.listOrderItem = orderItems;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                HelperMethod.replace(shoppingCartFragment, getSupportFragmentManager(),
+                                        R.id.user_cycle_activity_fl_container, null, null);
+                            }
+                        });
+                    }
+                });
                 break;
 
             case R.id.user_cycle_activity_fl_container:

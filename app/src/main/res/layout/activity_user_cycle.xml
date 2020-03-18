@@ -50,15 +50,6 @@
             android:layout_height="300dp"
             android:src="@drawable/gif" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dim_16dp"
-            android:text="No Internet Connection"
-            android:textColor="@color/pink"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
         <Button
             android:id="@+id/user_cycle_activity_btn_rety"
             android:layout_width="@dimen/dim_200dp"
