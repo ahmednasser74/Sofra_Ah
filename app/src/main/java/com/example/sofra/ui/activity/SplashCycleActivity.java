@@ -40,6 +40,13 @@ public class SplashCycleActivity extends BaseActivity {
         animationLR = AnimationUtils.loadAnimation(this, R.anim.animation_down_to_up);
         splashFragmentBtnCircleMenu.setAnimation(animationLR);
 
+        splashFragmentBtnCircleMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                splashFragmentBtnCircleMenu.performClick();
+            }
+        });
+
         String[] menu = {"Sale food", "Make Order"};
         splashFragmentBtnCircleMenu.setMainMenu(Color.parseColor("#ffffff"),
                 R.drawable.logo, R.drawable.ic_pink_close)

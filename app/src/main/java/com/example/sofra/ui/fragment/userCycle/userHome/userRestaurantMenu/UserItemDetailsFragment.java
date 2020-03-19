@@ -126,7 +126,6 @@ public class UserItemDetailsFragment extends BaseFragment {
                 decrement();
                 break;
             case R.id.item_details_fragment_btn_shopping_cart:
-
                 String note = itemDetailsFragmentNote.getText().toString().trim();
                 Executors.newSingleThreadExecutor().execute(
                         new Runnable() {
@@ -138,6 +137,7 @@ public class UserItemDetailsFragment extends BaseFragment {
                                 roomDao.addItem(orderItem);
                             }
                         });
+                Toast.makeText(baseActivity, restaurantItem.getName()+" added to cart", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

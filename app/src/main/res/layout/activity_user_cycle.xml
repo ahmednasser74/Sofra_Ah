@@ -19,11 +19,36 @@
             android:paddingTop="@dimen/dim_8dp"
             android:paddingEnd="@dimen/dim_16dp">
 
-            <ImageView
-                android:id="@+id/user_cycle_activity_img_shopping_cart"
-                android:layout_width="@dimen/dim_30dp"
-                android:layout_height="@dimen/dim_30dp"
-                android:src="@drawable/ic_pink_shopping_cart_none" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_cycle_activity_img_shopping_cart"
+                    android:layout_width="@dimen/dim_30dp"
+                    android:layout_height="@dimen/dim_30dp"
+                    android:src="@drawable/ic_pink_shopping_cart_none" />
+
+                <RelativeLayout
+                    android:id="@+id/user_cycle_activity_rl_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
+                        android:src="@drawable/badge_background" />
+
+                    <TextView
+                        android:id="@+id/user_cycle_activity_tv_badge_counter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="0"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/user_cycle_activity_img_notification"

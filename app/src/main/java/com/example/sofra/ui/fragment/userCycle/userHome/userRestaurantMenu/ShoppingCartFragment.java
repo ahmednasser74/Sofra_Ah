@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +22,7 @@ import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.activity.UserCycleActivity;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
+import com.example.sofra.ui.fragment.userCycle.userHome.userRestaurantMenu.restaurantDetails.UserRestaurantItemContainerFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -124,8 +126,16 @@ public class ShoppingCartFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.shopping_cart_fragment_btn_confirmation_order:
 
+                if (listOrderItem.size() != 0) {
+                    HelperMethod.replace(new OrderConfirmationFragment1(), getActivity().getSupportFragmentManager(),
+                            R.id.user_cycle_activity_fl_container, null, null);
+                } else {
+                    Toast.makeText(baseActivity, "Please add Items", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.shopping_cart_fragment_btn_add_more:
+
                 onBack();
                 break;
         }

@@ -81,9 +81,9 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         holder.itemShoppingCartImgPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Executors.newSingleThreadExecutor().execute(new Runnable() {
-//                    @Override
-//                    public void run() {
+                Executors.newSingleThreadExecutor().execute(new Runnable() {
+                    @Override
+                    public void run() {
                 quantity = orderItem.getQuantity();
                 quantity++;
                 orderItem.setQuantity(quantity);
@@ -91,8 +91,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
 
             }
-//                });
-//            }
+                });
+            }
         });
 
         holder.itemShoppingCartImgMinus.setOnClickListener(new View.OnClickListener() {

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import com.example.sofra.R;
 import com.example.sofra.adapter.ViewPagerFragmentAdapter;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;

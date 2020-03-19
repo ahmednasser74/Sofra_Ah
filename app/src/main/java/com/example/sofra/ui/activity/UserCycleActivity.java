@@ -14,10 +14,14 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.sofra.R;
+import com.example.sofra.adapter.ShoppingCartAdapter;
 import com.example.sofra.data.local.room.OrderItem;
 import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.helper.HelperMethod;
@@ -29,7 +33,6 @@ import com.example.sofra.ui.fragment.userCycle.userMore.UserMoreFragment;
 import com.example.sofra.ui.fragment.userCycle.userOrders.UserOrdersContainerFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -38,7 +41,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.example.sofra.data.local.room.RoomManger.getInstance;
-import static com.example.sofra.helper.HelperMethod.replace;
 
 public class UserCycleActivity extends BaseActivity {
 
@@ -55,9 +57,16 @@ public class UserCycleActivity extends BaseActivity {
     @BindView(R.id.user_cycle_activity_fl_container)
     FrameLayout userCycleActivityFlContainer;
 
+    @BindView(R.id.user_cycle_activity_tv_badge_counter)
+    TextView userCycleActivityTvBadgeCounter;
+    @BindView(R.id.user_cycle_activity_rl_badge)
+    RelativeLayout userCycleActivityRlBadge;
+
     List<OrderItem> orderItems;
     RoomDao roomDao;
     ShoppingCartFragment shoppingCartFragment;
+    TextView smsCountTxt;
+//    int pendingSMSCount = ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +79,14 @@ public class UserCycleActivity extends BaseActivity {
         HelperMethod.disappearKeypad(this, userCycleActivityFlContainer);
 
         shoppingCartFragment = new ShoppingCartFragment();
+
+//        if (shoppingCartFragment.listOrderItem.size() == 0) {
+//            userCycleActivityRlBadge.setVisibility(View.GONE);
+//        } else {
+//            userCycleActivityRlBadge.setVisibility(View.VISIBLE);
+//            userCycleActivityTvBadgeCounter.setText(roomDao.getAll().get(0).getQuantity());
+//        }
+
         roomDao = getInstance(UserCycleActivity.this).roomDao();
         initNavigation();
         internetConnection();
