@@ -33,6 +33,8 @@ import com.example.sofra.ui.fragment.userCycle.userMore.UserMoreFragment;
 import com.example.sofra.ui.fragment.userCycle.userOrders.UserOrdersContainerFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -65,8 +67,7 @@ public class UserCycleActivity extends BaseActivity {
     List<OrderItem> orderItems;
     RoomDao roomDao;
     ShoppingCartFragment shoppingCartFragment;
-    TextView smsCountTxt;
-//    int pendingSMSCount = ;
+    private List<OrderItem> listOrderItem = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,12 +81,13 @@ public class UserCycleActivity extends BaseActivity {
 
         shoppingCartFragment = new ShoppingCartFragment();
 
-//        if (shoppingCartFragment.listOrderItem.size() == 0) {
-//            userCycleActivityRlBadge.setVisibility(View.GONE);
-//        } else {
-//            userCycleActivityRlBadge.setVisibility(View.VISIBLE);
+        if (listOrderItem.size() == 0) {
+            userCycleActivityRlBadge.setVisibility(View.GONE);
+        }
+        if (listOrderItem.size() !=0) {
+            userCycleActivityRlBadge.setVisibility(View.VISIBLE);
 //            userCycleActivityTvBadgeCounter.setText(roomDao.getAll().get(0).getQuantity());
-//        }
+        }
 
         roomDao = getInstance(UserCycleActivity.this).roomDao();
         initNavigation();

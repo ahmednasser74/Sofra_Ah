@@ -94,7 +94,6 @@ public class ShoppingCartFragment extends BaseFragment {
                 }
             });
             alert.show();
-
         } else {
 
             linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -103,7 +102,6 @@ public class ShoppingCartFragment extends BaseFragment {
             shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem, this);
             shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
             shoppingCartAdapter.notifyDataSetChanged();
-
         }
     }
 
