@@ -15,8 +15,10 @@ public abstract class RoomManger extends RoomDatabase {
 
     public static synchronized RoomManger getInstance(Context context) {
         if (roomManger == null) {
-            roomManger = Room.databaseBuilder(context.getApplicationContext(), RoomManger.class,
-                    "sofraDatabase").fallbackToDestructiveMigration().build();
+            roomManger = Room.databaseBuilder(context.getApplicationContext(), RoomManger.class, "sofraDatabase")
+                    .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
+                    .build();
         }
         return roomManger;
     }

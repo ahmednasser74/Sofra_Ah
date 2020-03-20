@@ -22,6 +22,8 @@ import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
 import com.squareup.picasso.Picasso;
 
+import java.util.Observable;
+import java.util.Observer;
 import java.util.concurrent.Executors;
 
 import butterknife.BindView;
@@ -127,6 +129,7 @@ public class UserItemDetailsFragment extends BaseFragment {
                 break;
             case R.id.item_details_fragment_btn_shopping_cart:
                 String note = itemDetailsFragmentNote.getText().toString().trim();
+
                 Executors.newSingleThreadExecutor().execute(
                         new Runnable() {
                             @Override
@@ -137,7 +140,7 @@ public class UserItemDetailsFragment extends BaseFragment {
                                 roomDao.addItem(orderItem);
                             }
                         });
-                Toast.makeText(baseActivity, restaurantItem.getName()+" added to cart", Toast.LENGTH_SHORT).show();
+                Toast.makeText(baseActivity, restaurantItem.getName() + " added to cart", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

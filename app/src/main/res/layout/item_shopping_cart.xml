@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,9 +105,9 @@
             android:layout_height="@dimen/dim_24dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/pink_circle"
+            android:background="@drawable/ic_pink_basket"
             android:padding="8dp"
-            android:src="@drawable/ic_white_close" />
+           />
 
     </RelativeLayout>
 </RelativeLayout>

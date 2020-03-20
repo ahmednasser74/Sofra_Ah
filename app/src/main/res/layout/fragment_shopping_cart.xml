@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,6 +13,12 @@
             android:id="@+id/shopping_cart_fragment_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            style="@style/marginSETB8"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/gray" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -26,26 +33,27 @@
                 android:fontFamily="@font/yehia_font"
                 android:text="Total Price"
                 android:textColor="@color/blue"
-                android:textSize="16sp" />
+                android:textSize="@dimen/_16ssp" />
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv"
+                android:layout_margin="@dimen/_2sdp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/shadow_white_circle">
+                app:cardCornerRadius="@dimen/_20sdp">
 
                 <TextView
                     android:id="@+id/shopping_cart_fragment_tv_total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:padding="@dimen/dim_8dp"
+                    android:padding="@dimen/dim_16dp"
                     android:text="0"
                     android:textColor="@color/blue"
                     android:textSize="25sp"
                     android:textStyle="bold" />
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
 
         <LinearLayout
@@ -64,8 +72,7 @@
                 android:fontFamily="@font/yehia_font"
                 android:text="Confirmation Order"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/shopping_cart_fragment_btn_add_more"
@@ -77,8 +84,7 @@
                 android:fontFamily="@font/yehia_font"
                 android:text="Add More"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

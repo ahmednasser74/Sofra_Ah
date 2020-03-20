@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sofra.R;
 import com.example.sofra.adapter.ShoppingCartAdapter;
 import com.example.sofra.data.local.room.OrderItem;
+import com.example.sofra.data.local.room.RoomDao;
 import com.example.sofra.helper.HelperMethod;
 import com.example.sofra.ui.activity.BaseActivity;
 import com.example.sofra.ui.activity.UserCycleActivity;
@@ -33,6 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.room.RoomManger.getInstance;
 
 
 public class ShoppingCartFragment extends BaseFragment {
@@ -49,7 +51,8 @@ public class ShoppingCartFragment extends BaseFragment {
     private LinearLayoutManager linearLayoutManager;
     public List<OrderItem> listOrderItem = new ArrayList<>();
     public ShoppingCartAdapter shoppingCartAdapter;
-    private int total;
+
+    RoomDao roomDao;
 
     public ShoppingCartFragment() {
     }
@@ -69,7 +72,11 @@ public class ShoppingCartFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_shopping_cart, container, false);
         ButterKnife.bind(this, view);
 
+        roomDao = getInstance(getActivity()).roomDao();
+        listOrderItem = getInstance(getActivity()).roomDao().getAll();
+
         initRecycler();
+        setTotalPrice();
 
         return view;
     }
@@ -93,15 +100,15 @@ public class ShoppingCartFragment extends BaseFragment {
             linearLayoutManager = new LinearLayoutManager(getActivity());
             shoppingCartFragmentRv.setLayoutManager(linearLayoutManager);
 
-            shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem);
+            shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem, this);
             shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
             shoppingCartAdapter.notifyDataSetChanged();
 
         }
-        setTotalPrice();
     }
 
     public void setTotalPrice() {
+        int total = 0;
         for (int i = 0; i < listOrderItem.size(); i++) {
 
             total = (int) (total + (listOrderItem.get(i).getQuantity() * listOrderItem.get(i).getPrice()));

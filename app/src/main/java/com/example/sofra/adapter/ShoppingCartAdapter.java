@@ -45,9 +45,10 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     private int quantity;
     private ShoppingCartFragment shoppingCartFragment;
 
-    public ShoppingCartAdapter(BaseActivity activity, List<OrderItem> listOrderItem) {
+    public ShoppingCartAdapter(BaseActivity activity, List<OrderItem> listOrderItem, ShoppingCartFragment shoppingCartFragment) {
         this.activity = activity;
         this.listOrderItem = listOrderItem;
+        this.shoppingCartFragment = shoppingCartFragment;
         roomDao = getInstance(activity).roomDao();
     }
 
@@ -81,35 +82,47 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         holder.itemShoppingCartImgPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
                 quantity = orderItem.getQuantity();
-                quantity++;
+                quantity += 1;
                 orderItem.setQuantity(quantity);
                 roomDao.update(orderItem);
+                shoppingCartFragment.setTotalPrice();
                 holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-
-            }
-                });
+//
+//                Executors.newSingleThreadExecutor().execute(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                    }
+//                });
             }
         });
 
         holder.itemShoppingCartImgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Executors.newSingleThreadExecutor().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        quantity = orderItem.getQuantity();
-                        if (quantity > 1) {
-                            quantity--;
-                            orderItem.setQuantity(quantity);
-                            roomDao.update(orderItem);
-                            holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-                        }
-                    }
-                });
+                quantity = orderItem.getQuantity();
+                if (quantity > 1) {
+                    quantity = orderItem.getQuantity();
+                    quantity -= 1;
+                    orderItem.setQuantity(quantity);
+                    roomDao.update(orderItem);
+                    shoppingCartFragment.setTotalPrice();
+                    holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
+                }
+//                Executors.newSingleThreadExecutor().execute(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        quantity = orderItem.getQuantity();
+//                        if (quantity > 1) {
+//                            quantity = orderItem.getQuantity();
+//                            quantity -= 1;
+//                            orderItem.setQuantity(quantity);
+//                            roomDao.update(orderItem);
+//                            holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
+//                        }
+//                    }
+//                });
             }
         });
 
@@ -133,6 +146,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                                         listOrderItem.remove(position);
                                         notifyDataSetChanged();
                                         roomDao.update(orderItem);
+                                        shoppingCartFragment.setTotalPrice();
                                         holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
                                     }
                                 });
