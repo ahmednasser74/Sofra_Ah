@@ -133,6 +133,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 AlertDialog.Builder dialog2 = new AlertDialog.Builder(activity);
                 alert = dialog2.create();
                 alert.setTitle("Delete ?");
+                alert.setIcon(R.drawable.ic_pink_emoji_sad);
                 alert.setMessage("sure about delete item from cart?");
                 alert.setButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
