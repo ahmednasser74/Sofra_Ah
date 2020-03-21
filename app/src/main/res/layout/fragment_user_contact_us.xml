@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_60dp"
         android:gravity="center"
-        android:text="Contact Us"
+        android:text="@string/contact_us"
         android:textColor="@color/blue"
         android:textSize="30sp" />
 
@@ -24,10 +24,11 @@
 
             <EditText
                 android:id="@+id/user_contact_us_et_name"
+                android:fontFamily="@font/cairo"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp" />
 
@@ -36,8 +37,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:layout_marginTop="@dimen/dim_16dp"
+                android:fontFamily="@font/cairo"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="E-mail"
+                android:hint="@string/e_mail"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp" />
 
@@ -47,8 +49,9 @@
                 android:layout_height="@dimen/dim_50dp"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="Phone"
+                android:hint="@string/phone"
                 android:inputType="phone"
+                android:fontFamily="@font/cairo"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp" />
 
@@ -59,7 +62,8 @@
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
                 android:gravity="start"
-                android:hint="What is your Message ?"
+                android:fontFamily="@font/cairo"
+                android:hint="@string/what_is_your_message"
                 android:padding="@dimen/dim_16dp" />
 
             <RadioGroup
@@ -76,7 +80,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
                     android:button="@drawable/shape_check_box"
-                    android:text="Complaint"
+                    android:text="@string/complaint"
+                    android:fontFamily="@font/cairo"
+                    android:textStyle="bold"
                     android:textColor="@color/blue"
                     android:textSize="16sp" />
 
@@ -86,7 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="15dp"
                     android:button="@drawable/shape_check_box"
-                    android:text="Suggestion"
+                    android:fontFamily="@font/cairo"
+                    android:text="@string/suggestion"
+                    android:textStyle="bold"
                     android:textColor="@color/blue"
                     android:textSize="16sp" />
 
@@ -95,9 +103,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:button="@drawable/shape_check_box"
-                    android:text="Enquiry"
+                    android:fontFamily="@font/cairo"
+                    android:text="@string/enquiry"
                     android:textColor="@color/blue"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </RadioGroup>
 
             <Button
@@ -107,9 +117,11 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dim_16dp"
                 android:background="@drawable/gradient_btn_shape"
+                android:fontFamily="@font/cairo"
                 android:gravity="center"
-                android:text="send"
-                android:textColor="@color/white" />
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>

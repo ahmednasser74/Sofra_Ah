@@ -16,7 +16,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dim_200dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dim_16dp"
                 app:cardCornerRadius="@dimen/dim_24dp">
 
@@ -41,7 +41,8 @@
                         android:layout_marginStart="@dimen/dim_16dp"
                         android:layout_marginTop="@dimen/dim_8dp"
                         android:layout_marginEnd="@dimen/dim_16dp"
-                        android:text="meal name"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/meal_name"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
@@ -50,7 +51,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dim_16dp"
                         android:layout_marginEnd="@dimen/dim_16dp"
-                        android:text="meal details"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/meal_details"
                         android:textColor="#9A5A5959" />
 
                     <TextView
@@ -59,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dim_16dp"
                         android:layout_marginEnd="@dimen/dim_16dp"
-                        android:text="meal price"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/meal_price"
                         android:textColor="@color/blue" />
 
                 </LinearLayout>
@@ -76,7 +79,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dim_16dp"
-                android:text="Special Order"
+                android:text="@string/special_order"
+                android:fontFamily="@font/cairo"
                 android:textColor="@color/blue"
                 android:textSize="25sp" />
 
@@ -86,9 +90,10 @@
                 android:layout_height="@dimen/dim_120dp"
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
+                android:fontFamily="@font/cairo"
                 android:background="@drawable/shadow_white_shape"
                 android:gravity="start"
-                android:hint="write comment here"
+                android:hint="@string/write_here"
                 android:padding="@dimen/dim_16dp" />
 
             <ImageView
@@ -111,7 +116,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dim_20dp"
-                    android:text="Quantity"
+                    android:fontFamily="@font/cairo"
+                    android:text="@string/quantity"
                     android:textColor="@color/blue"
                     android:textSize="20sp" />
 

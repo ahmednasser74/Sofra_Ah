@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/yehia_font"
-                android:text="Total Price"
+                android:text="@string/total_price"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/_16ssp" />
 
@@ -70,7 +70,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/gradient_btn_shape"
                 android:fontFamily="@font/yehia_font"
-                android:text="Confirmation Order"
+                android:text="@string/confirmation_order"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
@@ -82,7 +82,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/gradient_btn_shape"
                 android:fontFamily="@font/yehia_font"
-                android:text="Add More"
+                android:text="@string/add_more"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
         </LinearLayout>

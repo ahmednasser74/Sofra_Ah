@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -20,8 +20,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:layout_marginBottom="@dimen/dim_16dp"
-                android:fontFamily="@font/yehia_font"
-                android:text="Order Details"
+                android:fontFamily="@font/cairo"
+                android:text="@string/order_details"
                 android:textColor="@color/blue"
                 android:textSize="40sp" />
 
@@ -32,8 +32,9 @@
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
                 android:background="@drawable/shadow_gray_shape"
+                android:fontFamily="@font/cairo"
                 android:gravity="start"
-                android:hint="write notes"
+                android:hint="@string/write_notes"
                 android:padding="@dimen/dim_16dp"
                 android:textColorHint="#606BAF" />
 
@@ -43,8 +44,8 @@
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
-                android:fontFamily="@font/yehia_font"
-                android:text="Order Address"
+                android:fontFamily="@font/cairo"
+                android:text="@string/order_address"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
@@ -54,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
-                android:fontFamily="@font/yehia_font"
-                android:text="Order Address"
+                android:fontFamily="@font/cairo"
+                android:text="@string/order_address"
                 android:textColor="@color/pink"
                 android:textSize="20sp" />
 
@@ -65,8 +66,8 @@
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
-                android:fontFamily="@font/yehia_font"
-                android:text="Payment"
+                android:fontFamily="@font/cairo"
+                android:text="@string/payment"
                 android:textColor="@color/blue"
                 android:textSize="20sp" />
 
@@ -89,7 +90,8 @@
                         android:layout_marginEnd="15dp"
                         android:layout_weight="1"
                         android:button="@drawable/shape_check_box"
-                        android:text="Cash"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/cash"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -99,7 +101,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:button="@drawable/shape_check_box"
-                        android:text="Online Payment"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/online_payment"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -126,7 +129,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total : "
+                            android:fontFamily="@font/cairo"
+                            android:text="@string/total"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
@@ -134,6 +138,7 @@
                             android:id="@+id/order_confirmation_fragment1_tv_total"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -145,7 +150,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Delivery Fees : "
+                            android:fontFamily="@font/cairo"
+                            android:text="@string/delivery_fees"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
@@ -153,6 +159,7 @@
                             android:id="@+id/order_confirmation_fragment1_tv_delivery_fees"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -164,13 +171,15 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total Amount: "
+                            android:text="@string/total_amount"
+                            android:fontFamily="@font/cairo"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/order_confirmation_fragment1_tv_total_amount"
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
@@ -184,10 +193,10 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dim_16dp"
+                android:layout_margin="@dimen/dim_16dp"
                 android:background="@drawable/gradient_btn_shape"
-                android:fontFamily="@font/yehia_font"
-                android:text="Order Confirmation"
+                android:fontFamily="@font/cairo"
+                android:text="@string/order_confirmation"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />

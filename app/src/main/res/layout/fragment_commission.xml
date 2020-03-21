@@ -20,7 +20,7 @@
                 android:layout_margin="@dimen/dim_16dp"
 
                 android:gravity="center_horizontal"
-                android:text="Commission"
+                android:text="@string/commission"
                 android:textColor="@color/blue"
                 android:textSize="30sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
 
-                        android:text="Restaurant Sales : "
+                        android:text="@string/restaurant_sales"
                         android:textColor="@color/blue"
                         android:textSize="20sp" />
 
@@ -77,9 +77,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
-                        android:text="App Commission : "
-
+                        android:text="@string/app_commission"
                         android:textColor="@color/blue"
                         android:textSize="20sp" />
 
@@ -102,7 +100,7 @@
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Paid : "
+                        android:text="@string/paid"
                         android:textColor="@color/blue"
                         android:textSize="20sp" />
 
@@ -125,7 +123,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Remaining Amount : "
+                        android:text="@string/remaining_amount"
                         android:textColor="@color/blue"
                         android:textSize="20sp" />
 
@@ -152,7 +150,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="Ahly Bnak : 651350130135"
+                    android:text="@string/ahly_bnak_651350130135"
                     android:textColor="@color/pink"
 
                     android:textSize="18sp" />
@@ -162,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
 
-                    android:text="Alex Bnak : 168416151684"
+                    android:text="@string/alex_bnak_168416151684"
                     android:textColor="@color/pink"
                     android:textSize="18sp" />
 
@@ -172,7 +170,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
 
-                    android:text="ِAccount Name : Sofra"
+                    android:text="@string/account_name_sofra"
                     android:textColor="@color/pink"
                     android:textSize="18sp" />
             </LinearLayout>

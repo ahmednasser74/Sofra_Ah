@@ -11,7 +11,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -19,8 +19,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="@dimen/dim_8dp"
-                android:fontFamily="@font/yehia_font"
-                android:text="Order Details"
+                android:fontFamily="@font/cairo"
+                android:text="@string/order_details"
                 android:textColor="@color/blue"
                 android:textSize="40sp" />
 
@@ -33,7 +33,7 @@
                 app:cardCornerRadius="@dimen/dim_20dp">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -49,7 +49,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dim_16dp"
                         android:layout_toEndOf="@id/order_confirmation_fragment2_img"
-                        android:text="restaurant name"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/restaurant_name"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -60,7 +61,8 @@
                         android:layout_below="@id/order_confirmation_fragment2_tv_restaurant_name"
                         android:layout_marginTop="@dimen/dim_8dp"
                         android:layout_toEndOf="@id/order_confirmation_fragment2_img"
-                        android:text="Order Date"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/order_date"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
                 </RelativeLayout>
@@ -77,13 +79,14 @@
                 <LinearLayout
                     style="@style/paddingSETB16"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dim_50dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Address : "
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/address"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -98,6 +101,7 @@
                         android:id="@+id/order_confirmation_fragment2_tv_order_address_town"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -105,6 +109,7 @@
                         android:id="@+id/order_confirmation_fragment2_tv_order_address_street"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -128,7 +133,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dim_8dp"
-                        android:text="Order Details : "
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/order_details"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -138,19 +144,18 @@
 
                         <TextView
                             android:id="@+id/order_confirmation_fragment2_tv_meal_name"
-                            style="@style/marginTB8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Meal Name   "
+                            android:fontFamily="@font/cairo"
+                            android:text="@string/meal_name"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/order_confirmation_fragment2_tv_meal_price"
-                            style="@style/marginTB8"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Meal Price"
+                            android:fontFamily="@font/cairo"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -179,11 +184,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Order Price : "
+                            android:text="@string/order_price"
                             android:textColor="@color/blue"
+                            android:fontFamily="@font/cairo"
                             android:textSize="16sp" />
 
                         <TextView
+                            android:fontFamily="@font/cairo"
                             android:id="@+id/order_confirmation_fragment2_tv_order_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -199,7 +206,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Delivery Fees : "
+                            android:fontFamily="@font/cairo"
+                            android:text="@string/delivery_fees"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
@@ -208,6 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
+                            android:fontFamily="@font/cairo"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -218,8 +227,9 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:layout_height="wrap_content"
-                            android:text="Total Amount : "
+                            android:text="@string/total_amount"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 
@@ -228,6 +238,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/blue"
+                            android:fontFamily="@font/cairo"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -238,6 +249,7 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:layout_height="wrap_content"
                             android:text="Payment By : "
                             android:textColor="@color/blue"
@@ -247,6 +259,7 @@
                             android:id="@+id/order_confirmation_fragment2_tv_order_payment_by"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -279,7 +292,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cancel"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/cancel"
                         android:textColor="#fff" />
                 </LinearLayout>
 
@@ -301,9 +315,10 @@
 
                     <TextView
                         android:id="@+id/order_confirmation_fragment2_tv_confirm"
+                        android:fontFamily="@font/cairo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Confirm"
+                        android:text="@string/confirm"
                         android:textColor="#fff" />
                 </LinearLayout>
 
@@ -325,7 +340,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Call"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/call"
                         android:textColor="#fff" />
                 </LinearLayout>
             </LinearLayout>

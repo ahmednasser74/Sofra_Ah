@@ -131,9 +131,11 @@
                     android:id="@+id/item_user_new_order_tv_cancel_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cairo"
                     android:text="Cancel Order"
                     android:textColor="#fff"
-                    android:textSize="20sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

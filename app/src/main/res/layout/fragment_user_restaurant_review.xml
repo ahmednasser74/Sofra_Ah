@@ -10,9 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/dim_16dp"
-        android:text="Happy to see your review"
+        android:fontFamily="@font/cairo"
+        android:text="@string/happy_to_see_your_review"
         android:textColor="@color/blue"
-        android:textSize="@dimen/dim_20dp" />
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/restaurant_review_btn_add_review"
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/gradient_btn_shape"
-        android:text="add review"
+        android:text="@string/add_review"
         android:textColor="@color/white" />
 
     <ImageView

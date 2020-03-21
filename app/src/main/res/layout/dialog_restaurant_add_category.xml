@@ -17,8 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dim_16dp"
+            android:fontFamily="@font/cairo"
             android:gravity="center_horizontal"
-            android:text="Category image"
+            android:text="@string/category_image"
             android:textColor="@color/blue"
             android:textSize="25sp" />
 
@@ -44,7 +45,8 @@
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
                 android:background="@null"
-                android:hint="Category Name"
+                android:fontFamily="@font/cairo"
+                android:hint="@string/category_name"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +58,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dim_16dp"
             android:background="@drawable/pink_shape"
-            android:text="Add Category"
+            android:fontFamily="@font/cairo"
+            android:text="@string/add_category"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

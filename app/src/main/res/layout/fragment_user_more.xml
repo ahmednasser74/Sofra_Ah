@@ -8,11 +8,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_60dp"
-        android:fontFamily="@font/yehia_font"
+        android:fontFamily="@font/cairo"
         android:gravity="center"
         android:text="More Setting"
         android:textColor="@color/blue"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,12 +42,12 @@
                     android:background="@drawable/ic_gift" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:textStyle="bold"                    android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Offers"
+                    android:text="@string/offers"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -74,10 +75,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:paddingStart="@dimen/dim_16dp"
-                    android:paddingEnd="@dimen/dim_16dp"
-                    android:text="ContactUs"
+                    android:textStyle="bold"                    android:paddingEnd="@dimen/dim_16dp"
+                    android:text="@string/contact_us"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -105,10 +106,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="About App"
+                    android:text="@string/about_app"
+                    android:textStyle="bold"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -136,10 +138,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Change Password"
+                    android:text="@string/change_password"
+                    android:textStyle="bold"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -166,11 +169,12 @@
 
                 <TextView
                     android:layout_width="match_parent"
+                    android:textStyle="bold"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Sign Out"
+                    android:text="@string/sign_out"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>

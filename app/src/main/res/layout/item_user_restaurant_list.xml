@@ -11,7 +11,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_95sdp"
+            android:layout_height="@dimen/_105sdp"
             android:layout_marginStart="@dimen/dim_80dp"
             android:layout_marginTop="@dimen/dim_16dp"
             android:layout_marginEnd="@dimen/dim_16dp"
@@ -37,6 +37,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
+                        android:layout_marginTop="-8dp"
+                        android:fontFamily="@font/cairo"
                         android:textColor="@color/colorPrimary" />
 
                     <LinearLayout
@@ -56,6 +58,7 @@
                             android:id="@+id/item_restaurant_list_tv_opened"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/cairo"
                             android:textColor="#9A5A5959" />
                     </LinearLayout>
                 </RelativeLayout>
@@ -63,10 +66,11 @@
                 <RatingBar
                     android:id="@+id/item_restaurant_list_rb_rating"
                     android:layout_width="wrap_content"
-                    android:layout_height="45dp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="-8dp"
                     android:isIndicator="true"
                     android:numStars="4"
-                    android:scaleX=".9"
+                    android:scaleX=".7"
                     android:scaleY=".7" />
 
                 <LinearLayout
@@ -77,13 +81,15 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Minimum Order : "
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/minimum_order"
                         android:textColor="#9A5A5959" />
 
                     <TextView
                         android:id="@+id/item_restaurant_list_tv_minimum_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/cairo"
 
                         android:textColor="#9A5A5959" />
                 </LinearLayout>
@@ -96,13 +102,17 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Delivery Cost : "
+                        android:layout_marginTop="-8dp"
+                        android:fontFamily="@font/cairo"
+                        android:text="@string/delivery_cost"
                         android:textColor="#9A5A5959" />
 
                     <TextView
                         android:id="@+id/item_restaurant_list_tv_delivery_fees"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:fontFamily="@font/cairo"
                         android:textColor="#9A5A5959" />
                 </LinearLayout>
             </LinearLayout>
@@ -120,9 +130,7 @@
         <ImageView
             android:id="@+id/item_restaurant_list_img_restaurant_logo"
             android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_height="@dimen/_85sdp"
             android:scaleType="fitXY" />
     </androidx.cardview.widget.CardView>
-
-
 </RelativeLayout>

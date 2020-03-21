@@ -8,11 +8,12 @@
         android:id="@+id/restaurant_more_fragment_fragment_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_60dp"
-        android:fontFamily="@font/yehia_font"
+        android:fontFamily="@font/cairo"
         android:gravity="center"
-        android:text="More Setting"
+        android:text="@string/more_setting"
         android:textColor="@color/blue"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -39,11 +40,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
+                    android:textStyle="bold"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Offers"
+                    android:text="@string/offers"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -72,11 +74,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
                     android:layout_gravity="center_vertical"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:gravity="center_vertical"
+                    android:textStyle="bold"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="ContactUs"
+                    android:text="@string/contact_us"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -104,11 +107,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
+                    android:textStyle="bold"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="About App"
+                    android:text="@string/about_app"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -136,11 +140,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:gravity="center_vertical"
+                    android:textStyle="bold"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Rating and Comments"
+                    android:text="@string/rating_and_comments"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -168,11 +173,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
+                    android:textStyle="bold"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Change Password"
+                    android:text="@string/change_password"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>
@@ -200,11 +206,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dim_50dp"
-                    android:fontFamily="@font/yehia_font"
+                    android:fontFamily="@font/cairo"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dim_16dp"
                     android:paddingEnd="@dimen/dim_16dp"
-                    android:text="Sign Out"
+                    android:textStyle="bold"
+                    android:text="@string/sign_out"
                     android:textColor="@color/blue"
                     android:textSize="25sp" />
             </LinearLayout>

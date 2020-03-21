@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="choose rating"
+                android:text="@string/choose_rating"
+                android:fontFamily="@font/cairo"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
 
@@ -37,8 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:background="@drawable/gray_shape"
+                android:fontFamily="@font/cairo"
                 android:gravity="start"
-                android:hint="write your review"
+                android:hint="@string/write_your_review"
                 android:padding="16dp" />
 
             <Button
@@ -47,8 +49,9 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo"
                 android:background="@drawable/gradient_btn_shape"
-                android:text="add review"
+                android:text="@string/add_review"
                 android:textColor="#fff" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

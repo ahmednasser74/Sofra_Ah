@@ -1,19 +1,26 @@
 package com.example.sofra.ui.activity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.sofra.R;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
+
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +34,8 @@ public class SplashCycleActivity extends BaseActivity {
 //    Button splashFragmentBtnRestaurant;
     @BindView(R.id.splash_fragment_btn_circle_menu)
     CircleMenu splashFragmentBtnCircleMenu;
+    @BindView(R.id.splash_cycle_img_change_language)
+    ImageView splashCycleImgChangeLanguage;
 
     Animation animationLR;
     private Intent intent;
@@ -35,6 +44,7 @@ public class SplashCycleActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_cycle);
+        LoadLocale();
         ButterKnife.bind(this);
 
         animationLR = AnimationUtils.loadAnimation(this, R.anim.animation_down_to_up);
@@ -78,6 +88,50 @@ public class SplashCycleActivity extends BaseActivity {
                 });
     }
 
+
+    @OnClick(R.id.splash_cycle_img_change_language)
+    public void onViewClicked() {
+        showChangeLanguageDialog();
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] listItems = {"English", "Arabic"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(SplashCycleActivity.this);
+        builder.setTitle("choose language");
+        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    setLocal("en");
+                    recreate();
+                } else if (which == 1) {
+                    setLocal("ar");
+                    recreate();
+                }
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void setLocal(String language) {
+        Locale locale = new Locale(language);
+        locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", language);
+        editor.apply();
+    }
+
+    public void LoadLocale() {
+        SharedPreferences prefs = getSharedPreferences("settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocal(language);
+    }
 //    @OnClick({R.id.splash_fragment_btn_make_order, R.id.splash_fragment_btn_restaurant})
 //    public void onViewClicked(View view) {
 //        switch (view.getId()) {
@@ -90,6 +144,7 @@ public class SplashCycleActivity extends BaseActivity {
 //                startActivity(intent);
 //                break;
 //        }
+
 //    }
 
     @Override

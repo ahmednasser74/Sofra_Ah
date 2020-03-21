@@ -11,7 +11,7 @@
         android:layout_margin="@dimen/dim_16dp"
         android:fontFamily="@font/yehia_font"
         android:gravity="center_horizontal"
-        android:text="Reviews"
+        android:text="@string/reviews"
         android:textColor="@color/blue"
         android:textSize="30sp"/>
 

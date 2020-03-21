@@ -82,7 +82,8 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/dim_16dp"
             android:background="@drawable/shadow_white_shape"
-            android:text="Rety"
+            android:fontFamily="@font/cairo"
+            android:text="@string/rety"
             android:textAllCaps="false"
             android:textColor="@color/pink"
             android:textSize="25sp" />

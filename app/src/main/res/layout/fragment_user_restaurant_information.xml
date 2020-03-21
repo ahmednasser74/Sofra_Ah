@@ -15,14 +15,16 @@
             android:layout_margin="@dimen/dim_16dp">
 
             <TextView
+                android:fontFamily="@font/cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Case : "
+                android:text="@string/state"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/restaurant_information_fragment_tv_case"
+                android:fontFamily="@font/cairo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blue"
@@ -44,7 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="City : "
+                android:fontFamily="@font/cairo"
+                android:text="@string/city"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
 
@@ -72,11 +75,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Town : "
+                android:text="@string/town"
+                android:fontFamily="@font/cairo"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
 
             <TextView
+                android:fontFamily="@font/cairo"
                 android:id="@+id/restaurant_information_fragment_tv_town"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,8 +105,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Minimum order : "
+                android:text="@string/minimum_deli_very"
                 android:textColor="@color/blue"
+                android:fontFamily="@font/cairo"
                 android:textSize="30sp" />
 
             <TextView
@@ -109,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blue"
+                android:fontFamily="@font/cairo"
                 android:textSize="30sp" />
         </LinearLayout>
 
@@ -127,14 +134,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delivery Cost : "
+                android:text="@string/delivery_fees"
                 android:textColor="@color/blue"
+                android:fontFamily="@font/cairo"
                 android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/restaurant_information_fragment_tv_delivery_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
         </LinearLayout>

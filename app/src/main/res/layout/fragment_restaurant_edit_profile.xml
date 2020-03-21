@@ -31,7 +31,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/dim_16dp"
-                android:layout_marginLeft="@dimen/dim_16dp"
                 android:src="@drawable/ic_blue_person" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Name"
+                    android:hint="@string/name"
                     android:inputType="text"
                     android:paddingStart="@dimen/dim_8dp"
                     android:paddingEnd="@dimen/dim_8dp" />
@@ -65,7 +64,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/dim_16dp"
-                android:layout_marginLeft="@dimen/dim_16dp"
                 android:src="@drawable/ic_blue_mail_none" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -77,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="E-Mail"
+                    android:hint="@string/e_mail"
                     android:inputType="text"
                     android:paddingStart="@dimen/dim_8dp"
                     android:paddingEnd="@dimen/dim_8dp" />
@@ -114,7 +112,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:background="@drawable/ic_blue_spinner_downward" />
         </RelativeLayout>
 
@@ -175,10 +172,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Minimum Delivery"
+                    android:fontFamily="@font/cairo"
+                    android:hint="@string/minimum_deli_very"
                     android:inputType="text"
                     android:paddingStart="@dimen/dim_8dp"
-                    android:paddingEnd="@dimen/dim_8dp" />
+                    android:paddingEnd="@dimen/dim_8dp"
+                    android:textAllCaps="false" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -254,7 +253,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="State"
+                android:fontFamily="@font/cairo"
+                android:text="@string/state"
                 android:textColor="#0A1B7A"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -276,7 +276,9 @@
             android:layout_marginStart="@dimen/dim_16dp"
             android:layout_marginTop="@dimen/dim_16dp"
             android:layout_marginEnd="@dimen/dim_16dp"
-            android:text="Contact Information"
+            android:fontFamily="@font/cairo"
+
+            android:text="@string/contact_information"
             android:textColor="#0A1B7A"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -305,7 +307,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="Phone"
+                    android:hint="@string/phone"
                     android:inputType="phone"
                     android:paddingStart="@dimen/dim_8dp"
                     android:paddingEnd="@dimen/dim_8dp" />
@@ -336,7 +338,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
-                    android:hint="WhatsApp"
+                    android:fontFamily="@font/cairo"
+                    android:hint="@string/whatsapp"
                     android:inputType="phone"
                     android:paddingStart="@dimen/dim_8dp"
                     android:paddingEnd="@dimen/dim_8dp" />
@@ -352,7 +355,8 @@
             android:layout_marginTop="@dimen/dim_16dp"
             android:layout_marginBottom="@dimen/dim_16dp"
             android:background="@drawable/gradient_btn_shape"
-            android:text="Edit"
+            android:fontFamily="@font/cairo"
+            android:text="@string/edit"
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>

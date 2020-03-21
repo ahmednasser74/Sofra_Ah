@@ -23,8 +23,7 @@
         android:id="@+id/splash_fragment_btn_circle_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
-        />
+        android:layout_centerInParent="true" />
 
     <!--    <LinearLayout-->
     <!--        android:layout_width="match_parent"-->
@@ -72,4 +71,13 @@
         android:layout_marginEnd="-120dp"
         android:layout_marginBottom="-100dp"
         android:src="@drawable/splash_bottom" />
+
+    <ImageView
+        android:id="@+id/splash_cycle_img_change_language"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_4sdp"
+        android:background="@drawable/ic_language_menu_24dp" />
+
 </RelativeLayout>

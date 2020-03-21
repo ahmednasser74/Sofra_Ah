@@ -34,12 +34,14 @@
             android:layout_marginTop="@dimen/dim_8dp"
             android:layout_toEndOf="@id/cardView"
             android:text="Item Name"
+            android:fontFamily="@font/cairo"
             android:textColor="@color/blue"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/item_shopping_cart_tv_item_price"
             android:layout_width="wrap_content"
+            android:fontFamily="@font/cairo"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_6sdp"
@@ -56,8 +58,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo"
                 android:layout_gravity="center"
-                android:text="Quantity"
+                android:text="@string/quantity"
                 android:textColor="@color/blue"
                 android:textSize="16sp" />
 

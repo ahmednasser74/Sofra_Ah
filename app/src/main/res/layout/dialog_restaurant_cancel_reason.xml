@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dim_16dp"
+            android:fontFamily="@font/cairo"
             android:gravity="center_horizontal"
             android:text="Cancelation Reason"
             android:textColor="@color/blue"
@@ -36,6 +37,7 @@
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginEnd="@dimen/dim_16dp"
                 android:background="@null"
+                android:fontFamily="@font/cairo"
                 android:hint="Write Cancelation Reason"
                 android:inputType="text" />
 
@@ -49,6 +51,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/dim_20dp"
             android:background="@drawable/pink_shape"
+            android:fontFamily="@font/cairo"
             android:text="Cancel"
             android:textAllCaps="false"
             android:textColor="@color/white"

@@ -34,7 +34,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:drawableStart="@drawable/ic_white_person"
-                    android:hint=" Restaurant Name"
+                    android:hint="@string/restaurant_name"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,7 +51,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:drawableStart="@drawable/ic_white_mail_none"
-                    android:hint=" E-mail"
+                    android:hint="@string/e_mail"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +67,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:drawableStart="@drawable/ic_white_clock"
-                    android:hint=" Delivery Duration"
+                    android:hint="@string/delivery_duration"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,7 +222,7 @@
                 android:layout_margin="@dimen/dim_40dp"
                 android:background="@drawable/gradient_btn_shape"
                 android:padding="@dimen/dim_8dp"
-                android:text="continue"
+                android:text="@string/continue_"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>

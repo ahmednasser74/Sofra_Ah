@@ -17,9 +17,10 @@
             <TextView
                 android:id="@+id/restaurant_add_offer_fragment_tv_title"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Add offer image"
+                android:fontFamily="@font/cairo"
+                android:text="@string/add_offer_image"
                 android:textColor="@color/blue"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -44,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dim_50dp"
                 android:background="@drawable/shadow_white_shape"
-                android:hint="Offer Name"
+                android:hint="@string/offer_name"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp" />
 
@@ -55,7 +56,7 @@
                 android:layout_marginTop="@dimen/dim_16dp"
                 android:background="@drawable/shadow_white_shape"
                 android:gravity="start"
-                android:hint="Offer Description"
+                android:hint="@string/offer_description"
                 android:padding="@dimen/dim_16dp" />
 
             <LinearLayout
@@ -84,7 +85,7 @@
                         android:layout_marginStart="@dimen/dim_8dp"
                         android:background="@null"
                         android:gravity="center_vertical"
-                        android:hint="From"
+                        android:hint="@string/from"
                         android:textColorHint="@color/blue" />
                 </LinearLayout>
 
@@ -108,7 +109,7 @@
                         android:layout_marginStart="@dimen/dim_8dp"
                         android:background="@null"
                         android:gravity="center_vertical"
-                        android:hint="Till"
+                        android:hint="@string/till"
                         android:textColorHint="@color/blue" />
                 </LinearLayout>
             </LinearLayout>
@@ -121,7 +122,7 @@
                 android:layout_margin="@dimen/dim_16dp"
                 android:background="@drawable/gradient_btn_shape"
                 android:gravity="center"
-                android:text="Add Offer"
+                android:text="@string/add_offer"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
         </LinearLayout>

@@ -9,8 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dim_60dp"
         android:gravity="center"
-        android:fontFamily="@font/yehia_font"
-        android:text="Offers"
+        android:fontFamily="@font/cairo"
+        android:textStyle="bold"
+        android:text="@string/offers"
         android:textColor="@color/blue"
         android:textSize="30sp" />
 

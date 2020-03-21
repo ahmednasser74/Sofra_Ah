@@ -30,7 +30,7 @@
         android:layout_margin="@dimen/dim_16dp"
         android:background="@drawable/gradient_btn_shape"
         android:fontFamily="@font/yehia_font"
-        android:text="Add New Offer"
+        android:text="@string/add_new_offer"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 </FrameLayout>

@@ -18,7 +18,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/dim_40dp"
             android:layout_marginBottom="@dimen/dim_40dp"
-            android:text="Login"
+            android:fontFamily="@font/cairo"
+            android:text="@string/login"
             android:textColor="#fff"
             android:textSize="40sp"
             android:textStyle="bold" />
@@ -33,10 +34,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
                 android:drawableStart="@drawable/ic_white_mail_none"
-                android:hint=" E-Mail"
-                android:inputType="text" />
+                android:fontFamily="@font/cairo"
+                android:hint="@string/e_mail"
+                android:inputType="text"
+                app:backgroundTint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,10 +52,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:backgroundTint="@color/white"
                 android:drawableStart="@drawable/ic_white_lock"
-                android:hint=" Password"
-                android:inputType="textPassword" />
+                android:fontFamily="@font/cairo"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                app:backgroundTint="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -64,7 +67,8 @@
             android:layout_marginTop="@dimen/dim_20dp"
             android:layout_marginEnd="@dimen/dim_16dp"
             android:drawableStart="@drawable/ic_white_warning_24dp"
-            android:text="Forget Password ?"
+            android:fontFamily="@font/cairo"
+            android:text="@string/forget_password"
             android:textColor="#fff"
             android:textSize="20sp" />
 
@@ -88,7 +92,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="login"
+                android:text="@string/login"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -101,7 +105,8 @@
         android:layout_height="@dimen/dim_40dp"
         android:layout_alignParentBottom="true"
         android:background="#BC747373"
-        android:text="create new account"
+        android:fontFamily="@font/cairo"
+        android:text="@string/create_new_account"
         android:textColor="#fff"
         android:textStyle="bold" />
 </RelativeLayout>

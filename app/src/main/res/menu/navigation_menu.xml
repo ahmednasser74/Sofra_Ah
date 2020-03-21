@@ -4,19 +4,19 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_white_home_solid"
-        android:title="Home" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_white_person"
-        android:title="Profile" />
+        android:title="@string/profile" />
     <item
         android:id="@+id/nav_orders"
         android:icon="@drawable/ic_white_list"
-        android:title="Orders" />
+        android:title="@string/orders" />
     <item
         android:id="@+id/nav_more"
         android:icon="@drawable/ic_white_settings_black_24dp"
-        android:title="Setting" />
+        android:title="@string/setting" />
 
 </menu>
