@@ -41,7 +41,7 @@
     <string name="call">Call</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
-    <string name="delivery_fees">Delivery Fees :</string>
+    <string name="delivery_fees_">Delivery Fees :</string>
     <string name="add_image_item">Add image item</string>
     <string name="item_name">Item Name</string>
     <string name="item_description">Item Description</string>
@@ -63,10 +63,12 @@
     <string name="name">Name</string>
     <string name="e_mail">E-Mail</string>
     <string name="minimum_deli_very">Minimum Delivery</string>
+    <string name="minimum_deli_very_">Minimum Delivery :</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="phone">Phone</string>
     <string name="contact_information">Contact Information</string>
     <string name="state">State</string>
+    <string name="state_">State :</string>
     <string name="edit">Edit</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
@@ -85,7 +87,7 @@
 
     <string name="confirmation_order">Confirmation Order</string>
     <string name="add_more">Add More</string>
-    <string name="total_price">Total Price</string>
+    <string name="total_price">Total Price :</string>
     <string name="what_is_your_message">What is your Message ?</string>
     <string name="complaint">Complaint</string>
     <string name="suggestion">Suggestion</string>
@@ -106,6 +108,8 @@
     <string name="register">Register</string>
     <string name="town">Town :</string>
     <string name="city">City :</string>
+    <string name="town2">Town</string>
+    <string name="city2">City</string>
     <string name="happy_to_see_your_review">Happy to see your review</string>
     <string name="price">Price</string>
     <string name="client_">Client :</string>
@@ -113,5 +117,34 @@
     <string name="details">details</string>
     <string name="delivery_cost">Delivery Cost :</string>
     <string name="minimum_order">Minimum Order :</string>
+    <string name="market_photo">Market Photo</string>
+    <string name="delivery_fees">Delivery Fees</string>
+    <string name="completed_order">Completed Order</string>
+    <string name="confirm_delivery">Confirm Delivery</string>
+    <string name="complete_information">Please Complete Register Information</string>
+
+    <string name="menu">menu</string>
+    <string name="review">review</string>
+    <string name="info">info</string>
+    <!--Validation For Toast-->
+    <string name="progress_please_wait">Please Wait…</string>
+    <string name="user_or_pass_incorrect">user or password not correct</string>
+    <string name="please_enter_name">please enter name</string>
+    <string name="please_enter_password">please enter password</string>
+    <string name="please_enter_old_password">please enter old password</string>
+    <string name="please_enter_confirmation_password">please enter confirmation password</string>
+    <string name="please_enter_price">please enter price</string>
+    <string name="please_enter_offer_price">please enter offer price</string>
+    <string name="please_select_photo">please select photo</string>
+    <string name="please_enter_description">please enter description</string>
+    <string name="shopping_cart_empty">shopping cart is empty</string>
+    <string name="old_password_didnot_match">old password didn\'t match</string>
+    <string name="confirmation_password_did_not_match">confirmation password didn\'t match</string>
+    <string name="please_select_dates">please select dates</string>
+    <string name="please_enter_cancelation_reason">please enter cancelation reason</string>
+    <string name="please_select_review">please select review</string>
+    <string name="please_write_review">please write review</string>
+    <string name="added_to_cart">added to cart</string>
+
 
 </resources>

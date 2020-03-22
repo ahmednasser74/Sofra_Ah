@@ -52,6 +52,8 @@ public class RestaurantRegisterFragment2 extends BaseFragment {
     Button restaurantRegister2FragmentBtnRegister;
 
     private String path;
+    private RequestBody whatsApp, Phone;
+    private MultipartBody.Part photo;
 
     public RestaurantRegisterFragment2() {
     }
@@ -75,14 +77,13 @@ public class RestaurantRegisterFragment2 extends BaseFragment {
 
     private void getRegister() {
 
-        RequestBody whatsApp = convertToRequestBody(restaurantRegister2FragmentEtPhoneWhatsapp.getText().toString().trim());
-        RequestBody Phone = convertToRequestBody(restaurantRegister2FragmentEtPhone.getText().toString().trim());
-        MultipartBody.Part photo = convertFileToMultipart(path, "photo");
+        whatsApp = convertToRequestBody(restaurantRegister2FragmentEtPhoneWhatsapp.getText().toString().trim());
+        Phone = convertToRequestBody(restaurantRegister2FragmentEtPhone.getText().toString().trim());
+        photo = convertFileToMultipart(path, "photo");
 
-        Register(stepOne.getName(), stepOne.getEmail(), stepOne.getPassword(),
-                stepOne.getPasswordConfirmation(), Phone,
-                whatsApp, stepOne.getRegionId(),
-                stepOne.getDeliveryCost(), stepOne.getMinimumCharger(), photo,stepOne.getDeliveryTime());
+        Register(stepOne.getName(), stepOne.getEmail(), stepOne.getPassword(), stepOne.getPasswordConfirmation(),
+                Phone, whatsApp, stepOne.getRegionId(), stepOne.getDeliveryCost(), stepOne.getMinimumCharger()
+                , photo, stepOne.getDeliveryTime());
     }
 
     private void Register(RequestBody name, RequestBody email, RequestBody password, RequestBody passwordConfirmation, RequestBody phone,

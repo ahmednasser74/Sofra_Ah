@@ -129,7 +129,7 @@ public class HelperMethod {
     public static void showProgressDialog(Activity activity, String title) {
         try {
             checkDialog = new ProgressDialog(activity);
-            checkDialog.setMessage(title);
+            checkDialog.setMessage(String.valueOf(R.string.progress_please_wait));
             checkDialog.setIndeterminate(false);
             checkDialog.setCancelable(false);
             checkDialog.show();

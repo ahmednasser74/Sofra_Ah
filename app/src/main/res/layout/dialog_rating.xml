@@ -19,9 +19,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cairo"
                 android:gravity="center_horizontal"
                 android:text="@string/choose_rating"
-                android:fontFamily="@font/cairo"
                 android:textColor="@color/blue"
                 android:textSize="30sp" />
 
@@ -49,10 +49,11 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/cairo"
                 android:background="@drawable/gradient_btn_shape"
+                android:fontFamily="@font/cairo"
                 android:text="@string/add_review"
-                android:textColor="#fff" />
+                android:textColor="#fff"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

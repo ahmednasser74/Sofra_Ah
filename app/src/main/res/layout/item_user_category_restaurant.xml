@@ -29,6 +29,7 @@
         android:layout_gravity="center"
         android:fontFamily="@font/cairo"
         android:gravity="center"
-        android:text="Pizza" />
+        android:text="Pizza"
+        android:textSize="@dimen/_8ssp" />
 
 </LinearLayout>

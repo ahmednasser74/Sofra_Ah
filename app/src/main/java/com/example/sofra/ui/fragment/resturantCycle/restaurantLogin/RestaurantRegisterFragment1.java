@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,8 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
     @BindView(R.id.restaurant_register1_fragment_btn_continue)
     Button restaurantRegister1FragmentBtnContinue;
 
+    RequestBody name, email, password, passwordConfirmation, deliveryCost, minimumCharger, deliveryTime, regionId;
+
     private SpinnersAdapter cityAdapter, townAdapter;
     private StepOne stepOne;
 
@@ -92,33 +95,37 @@ public class RestaurantRegisterFragment1 extends BaseFragment {
 
                     }
                 }, 0);
-
+        getRegisterData();
         return view;
     }
 
     public void getRegisterData() {
 
-        RequestBody name = convertToRequestBody(restaurantRegister1FragmentEtRestaurantName.getEditText().getText().toString());
-        RequestBody email = convertToRequestBody(restaurantRegister1FragmentEtPassword.getEditText().getText().toString());
-        RequestBody password = convertToRequestBody(restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString());
-        RequestBody passwordConfirmation = convertToRequestBody(restaurantRegister1FragmentEtMail.getEditText().getText().toString());
-        RequestBody deliveryCost = convertToRequestBody(restaurantRegister1FragmentEtDeliveryCost.getEditText().getText().toString());
-        RequestBody minimumCharger = convertToRequestBody(restaurantRegister1FragmentEtMinimumDelivery.getEditText().getText().toString());
-        RequestBody deliveryTime = convertToRequestBody(restaurantRegister1FragmentEtDeliveryDuration.getEditText().getText().toString());
-        RequestBody regionId = convertToRequestBody(String.valueOf(restaurantRegister1FragmentSpTown.getId()));
+        name = convertToRequestBody(restaurantRegister1FragmentEtRestaurantName.getEditText().getText().toString());
+        email = convertToRequestBody(restaurantRegister1FragmentEtPassword.getEditText().getText().toString());
+        password = convertToRequestBody(restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString());
+        passwordConfirmation = convertToRequestBody(restaurantRegister1FragmentEtMail.getEditText().getText().toString());
+        deliveryCost = convertToRequestBody(restaurantRegister1FragmentEtDeliveryCost.getEditText().getText().toString());
+        minimumCharger = convertToRequestBody(restaurantRegister1FragmentEtMinimumDelivery.getEditText().getText().toString());
+        deliveryTime = convertToRequestBody(restaurantRegister1FragmentEtDeliveryDuration.getEditText().getText().toString());
+        regionId = convertToRequestBody(String.valueOf(restaurantRegister1FragmentSpTown.getId()));
+
+        if (restaurantRegister1FragmentEtRestaurantName.equals("")
+                || restaurantRegister1FragmentEtMail.equals("")
+                || restaurantRegister1FragmentEtPassword.equals("")
+                || restaurantRegister1FragmentEtPasswordConfirmation.equals("")
+                || restaurantRegister1FragmentEtDeliveryCost.equals("")
+                || restaurantRegister1FragmentEtMinimumDelivery.equals("")
+                || restaurantRegister1FragmentEtDeliveryDuration.equals("")) {
+            Toast.makeText(baseActivity, R.string.complete_information, Toast.LENGTH_SHORT).show();
+        } else if (regionId == null) {
+            Toast.makeText(baseActivity, R.string.complete_information, Toast.LENGTH_SHORT).show();
+        } else if (!restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString().
+                equals(restaurantRegister1FragmentEtPassword.getEditText().getText().toString())) {
+            Toast.makeText(baseActivity, R.string.confirmation_password_did_not_match, Toast.LENGTH_SHORT).show();
+        }
 
         stepOne = new StepOne(name, email, password, passwordConfirmation, deliveryCost, minimumCharger, deliveryTime, regionId);
-
-
-//        if (name && email && password && passwordConfirmation && deliveryCost && minimumCharger && deliveryTime.equals()) {
-//            Toast.makeText(baseActivity, "Please Complete Register Information", Toast.LENGTH_SHORT).show();
-//        } else if (regionId == 0) {
-//            Toast.makeText(baseActivity, "Please Complete Register Information", Toast.LENGTH_SHORT).show();
-//        } else if (!restaurantRegister1FragmentEtPasswordConfirmation.getEditText().getText().toString().
-//                equals(restaurantRegister1FragmentEtPassword.getEditText().getText().toString())) {
-//            Toast.makeText(baseActivity, "Password confirmation not matched", Toast.LENGTH_SHORT).show();
-//        }
-
     }
 
 

@@ -70,16 +70,16 @@ public class UserOrdersAdapter extends RecyclerView.Adapter<UserOrdersAdapter.Vi
         Glide.with(activity).load(userOrdersData.getRestaurant().getPhotoUrl()).into(holder.itemUserNewOrderImgRestaurantLogo);
 
         if (status.equals("pending")) {
-            holder.itemUserNewOrderTvCancelOrder.setText("Cancel");
+            holder.itemUserNewOrderTvCancelOrder.setText(R.string.cancel);
             holder.itemUserNewOrderTvCancelOrder.setAllCaps(false);
             holder.itemUserNewOrderBtnCancelOrder.setBackgroundResource(R.drawable.blue_shape);
 
         } else if (status.equals("current")) {
-            holder.itemUserNewOrderTvCancelOrder.setText("Confirmation");
+            holder.itemUserNewOrderTvCancelOrder.setText(R.string.confirm_delivery);
             holder.itemUserNewOrderTvCancelOrder.setAllCaps(false);
             holder.itemUserNewOrderBtnCancelOrder.setBackgroundResource(R.drawable.green_shape);
         } else if (status.equals("completed")) {
-            holder.itemUserNewOrderTvCancelOrder.setText("Completed Order");
+            holder.itemUserNewOrderTvCancelOrder.setText(R.string.completed_order);
             holder.itemUserNewOrderTvCancelOrder.setAllCaps(false);
             holder.itemUserNewOrderIvCancelOrder.setVisibility(View.GONE);
 //            holder.itemUserNewOrderBtnCancelOrder.getLayoutParams().width=300;

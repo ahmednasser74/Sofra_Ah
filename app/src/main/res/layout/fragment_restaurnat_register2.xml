@@ -21,7 +21,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginTop="@dimen/dim_40dp"
-                android:text="Contact Information"
+                android:fontFamily="@font/cairo"
+                android:text="@string/contact_information"
                 android:textColor="#fff"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -38,7 +39,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:drawableStart="@drawable/ic_white_phone"
-                    android:hint=" Phone"
+                    android:hint="@string/phone"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +55,7 @@
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:drawableStart="@drawable/ic_white_whatsapp"
-                    android:hint=" WhatsApp"
+                    android:hint="@string/whatsapp"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dim_16dp"
                 android:layout_marginTop="@dimen/dim_16dp"
-                android:text="Market Photo"
+                android:fontFamily="@font/cairo"
+                android:text="@string/market_photo"
                 android:textColor="#fff"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -94,9 +96,11 @@
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/dim_40dp"
                 android:background="@drawable/gradient_btn_shape"
-                android:text="register"
+                android:fontFamily="@font/cairo"
+                android:text="@string/register"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

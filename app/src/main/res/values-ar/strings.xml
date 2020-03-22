@@ -5,7 +5,7 @@
     <string name="sale_food">بيع طعام</string>
     <string name="user_about_app">هذه الصفحه فقط لعرض ما يحتويه التطبيق </string>
     <string name="restaurant_commission">الرجاء تحويل نسبه 10% من اجمالي الربح في مده لا تزيد عن شهر</string>
-    <string name="rety">اعاده الاتصال</string>
+    <string name="rety">اعاده المحاوله</string>
     <string name="home">الرئيسيه</string>
     <string name="profile">الملف الشخصي</string>
     <string name="orders">الطلبات</string>
@@ -19,12 +19,12 @@
     <string name="sure_about_logout">متاكد من تسجيل الخروج ؟</string>
     <string name="commission">النسبه</string>
     <string name="restaurant_sales">مبيعات المطعم: </string>
-    <string name="app_commission">نسبه ارباح المطعم</string>
+    <string name="app_commission">نسبه ارباح المطعم :</string>
     <string name="paid">المدفوع :</string>
     <string name="remaining_amount">الكمية المتبقية :</string>
     <string name="ahly_bnak_651350130135">بنك الاهلي : 651350130135</string>
     <string name="alex_bnak_168416151684">بنك الاسكندريه : 168416151684</string>
-    <string name="account_name_sofra">رقم الحساب باسم : سفره</string>
+    <string name="account_name_sofra">رقم الحساب بأسم : سفره</string>
 
     <string name="order_details">تفاصيل الطلب</string>
     <string name="write_notes">اكتب ملاحظات</string>
@@ -43,7 +43,7 @@
     <string name="call">اتصال</string>
     <string name="confirm">قبول</string>
     <string name="cancel">الغاء</string>
-    <string name="delivery_fees">رسوم التوصيل :</string>
+    <string name="delivery_fees_">رسوم التوصيل :</string>
     <string name="add_image_item">إضافة صورة العنصر</string>
     <string name="item_name">اسم العنصر</string>
     <string name="item_description">وصف العنصر</string>
@@ -57,24 +57,25 @@
     <string name="from">من</string>
     <string name="till">الي</string>
     <string name="add_offer">اضف العرض</string>
-    <string name="change_password">تغير كلمه السر</string>
-    <string name="old_password">كلمه السر القديمه</string>
-    <string name="new_password">كلمه السر الجديده</string>
-    <string name="confirmation_new_password">اعاده كلمه السر الجديده</string>
+    <string name="change_password">تغير كلمه المرور</string>
+    <string name="old_password">كلمه المرور القديمه</string>
+    <string name="new_password">كلمه المرور الجديده</string>
+    <string name="confirmation_new_password">تأكيد كلمه المرور الجديده</string>
     <string name="change">تغير</string>
     <string name="reviews">التقيم</string>
     <string name="name">الاسم</string>
     <string name="e_mail">البريد الالكتروني</string>
-    <string name="minimum_deli_very">الحد الادني للتوصيل</string>
+    <string name="minimum_deli_very">الحد الادني للطلب</string>
     <string name="whatsapp">واتس اب</string>
     <string name="phone">الهاتف</string>
     <string name="contact_information">معلومات التواصل</string>
     <string name="state">الحاله</string>
+    <string name="state_">الحاله :</string>
     <string name="edit">تعديل</string>
     <string name="login">تسجيل الدخول</string>
-    <string name="password">كلمه السر</string>
-    <string name="forget_password">نسيت كلمه السر ؟</string>
-    <string name="create_new_account">تسجيل الدخول</string>
+    <string name="password">كلمه المرور</string>
+    <string name="forget_password">نسيت كلمه المرور ؟</string>
+    <string name="create_new_account">انشاء حساب جديد</string>
 
     <string name="no_menu_item_yet">لا يوجد عناصر</string>
     <string name="more_setting">الاعدادات</string>
@@ -86,10 +87,13 @@
     <string name="add_new_offer">اضافه عرض جديد</string>
     <string name="delivery_duration">وقت التوصيل</string>
     <string name="continue_">متابعه</string>
-
+    <string name="completed_order">الطلب مكتمل</string>
+    <string name="confirm_delivery">تأكيد الاستلام</string>
+    <string name="town2">المنطقه</string>
+    <string name="city2">المدينه</string>
     <string name="confirmation_order">تاكيد الطلب</string>
     <string name="add_more">اضافه المزيد</string>
-    <string name="total_price">اجمالي السعر</string>
+    <string name="total_price">اجمالي السعر :</string>
     <string name="what_is_your_message">ما هي رسالتك ؟</string>
     <string name="complaint">Complaint</string>
     <string name="suggestion">Suggestion</string>
@@ -100,7 +104,7 @@
     <string name="meal_details">تفاصيل الوجبه :</string>
     <string name="meal_price">سعر الوجبه :</string>
     <string name="special_order">طلب مخصوص</string>
-    <string name="write_here">كتابه الطلي هنا</string>
+    <string name="write_here">كتابه الطلب هنا</string>
     <string name="quantity">الكميه</string>
 
     <string name="offer_details">تفاصيل العرض</string>
@@ -117,6 +121,33 @@
     <string name="order_no_">رقم الطلب :</string>
     <string name="details">التفاصيل</string>
     <string name="delivery_cost">سعر التوصيل :</string>
-    <string name="minimum_order">اقل سعر للطلب</string>
+    <string name="minimum_order">الحد الادني للطلب :</string>
+    <string name="minimum_deli_very_">الحد الادني للطلب :</string>
+    <string name="market_photo">صوره المطعم</string>
+    <string name="delivery_fees">تكلفه التوصيل</string>
+    <string name="menu">القائمه</string>
+    <string name="review">التقيم</string>
+    <string name="info">معلومات</string>
+    <string name="complete_information">الرجاء اكمال البيانات</string>
+
+    <!--Validation For Toast-->
+    <string name="progress_please_wait">الرجاء الانتظار…</string>
+    <string name="user_or_pass_incorrect">البريد او كلمه المرور خطأ</string>
+    <string name="please_enter_name">الرجاء ادخال الاسم </string>
+    <string name="please_enter_password">الرجاء ادخال كلمه المرور </string>
+    <string name="please_enter_old_password">الرجاء ادخال كلمه المرور القديم </string>
+    <string name="please_enter_confirmation_password">الرجاء ادخال تأكيد كلمه المرور </string>
+    <string name="please_enter_price">الرجاء ادخال السعر</string>
+    <string name="please_enter_offer_price">الرجاء ادخال السعر في العرض</string>
+    <string name="please_enter_description">الرجاء ادخال الوصف</string>
+    <string name="please_select_photo">الرجاء تحديد الصوره</string>
+    <string name="please_select_dates">الرجاء تحديد التواريخ</string>
+    <string name="please_select_review">الرجاء تحديد تقيمك</string>
+    <string name="please_enter_cancelation_reason">الرجاء ادخال سبب الالغاء</string>
+    <string name="please_write_review">الرجاء ادخال تقيمك</string>
+    <string name="shopping_cart_empty">السله فارغه</string>
+    <string name="old_password_didnot_match">كلمه المرور القديمه غير صحيحه</string>
+    <string name="confirmation_password_did_not_match">تأكيد كلمه المرور غير متشابه</string>
+    <string name="added_to_cart">تمت الاضافه للسله</string>
 
 </resources>

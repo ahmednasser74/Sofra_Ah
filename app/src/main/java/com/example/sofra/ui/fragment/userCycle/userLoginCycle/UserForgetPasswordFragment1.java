@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.sofra.R;
+import com.example.sofra.data.local.SharedPreference;
 import com.example.sofra.data.model.userLogin.UserLogin;
 import com.example.sofra.data.model.userResetPassword.UserResetPassword;
 import com.example.sofra.helper.HelperMethod;
@@ -24,12 +25,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.sofra.data.api.ApiClient.getClient;
+import static com.example.sofra.data.local.SharedPreference.USER_API_TOKEN;
 
 
 public class UserForgetPasswordFragment1 extends BaseFragment {
 
     @BindView(R.id.user_forget_password_fragment1_et_email)
     EditText userForgetPasswordFragment1EtEmail;
+
+    private String apiToken,email ;
 
     public UserForgetPasswordFragment1() {
     }
@@ -49,24 +53,24 @@ public class UserForgetPasswordFragment1 extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_user_forget_password1, container, false);
         ButterKnife.bind(this, view);
 
+        apiToken = SharedPreference.LoadData(getActivity(), USER_API_TOKEN);
 
         return view;
     }
 
 
     private void getEmail() {
+        if (apiToken.equals("client")) {
 
-        String email = userForgetPasswordFragment1EtEmail.getText().toString().trim();
-        UserLogin userLogin = new UserLogin();
-        if (email.isEmpty()) {
-            Toast.makeText(baseActivity, "please enter email", Toast.LENGTH_SHORT).show();
-        } else if (!email.equals(userLogin.getData().getUser().getEmail())) {
-            Toast.makeText(baseActivity, "email didn't match", Toast.LENGTH_SHORT).show();
-        } else {
-            HelperMethod.showProgressDialog(getActivity(), "Please wait...");
+            email = userForgetPasswordFragment1EtEmail.getText().toString().trim();
+            UserLogin userLogin = new UserLogin();
+            if (email.isEmpty()) {
+                Toast.makeText(baseActivity, R.string.please_enter_your_mail, Toast.LENGTH_SHORT).show();
+            }  else {
+                HelperMethod.showProgressDialog(getActivity(), "Please wait...");
+            }
+            init(email);
         }
-
-        init(email);
     }
 
     private void init(String email) {

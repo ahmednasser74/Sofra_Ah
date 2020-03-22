@@ -61,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dim_16dp"
-                        android:text="Order No. : "
+                        android:text="@string/order_no_"
                         android:textColor="@color/pink" />
 
                     <TextView
@@ -80,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dim_16dp"
-                        android:text="Total Amount : "
+                        android:text="@string/total_price"
                         android:textColor="@color/pink" />
 
                     <TextView
@@ -99,7 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dim_16dp"
-                        android:text="Address : "
+                        android:text="@string/address"
                         android:textColor="@color/pink" />
 
                     <TextView
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/cairo"
-                    android:text="Cancel Order"
+                    android:text="@string/cancel"
                     android:textColor="#fff"
                     android:textSize="16sp"
                     android:textStyle="bold" />

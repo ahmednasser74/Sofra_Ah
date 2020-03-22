@@ -207,7 +207,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/cairo"
-                            android:text="@string/delivery_fees"
+                            android:text="@string/delivery_fees_"
                             android:textColor="@color/blue"
                             android:textSize="16sp" />
 

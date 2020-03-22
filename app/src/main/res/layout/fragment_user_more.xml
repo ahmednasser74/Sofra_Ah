@@ -10,7 +10,7 @@
         android:layout_height="@dimen/dim_60dp"
         android:fontFamily="@font/cairo"
         android:gravity="center"
-        android:text="More Setting"
+        android:text="@string/more_setting"
         android:textColor="@color/blue"
         android:textSize="30sp"
         android:textStyle="bold" />
