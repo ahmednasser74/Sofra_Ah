@@ -145,6 +145,7 @@
     <string name="please_select_review">please select review</string>
     <string name="please_write_review">please write review</string>
     <string name="added_to_cart">added to cart</string>
+    <string name="log_out">Log out</string>
 
 
 </resources>

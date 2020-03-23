@@ -3,13 +3,18 @@ package com.example.sofra.helper;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +23,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.sofra.R;
+import com.example.sofra.ui.activity.BaseActivity;
+import com.example.sofra.ui.activity.SplashCycleActivity;
 import com.yanzhenjie.album.Action;
 import com.yanzhenjie.album.Album;
 import com.yanzhenjie.album.AlbumConfig;
@@ -39,6 +46,7 @@ public class HelperMethod {
     private static ProgressDialog checkDialog;
     public static AlertDialog alertDialog;
     private String path;
+    BaseActivity baseActivity;
 
     public static void replace(Fragment fragment, FragmentManager supportFragmentManager, int id, TextView Tool_Bar_Title, String title) {
         FragmentTransaction transaction = supportFragmentManager.beginTransaction();
@@ -81,7 +89,23 @@ public class HelperMethod {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+  public void dialogLogOut() {
+        Dialog dialog = new Dialog(baseActivity);
+        LayoutInflater inflater = (LayoutInflater) baseActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = inflater.inflate(R.layout.dialog_sign_out, null);
+        dialog.setContentView(v);
 
+        Button button = (Button) dialog.findViewById(R.id.item_sign_out_dialog_btn_yes);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(baseActivity, SplashCycleActivity.class);
+                baseActivity.startActivity(intent);
+                baseActivity.finish();
+                Toast.makeText(baseActivity, "You Have LogOut", Toast.LENGTH_SHORT).show();
+            }
+        });}
+        
     public static void initImage(Activity activity, Action<ArrayList<AlbumFile>> action) {
         Album.initialize(AlbumConfig.newBuilder(activity)
                 .setAlbumLoader(new MediaLoader())
@@ -129,7 +153,7 @@ public class HelperMethod {
     public static void showProgressDialog(Activity activity, String title) {
         try {
             checkDialog = new ProgressDialog(activity);
-            checkDialog.setMessage(String.valueOf(R.string.progress_please_wait));
+            checkDialog.setMessage(String.valueOf(title));
             checkDialog.setIndeterminate(false);
             checkDialog.setCancelable(false);
             checkDialog.show();

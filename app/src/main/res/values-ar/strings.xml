@@ -149,5 +149,6 @@
     <string name="old_password_didnot_match">كلمه المرور القديمه غير صحيحه</string>
     <string name="confirmation_password_did_not_match">تأكيد كلمه المرور غير متشابه</string>
     <string name="added_to_cart">تمت الاضافه للسله</string>
+    <string name="log_out">تسجيل الخروج</string>
 
 </resources>

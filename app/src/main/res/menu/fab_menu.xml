@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/_fab_nav_offers"
+        android:icon="@drawable/ic_gift"
+        android:title="@string/offers" />
+
+    <item
+        android:id="@+id/_fab_nav_contact_us"
+        android:icon="@drawable/ic_blue_mail_none"
+        android:title="@string/contact_us" />
+    <item
+        android:id="@+id/_fab_nav_about_app"
+        android:icon="@drawable/ic_blue_lamp"
+        android:title="@string/about_app" />
+    <item
+        android:id="@+id/_fab_nav_change_password"
+        android:icon="@drawable/ic_blue_lock"
+        android:title="@string/change_password" />
+    <item
+        android:id="@+id/_fab_nav_log_out"
+        android:icon="@drawable/ic_blue_log_out"
+        android:title="@string/log_out" />
+
+</menu>

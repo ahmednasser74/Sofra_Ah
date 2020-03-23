@@ -96,6 +96,7 @@
         android:layout_above="@id/activity_user_bottom_nav_bar"
         android:layout_below="@id/user_cycle_activity_app_bar" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/activity_user_bottom_nav_bar"
         android:layout_width="match_parent"
@@ -108,4 +109,18 @@
         app:menu="@menu/navigation_menu"
         app:tabIndicatorColor="@android:color/darker_gray"
         app:tabMode="fixed" />
+
+    <io.github.yavski.fabspeeddial.FabSpeedDial
+        android:id="@+id/activity_user_bottom_fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/activity_user_bottom_nav_bar"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:padding="@dimen/_1sdp"
+        app:fabGravity="bottom_end"
+        app:fabMenu="@menu/fab_menu"
+        app:miniFabBackgroundTint="@color/pink"
+        app:miniFabDrawableTint="?attr/colorPrimaryDark"
+        app:miniFabTitleTextColor="@color/black" />
 </RelativeLayout>
