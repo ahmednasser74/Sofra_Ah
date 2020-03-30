@@ -246,4 +246,8 @@
         <item name="android:fadeScrollbars">false</item>
         <item name="android:scrollbarThumbVertical">@drawable/pink_shape</item>
     </style>
+<!--    bottom sheet dialog -->
+    <style name="BottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

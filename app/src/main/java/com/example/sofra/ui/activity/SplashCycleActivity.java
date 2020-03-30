@@ -8,15 +8,20 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.sofra.R;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
@@ -34,8 +39,6 @@ public class SplashCycleActivity extends BaseActivity {
 //    Button splashFragmentBtnRestaurant;
     @BindView(R.id.splash_fragment_btn_circle_menu)
     CircleMenu splashFragmentBtnCircleMenu;
-    @BindView(R.id.splash_cycle_img_change_language)
-    ImageView splashCycleImgChangeLanguage;
 
     Animation animationLR;
     private Intent intent;
@@ -88,32 +91,60 @@ public class SplashCycleActivity extends BaseActivity {
                 });
     }
 
-
-    @OnClick(R.id.splash_cycle_img_change_language)
+    //
+    @OnClick(R.id.splash_cycle_img_choose_language)
     public void onViewClicked() {
         showChangeLanguageDialog();
     }
 
     private void showChangeLanguageDialog() {
-        final String[] listItems = {"English", "Arabic"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(SplashCycleActivity.this);
-        builder.setTitle("choose language");
-        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+
+        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(SplashCycleActivity.this,
+                R.style.BottomSheet);
+
+        View bottomSheet = LayoutInflater.from(getApplicationContext())
+                .inflate(R.layout.dialog_sheet_language,
+                        (LinearLayout) findViewById(R.id.dialog_sheet_language_container));
+
+        bottomSheet.findViewById(R.id.dialog_sheet_language_btn_eng).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == 0) {
-                    setLocal("en");
-                    recreate();
-                } else if (which == 1) {
-                    setLocal("ar");
-                    recreate();
-                }
-                dialog.dismiss();
+            public void onClick(View v) {
+                setLocal("en");
+                recreate();
+
             }
         });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+        bottomSheet.findViewById(R.id.dialog_sheet_language_btn_arabic).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setLocal("ar");
+                recreate();
+
+            }
+        });
+        bottomSheetDialog.setContentView(bottomSheet);
+        bottomSheetDialog.show();
+
+
+//        final String[] listItems = {"English", "Arabic"};
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(SplashCycleActivity.this);
+//        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (which == 0) {
+//
+//                } else if (which == 1) {
+//
+//                }
+//                dialog.dismiss();
+//            }
+//        });
+//
+//        AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
     }
+
 
     private void setLocal(String language) {
         Locale locale = new Locale(language);
@@ -132,20 +163,6 @@ public class SplashCycleActivity extends BaseActivity {
         String language = prefs.getString("My_Lang", "");
         setLocal(language);
     }
-//    @OnClick({R.id.splash_fragment_btn_make_order, R.id.splash_fragment_btn_restaurant})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R.id.splash_fragment_btn_make_order:
-//                intent = new Intent(this, UserCycleActivity.class);
-//                startActivity(intent);
-//                break;
-//            case R.id.splash_fragment_btn_restaurant:
-//                intent = new Intent(this, RestaurantCycleActivity.class);
-//                startActivity(intent);
-//                break;
-//        }
-
-//    }
 
     @Override
     public void onBackPressed() {

@@ -80,7 +80,8 @@ public class RestaurantMoreFragment extends BaseFragment {
                 break;
             case R.id.restaurant_more_fragment_fragment_change_password:
                 HelperMethod.replace(new RestaurantChangePasswordFragment(), getActivity().getSupportFragmentManager(),
-                        R.id.restaurant_cycle_fl_fragment_container, null, null);                break;
+                        R.id.restaurant_cycle_fl_fragment_container, null, null);
+                break;
             case R.id.restaurant_more_fragment_sign_out:
 
                 Dialog dialog = new Dialog(getActivity());

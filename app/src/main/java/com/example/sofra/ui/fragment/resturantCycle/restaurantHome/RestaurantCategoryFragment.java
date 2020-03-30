@@ -144,6 +144,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
         dialogAddCategory.show();
     }
 
+
     private void floatHidden() {
 
         restaurantCategoryFragmentRvCategory.addOnScrollListener(new RecyclerView.OnScrollListener() {

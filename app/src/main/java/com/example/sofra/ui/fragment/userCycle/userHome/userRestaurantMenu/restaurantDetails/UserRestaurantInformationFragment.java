@@ -13,6 +13,9 @@ import com.example.sofra.R;
 import com.example.sofra.data.model.restaurantLogin.Restaurant;
 import com.example.sofra.ui.fragment.untitledFolder.BaseFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
