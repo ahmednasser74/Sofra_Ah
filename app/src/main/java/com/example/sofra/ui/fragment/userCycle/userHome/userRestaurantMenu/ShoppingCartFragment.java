@@ -83,10 +83,12 @@ public class ShoppingCartFragment extends BaseFragment {
 
     private void initRecycler() {
         if (listOrderItem.size() == 0) {
+
             final AlertDialog alert;
             AlertDialog.Builder dialog2 = new AlertDialog.Builder(getActivity());
             alert = dialog2.create();
             alert.setMessage("sorry cart is empty");
+            alert.setCanceledOnTouchOutside(true);
             alert.setButton2("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     onBack();
@@ -94,6 +96,7 @@ public class ShoppingCartFragment extends BaseFragment {
                 }
             });
             alert.show();
+
         } else {
 
             linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -102,6 +105,7 @@ public class ShoppingCartFragment extends BaseFragment {
             shoppingCartAdapter = new ShoppingCartAdapter((BaseActivity) getActivity(), listOrderItem, this);
             shoppingCartFragmentRv.setAdapter(shoppingCartAdapter);
             shoppingCartAdapter.notifyDataSetChanged();
+
         }
     }
 

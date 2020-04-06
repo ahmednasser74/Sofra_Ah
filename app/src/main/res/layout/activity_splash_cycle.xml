@@ -23,45 +23,8 @@
         android:id="@+id/splash_fragment_btn_circle_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_centerInParent="true"-->
-    <!--        android:orientation="vertical">-->
-
-
-    <!--        <ImageView-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:src="@drawable/logo" />-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/splash_fragment_btn_make_order"-->
-    <!--            android:layout_width="200dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="@dimen/dim_16dp"-->
-    <!--            android:layout_marginTop="@dimen/dim_8dp"-->
-    <!--            android:background="@drawable/gradient_btn_shape"-->
-    <!--            android:fontFamily="@font/yehia_font"-->
-    <!--            android:text="@string/make_order"-->
-    <!--            android:textColor="@android:color/white"-->
-    <!--            android:textStyle="bold" />-->
-
-    <!--        <Button-->
-    <!--            android:id="@+id/splash_fragment_btn_restaurant"-->
-    <!--            android:layout_width="200dp"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_marginStart="@dimen/dim_16dp"-->
-    <!--            android:layout_marginTop="@dimen/dim_8dp"-->
-    <!--            android:background="@drawable/gradient_btn_shape"-->
-    <!--            android:fontFamily="@font/yehia_font"-->
-    <!--            android:text="@string/sale_food"-->
-    <!--            android:textColor="@android:color/white"-->
-    <!--            android:textStyle="bold" />-->
-
-    <!--    </LinearLayout>-->
+        android:layout_centerInParent="true"
+        android:soundEffectsEnabled="true" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -80,4 +43,14 @@
         android:layout_margin="@dimen/_4sdp"
         android:background="@drawable/ic_language_menu_24dp" />
 
+    <ToggleButton
+        android:id="@+id/btn_light_dark"
+        style="@style/margin_paddingSE8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_toEndOf="@+id/splash_cycle_img_choose_language"
+        android:fontFamily="@font/cairo"
+        android:text="light" />
 </RelativeLayout>

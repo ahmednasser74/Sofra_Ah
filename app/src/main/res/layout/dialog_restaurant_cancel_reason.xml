@@ -17,7 +17,7 @@
             android:layout_marginTop="@dimen/dim_16dp"
             android:fontFamily="@font/cairo"
             android:gravity="center_horizontal"
-            android:text="Cancelation Reason"
+            android:text="@string/cancelation_reason"
             android:textColor="@color/blue"
             android:textSize="25sp" />
 
@@ -38,7 +38,7 @@
                 android:layout_marginEnd="@dimen/dim_16dp"
                 android:background="@null"
                 android:fontFamily="@font/cairo"
-                android:hint="Write Cancelation Reason"
+                android:hint="@string/write_cancelation_reason"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +52,7 @@
             android:layout_marginBottom="@dimen/dim_20dp"
             android:background="@drawable/pink_shape"
             android:fontFamily="@font/cairo"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

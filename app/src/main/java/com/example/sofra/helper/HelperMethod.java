@@ -35,6 +35,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.MediaType;
@@ -154,9 +155,11 @@ public class HelperMethod {
         try {
             checkDialog = new ProgressDialog(activity);
             checkDialog.setMessage(String.valueOf(title));
+            checkDialog.show();
+            checkDialog.setContentView(R.layout.dialog_progress);
+            Objects.requireNonNull(checkDialog.getWindow()).setBackgroundDrawableResource(R.color.albumTransparent);
             checkDialog.setIndeterminate(false);
             checkDialog.setCancelable(false);
-            checkDialog.show();
         } catch (Exception e) {
         }
     }

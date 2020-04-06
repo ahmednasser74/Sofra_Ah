@@ -45,8 +45,6 @@ public class RestaurantCategoryFragment extends BaseFragment {
     RecyclerView restaurantCategoryFragmentRvCategory;
     @BindView(R.id.restaurant_list_fragment_btn_float)
     FloatingActionButton restaurantListFragmentBtnFloat;
-    @BindView(R.id.restaurant_category_fragment_pb_loading)
-    ProgressBar restaurantCategoryFragmentPbLoading;
 
     private LinearLayoutManager linearLayoutManager;
     private RestaurantCategoryAdapter restaurantCategoryAdapter;
@@ -113,6 +111,7 @@ public class RestaurantCategoryFragment extends BaseFragment {
     }
 
     private void getRestaurantCategory(int page) {
+        HelperMethod.showProgressDialog(getActivity(), "");
 
         getClient().getRestaurantCategory(SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN), page).enqueue(new Callback<CategoriesPaginated>() {
             @Override
@@ -122,17 +121,16 @@ public class RestaurantCategoryFragment extends BaseFragment {
                         dismissProgressDialog();
                         maxPage = response.body().getData().getLastPage();
                         listOfCategoryDatalist.addAll(response.body().getData().getData());
-                        restaurantCategoryFragmentPbLoading.setVisibility(View.GONE);
                         restaurantCategoryAdapter.notifyDataSetChanged();
                     }
                 } catch (Exception e) {
-
+                    dismissProgressDialog();
                 }
             }
 
             @Override
             public void onFailure(Call<CategoriesPaginated> call, Throwable t) {
-
+                dismissProgressDialog();
             }
         });
     }

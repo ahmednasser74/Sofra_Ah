@@ -19,14 +19,15 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@drawable/shadow_white_shape"
-            android:paddingTop="@dimen/dim_4dp"
             android:paddingEnd="@dimen/dim_16dp">
 
             <EditText
                 android:id="@+id/user_restaurant_list_fragment_et_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="174dp"
+                android:layout_height="36dp"
+                android:layout_toStartOf="@id/user_restaurant_list_fragment_img_search"
                 android:background="@null"
+                android:inputType="text"
                 android:paddingStart="@dimen/dim_16dp"
                 android:paddingEnd="@dimen/dim_16dp"
                 android:textSize="14sp" />
@@ -36,6 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:background="@drawable/ic_pink_search_black_24dp" />
 
         </RelativeLayout>

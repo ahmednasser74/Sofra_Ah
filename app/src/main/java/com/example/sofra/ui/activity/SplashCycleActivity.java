@@ -1,7 +1,6 @@
 package com.example.sofra.ui.activity;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -12,13 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
+import android.widget.ToggleButton;
 
 import com.example.sofra.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -33,14 +28,12 @@ import butterknife.OnClick;
 
 public class SplashCycleActivity extends BaseActivity {
 
-    //    @BindView(R.id.splash_fragment_btn_make_order)
-//    Button splashFragmentBtnMakeOrder;
-//    @BindView(R.id.splash_fragment_btn_restaurant)
-//    Button splashFragmentBtnRestaurant;
     @BindView(R.id.splash_fragment_btn_circle_menu)
     CircleMenu splashFragmentBtnCircleMenu;
 
     Animation animationLR;
+    @BindView(R.id.btn_light_dark)
+    ToggleButton btnLightDark;
     private Intent intent;
 
     @Override
@@ -59,8 +52,20 @@ public class SplashCycleActivity extends BaseActivity {
                 splashFragmentBtnCircleMenu.performClick();
             }
         });
+        btnLightDark.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btnLightDark.isChecked()) {
 
-        String[] menu = {"Sale food", "Make Order"};
+                } else {
+
+                }
+            }
+        });
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+//        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
+
+        String[] menu = {"Make Order", "Sale food"};
         splashFragmentBtnCircleMenu.setMainMenu(Color.parseColor("#ffffff"),
                 R.drawable.logo, R.drawable.ic_pink_close)
                 .addSubMenu(Color.parseColor("#DD1258"), R.drawable.ic_white_shopping_cart)
@@ -111,38 +116,19 @@ public class SplashCycleActivity extends BaseActivity {
             public void onClick(View v) {
                 setLocal("en");
                 recreate();
-
             }
         });
+
         bottomSheet.findViewById(R.id.dialog_sheet_language_btn_arabic).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setLocal("ar");
                 recreate();
-
             }
         });
+
         bottomSheetDialog.setContentView(bottomSheet);
         bottomSheetDialog.show();
-
-
-//        final String[] listItems = {"English", "Arabic"};
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(SplashCycleActivity.this);
-//        builder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                if (which == 0) {
-//
-//                } else if (which == 1) {
-//
-//                }
-//                dialog.dismiss();
-//            }
-//        });
-//
-//        AlertDialog alertDialog = builder.create();
-//        alertDialog.show();
     }
 
 
@@ -168,4 +154,5 @@ public class SplashCycleActivity extends BaseActivity {
     public void onBackPressed() {
         finish();
     }
+
 }

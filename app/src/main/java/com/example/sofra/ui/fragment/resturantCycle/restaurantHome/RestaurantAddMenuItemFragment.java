@@ -125,6 +125,7 @@ public class RestaurantAddMenuItemFragment extends BaseFragment {
                                 MultipartBody.Part photo, RequestBody name, RequestBody apiToken,
                                 RequestBody offerPrice, RequestBody categoryId) {
 
+        HelperMethod.showProgressDialog(getActivity(), "");
         getClient().getRestaurantAddMenuItem(description, price, preparingTime, name, photo,
                 apiToken, offerPrice, categoryId).enqueue(new Callback<RestaurantAddMenuItem>() {
             @Override

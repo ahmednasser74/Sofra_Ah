@@ -95,9 +95,9 @@
     <string name="add_more">اضافه المزيد</string>
     <string name="total_price">اجمالي السعر :</string>
     <string name="what_is_your_message">ما هي رسالتك ؟</string>
-    <string name="complaint">Complaint</string>
-    <string name="suggestion">Suggestion</string>
-    <string name="enquiry">Enquiry</string>
+    <string name="complaint">شكوى</string>
+    <string name="suggestion">اقتراح</string>
+    <string name="enquiry">استفسار</string>
     <string name="send">ارسال</string>
     <string name="please_enter_your_mail">الرجاء ادخال بريدك الالكتروني</string>
     <string name="please_enter_verify_code">الرجاء ادخال كود التحقيق</string>
@@ -107,6 +107,8 @@
     <string name="write_here">كتابه الطلب هنا</string>
     <string name="quantity">الكميه</string>
 
+    <string name="write_cancelation_reason">ما هو السبب ؟</string>
+    <string name="cancelation_reason">سبب الالغاء</string>
     <string name="offer_details">تفاصيل العرض</string>
     <string name="from_">من :</string>
     <string name="till_">الي :</string>
@@ -129,6 +131,9 @@
     <string name="review">التقيم</string>
     <string name="info">معلومات</string>
     <string name="complete_information">الرجاء اكمال البيانات</string>
+    <string name="english">الانجليزيه</string>
+    <string name="arabic">العربيه</string>
+    <string name="choose_language">اختر اللغه</string>
 
     <!--Validation For Toast-->
     <string name="progress_please_wait">الرجاء الانتظار…</string>
@@ -150,5 +155,10 @@
     <string name="confirmation_password_did_not_match">تأكيد كلمه المرور غير متشابه</string>
     <string name="added_to_cart">تمت الاضافه للسله</string>
     <string name="log_out">تسجيل الخروج</string>
+
+    <string name="theme">اللون</string>
+    <string name="light_theme">اللون الفاتح</string>
+    <string name="dark_theme">اللون الغامق</string>
+    <string name="loading">تحميل…</string>
 
 </resources>
