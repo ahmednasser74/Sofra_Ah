@@ -34,7 +34,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
 
 
     private BaseActivity activity;
-    Restaurant restaurantData;
+    private Restaurant restaurantData;
     private int lastPosition = -1;
 
     private List<Restaurant> restaurantDataList = new ArrayList<>();
