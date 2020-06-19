@@ -88,13 +88,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 roomDao.update(orderItem);
                 shoppingCartFragment.setTotalPrice();
                 holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-//
-//                Executors.newSingleThreadExecutor().execute(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                    }
-//                });
+
             }
         });
 
@@ -110,19 +104,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                     shoppingCartFragment.setTotalPrice();
                     holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
                 }
-//                Executors.newSingleThreadExecutor().execute(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        quantity = orderItem.getQuantity();
-//                        if (quantity > 1) {
-//                            quantity = orderItem.getQuantity();
-//                            quantity -= 1;
-//                            orderItem.setQuantity(quantity);
-//                            roomDao.update(orderItem);
-//                            holder.itemShoppingCartTvQuantity.setText(String.valueOf(orderItem.getQuantity()));
-//                        }
-//                    }
-//                });
             }
         });
 
@@ -167,29 +148,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     }
 
 
-    //        public void increment() {
-//        if (quantity < 100) {
-//            quantity++;
-//        } else {
-//            Toast.makeText(activity, "can't order above 100 cup ", Toast.LENGTH_SHORT).show();
-//        }
-//        displayQuantity(quantity);
-//
-//    }
-//
-//    public void decrement() {
-//        int x = 0;
-//        if (quantity > 1) {
-//            quantity--;
-//        } else {
-//            Toast.makeText(activity, "can't order below 1 item ", Toast.LENGTH_SHORT).show();
-//        }
-//        displayQuantity(quantity);
-//    }
-//
-//    private void displayQuantity(int number1) {
-//        itemDetailsFragmentTvQuantity.setText("" + number1);
-//    }
     @Override
     public int getItemCount() {
         return listOrderItem.size();
