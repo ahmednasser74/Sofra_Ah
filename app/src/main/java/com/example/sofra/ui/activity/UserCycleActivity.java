@@ -214,6 +214,8 @@ public class UserCycleActivity extends BaseActivity {
                 if (haveNetworkConnection()) {
                     userCycleActivityLayoutNoConnection.setVisibility(View.GONE);
                     userCycleActivityFlContainer.setVisibility(View.VISIBLE);
+                    HelperMethod.replace(new UserRestaurantListFragment(), getSupportFragmentManager(),
+                            R.id.user_cycle_activity_fl_container, null, null);
                 } else if (!haveNetworkConnection()) {
                     userCycleActivityLayoutNoConnection.setVisibility(View.VISIBLE);
                     userCycleActivityFlContainer.setVisibility(View.GONE);

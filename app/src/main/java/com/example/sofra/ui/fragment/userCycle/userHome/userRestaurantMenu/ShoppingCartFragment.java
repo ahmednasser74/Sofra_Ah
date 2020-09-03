@@ -50,7 +50,7 @@ public class ShoppingCartFragment extends BaseFragment {
 
     private LinearLayoutManager linearLayoutManager;
     public List<OrderItem> listOrderItem = new ArrayList<>();
-    public ShoppingCartAdapter shoppingCartAdapter;
+    private ShoppingCartAdapter shoppingCartAdapter;
 
     RoomDao roomDao;
 
@@ -144,7 +144,6 @@ public class ShoppingCartFragment extends BaseFragment {
 
                 break;
             case R.id.shopping_cart_fragment_btn_add_more:
-
                 onBack();
                 break;
         }

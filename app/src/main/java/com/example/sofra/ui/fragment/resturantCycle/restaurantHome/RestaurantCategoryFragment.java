@@ -112,12 +112,13 @@ public class RestaurantCategoryFragment extends BaseFragment {
 
     private void getRestaurantCategory(int page) {
         HelperMethod.showProgressDialog(getActivity(), "");
-
-        getClient().getRestaurantCategory(SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN), page).enqueue(new Callback<CategoriesPaginated>() {
+        String apiToken = SharedPreference.LoadData(getActivity(), RESTAURANT_API_TOKEN);
+        getClient().getRestaurantCategory(apiToken, page).enqueue(new Callback<CategoriesPaginated>() {
             @Override
             public void onResponse(Call<CategoriesPaginated> call, Response<CategoriesPaginated> response) {
                 try {
                     if (response.body().getStatus() == 1) {
+                        SharedPreference.setSharedPreferences(getActivity());
                         dismissProgressDialog();
                         maxPage = response.body().getData().getLastPage();
                         listOfCategoryDatalist.addAll(response.body().getData().getData());

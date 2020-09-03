@@ -133,11 +133,11 @@ public class SplashCycleActivity extends BaseActivity {
 
 
     private void setLocal(String language) {
-        Locale locale = new Locale(language);
-        locale.setDefault(locale);
+        Locale mylocale = new Locale(language);
+        Locale.setDefault(mylocale);
         Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        config.locale = mylocale;
+        getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
         SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
         editor.putString("My_Lang", language);

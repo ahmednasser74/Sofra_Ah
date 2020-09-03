@@ -1,6 +1,7 @@
 package com.example.sofra.ui.fragment.resturantCycle.restaurantLogin;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,9 +95,10 @@ public class RestaurantLoginFragment extends BaseFragment {
                 HelperMethod.dismissProgressDialog();
                 try {
                     if (response.body().getStatus() == 1) {
+                        SharedPreference.setSharedPreferences(getActivity());
                         SharedPreference.SaveData(getActivity(), RESTAURANT_API_TOKEN, response.body().getData().getApiToken());
                         SharedPreference.SaveData(getActivity(), RESTAURANT_DATA, response.body().getData());
-
+                        Log.w("apiToken",response.body().getData().getApiToken());
                         HelperMethod.replace(new RestaurantCategoryFragment(), getActivity().getSupportFragmentManager(),
                                 R.id.restaurant_cycle_fl_fragment_container, null, null);
 

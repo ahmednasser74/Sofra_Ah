@@ -83,7 +83,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             @Override
             public void onClick(View v) {
                 quantity = orderItem.getQuantity();
-                quantity += 1;
+                quantity ++;
                 orderItem.setQuantity(quantity);
                 roomDao.update(orderItem);
                 shoppingCartFragment.setTotalPrice();

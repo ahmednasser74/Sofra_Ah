@@ -58,7 +58,7 @@ public class RestaurantListAdapter extends RecyclerView.Adapter<RestaurantListAd
                 restaurantDataList.add(listNew.get(i));
                 notifyItemInserted(getItemCount());
             }
-            //notifyDataSetChanged();
+//            notifyDataSetChanged();
         } else { //clear all
             restaurantDataList.clear();
             notifyDataSetChanged();

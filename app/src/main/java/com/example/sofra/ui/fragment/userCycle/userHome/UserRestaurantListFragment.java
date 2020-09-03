@@ -46,7 +46,6 @@ import retrofit2.Response;
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 import static com.example.sofra.data.api.ApiClient.getClient;
 
-
 public class UserRestaurantListFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.user_restaurant_list_fragment_sp_city)
@@ -188,9 +187,9 @@ public class UserRestaurantListFragment extends BaseFragment implements SwipeRef
                         if (response.body().getStatus() == 1) {
                             maxPage = response.body().getData().getLastPage();
                             ListRestaurantData.addAll(response.body().getData().getData());
+                            restaurantListAdapter.notifyDataSetChanged();
                             restaurantListFragmentSwipeRefresh.setRefreshing(false);
                             restaurantListFragmentRvRestaurant.setVisibility(View.VISIBLE);
-                            restaurantListAdapter.notifyDataSetChanged();
                             userRestaurantListFragmentPaginationProgress.setVisibility(View.GONE);
 
                             userRestaurantListFragmentShimmer.stopShimmerAnimation();
